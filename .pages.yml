@@ -1,0 +1,36 @@
+media: media
+
+content:
+  - name: news
+    label: News & Exhibitions
+    type: collection
+    path: content/news
+    fields:
+      - name: title
+        type: string
+      - name: date
+        type: date
+      - name: body
+        type: rich-text
+
+  - name: projects
+    label: Projects
+    type: collection
+    path: content/projects
+    fields:
+      - name: title
+        type: string
+      - name: description
+        type: text
+      - name: image
+        type: image
+
+  - name: social-links
+    label: Social media links
+    type: collection
+    path: content/social
+    fields:
+      - name: platform
+        type: string
+      - name: url
+        type: string
