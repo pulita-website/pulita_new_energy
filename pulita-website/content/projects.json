@@ -1,0 +1,132 @@
+[
+  {
+    "title": "MRU & Kubwa Refilling Station",
+    "capacity": "MRU",
+    "fuel": "CNG",
+    "location": "Abuja, FCT",
+    "sector": "Gas station",
+    "image": "assets/images/hero-mru-station-site.jpg",
+    "featured": true,
+    "summary": "Pulita compressors and a mobile refuelling unit (MRU) supplying CNG to vehicles, buses and trucks in Abuja."
+  },
+  {
+    "title": "Lagos Hospital",
+    "capacity": "450kVA",
+    "fuel": "CNG",
+    "location": "Lagos",
+    "sector": "Healthcare",
+    "image": "assets/images/project-lagos-hospital-450kva-cng.jpg",
+    "featured": true,
+    "summary": "450 kVA CNG generator set with on-site cylinder storage for round-the-clock hospital power."
+  },
+  {
+    "title": "Burger King Abeokuta",
+    "capacity": "80kVA",
+    "fuel": "LPG",
+    "location": "Abeokuta, Ogun",
+    "sector": "Commercial & industrial",
+    "image": "assets/images/project-ogun-burger-king-80kva-lpg.jpg",
+    "featured": true,
+    "summary": "80 kVA LPG generator powering Burger King Nigeria’s first green restaurant, with zero diesel on site."
+  },
+  {
+    "title": "Abuja LPG Station",
+    "capacity": "100kVA",
+    "fuel": "LPG",
+    "location": "Abuja, FCT",
+    "sector": "Gas station",
+    "image": "assets/images/project-abuja-lpg-station-100kva.jpg",
+    "featured": false,
+    "summary": "100 kVA LPG generator set running a gas station on its own fuel."
+  },
+  {
+    "title": "Ife CNG Station",
+    "capacity": "100kVA",
+    "fuel": "CNG",
+    "location": "Ile-Ife, Osun",
+    "sector": "Gas station",
+    "image": "assets/images/project-ife-cng-station-100kva.jpg",
+    "featured": false,
+    "summary": "100 kVA CNG generator set for a CNG station."
+  },
+  {
+    "title": "Lagos Hospital",
+    "capacity": "300kVA",
+    "fuel": "LPG",
+    "location": "Lagos",
+    "sector": "Healthcare",
+    "image": "assets/images/project-lagos-hospital-300kva-lpg.jpg",
+    "featured": false,
+    "summary": "300 kVA LPG generator set for hospital power."
+  },
+  {
+    "title": "Abuja LPG Station",
+    "capacity": "200+100kVA",
+    "fuel": "LPG",
+    "location": "Abuja, FCT",
+    "sector": "Gas station",
+    "image": "assets/images/project-abuja-lpg-station-200kva.jpg",
+    "featured": false,
+    "summary": "200 kVA and 100 kVA LPG generator sets."
+  },
+  {
+    "title": "Abuja Office",
+    "capacity": "250kVA",
+    "fuel": "LPG",
+    "location": "Abuja, FCT",
+    "sector": "Commercial & industrial",
+    "image": "assets/images/project-abuja-office-250kva-lpg.jpg",
+    "featured": false,
+    "summary": "250 kVA LPG generator set for an office complex."
+  },
+  {
+    "title": "Abuja Water Factory",
+    "capacity": "200kVA",
+    "fuel": "LPG",
+    "location": "Abuja, FCT",
+    "sector": "Commercial & industrial",
+    "image": "assets/images/project-abuja-water-factory-200kva-lpg.jpg",
+    "featured": false,
+    "summary": "200 kVA LPG generator set for a water factory."
+  },
+  {
+    "title": "CNG Refill Unit + Power System",
+    "capacity": "Station",
+    "fuel": "CNG",
+    "location": "Nigeria",
+    "sector": "Gas station",
+    "image": "assets/images/project-cng-refill-unit-power-system.jpg",
+    "featured": false,
+    "summary": "CNG refill unit combined with a gas power system."
+  },
+  {
+    "title": "Ogun Telecom Site",
+    "capacity": "25kVA",
+    "fuel": "CNG",
+    "location": "Ogun State",
+    "sector": "Telecom",
+    "image": "assets/images/project-ogun-telecom-25kva-cng.jpg",
+    "featured": false,
+    "summary": "25 kVA CNG generator set for a telecom tower."
+  },
+  {
+    "title": "Lagos Telecom Site",
+    "capacity": "25kVA",
+    "fuel": "CNG",
+    "location": "Lagos",
+    "sector": "Telecom",
+    "image": "assets/images/project-lagos-telecom-25kva-cng.jpg",
+    "featured": false,
+    "summary": "25 kVA CNG generator set for a telecom tower."
+  },
+  {
+    "title": "Lagos CNG Plant",
+    "capacity": "50kVA",
+    "fuel": "CNG",
+    "location": "Lagos",
+    "sector": "Commercial & industrial",
+    "image": "assets/images/project-lagos-cng-plant-50kva.jpg",
+    "featured": false,
+    "summary": "50 kVA CNG generator set with cylinder storage."
+  }
+]

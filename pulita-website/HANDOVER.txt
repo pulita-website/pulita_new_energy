@@ -1,0 +1,143 @@
+PULITA NEW ENERGY: HOSTING, DOMAIN & CMS HANDOVER GUIDE
+=======================================================
+
+This guide puts the site online at the client's own domain and gives the
+Pulita team a simple editor for News, Projects and social links.
+
+Recommended free setup:
+  GitHub (stores the site)  ->  Netlify (hosts it, free SSL)  ->  Pages CMS (editor)
+
+Why this setup: the site is static (fast, secure, nothing to patch). Pages CMS
+edits the content files directly on GitHub. Netlify republishes the site about
+a minute after every save, so no server or database needs maintaining.
+
+
+-----------------------------------------------------------------------
+STEP 1: PUT THE SITE ON GITHUB  (developer, about 10 minutes)
+-----------------------------------------------------------------------
+1. Create a free GitHub account (ideally one owned by Pulita, so the
+   client keeps ownership), e.g. github.com/pulitaenergy
+2. Create a new PRIVATE repository, e.g. "pulita-website".
+3. Upload the CONTENTS of the pulita-website folder (index.html at the top
+   level, plus the assets/, content/ folders and the .pages.yml file).
+   Make sure the hidden file ".pages.yml" is included.
+
+
+-----------------------------------------------------------------------
+STEP 2: HOST ON NETLIFY  (developer, about 5 minutes)
+-----------------------------------------------------------------------
+1. Sign up at netlify.com with the same GitHub account.
+2. "Add new project" > "Import an existing project" > GitHub >
+   choose "pulita-website".
+3. Build command: leave EMPTY. Publish directory: leave as "/" (root).
+4. Deploy. Netlify gives a temporary address such as
+   pulita-website.netlify.app. Check the site there.
+5. Optional: rename the project (Project configuration > Change project
+   name) to e.g. "pulitaenergy" -> pulitaenergy.netlify.app
+
+
+-----------------------------------------------------------------------
+STEP 3: CONNECT THE DOMAIN (DNS)
+-----------------------------------------------------------------------
+Note on the "IP address": a static host like Netlify serves the site from a
+global network, so the client points the domain at Netlify's load balancer
+rather than at a server IP of its own. The values below are Netlify's
+published DNS settings. If you choose a different host, use that host's
+values instead.
+
+1. In Netlify: Domain management > Add a domain > enter pulitaenergy.com
+   (choose "add a domain you already own"). Netlify confirms the exact
+   records for your project; follow its screen if anything differs.
+2. At the client's domain registrar (where pulitaenergy.com was bought),
+   open the DNS settings and add:
+
+   Type    Host / Name    Value                                  TTL
+   ------  -------------  -------------------------------------  ----------
+   A       @              75.2.60.5                              Auto / 3600
+   CNAME   www            <your-project-name>.netlify.app        Auto / 3600
+
+   e.g. CNAME  www  ->  pulitaenergy.netlify.app
+
+   If the registrar supports ALIAS / ANAME / "flattened CNAME" records for
+   the root domain, Netlify recommends using that instead of the A record:
+   ALIAS   @   apex-loadbalancer.netlify.com
+
+   Delete any old A or CNAME records for "@" and "www" that point elsewhere
+   (e.g. a parking page). Do NOT touch MX records: those carry email.
+
+3. Set www.pulitaenergy.com as the primary domain in Netlify (recommended
+   by Netlify when DNS stays with the registrar).
+4. Wait for DNS to update (minutes to 48 hours). Netlify then issues a free
+   SSL certificate automatically, so the site loads on https://.
+
+Alternative: switch the domain's nameservers to Netlify DNS (Netlify shows
+the four nameservers). Simpler long-term, but then email (MX) records must
+be re-created inside Netlify before switching.
+
+
+-----------------------------------------------------------------------
+STEP 4: SET UP THE EDITOR (PAGES CMS)
+-----------------------------------------------------------------------
+1. Go to https://app.pagescms.org and sign in with the GitHub account.
+2. Install the Pages CMS GitHub app on the "pulita-website" repository.
+3. Open the repository in Pages CMS. It reads .pages.yml and shows three
+   sections: News & Exhibitions, Projects, Social media links and Gas supply
+   partners.
+4. Invite the Pulita staff who will edit the site using Pages CMS's
+   collaborator invite (by email address). Invited editors don't need a
+   GitHub account or any knowledge of Git.
+
+
+-----------------------------------------------------------------------
+STEP 5: HOW THE PULITA TEAM EDITS THE SITE  (client guide)
+-----------------------------------------------------------------------
+Log in at https://app.pagescms.org, open "pulita-website", then:
+
+ADD NEWS OR AN EXHIBITION
+  News & Exhibitions > Add entry
+  - Title, Type (News / Exhibition / Event / Project), Date, Location
+  - Photo: upload a landscape photo (see photo tips below)
+  - Summary: 1-3 sentences
+  - Link (optional): an event website, or a page on the site such as
+    solutions.html#refuelling
+  Save. The site updates in about a minute.
+  Exhibitions and Events with a FUTURE date appear automatically under
+  "Upcoming events" on the Home and News pages, and move into the news list
+  once the date passes. Drag entries to change their order.
+
+ADD A PROJECT
+  Projects > Add entry
+  - Project name, Capacity (e.g. 450kVA), Fuel, Location, Sector
+  - Photo and short description
+  - Tick "Show on the home page" for up to 6 headline projects
+  Fuel and Sector power the filter buttons on the Projects page.
+
+SOCIAL MEDIA LINKS
+  Social media links > paste the full X (Twitter) and Facebook page
+  addresses (starting with https://). The icons in the header, footer and
+  News page start working straight away. While a link is empty, the icon
+  shows a "coming soon" message.
+
+GAS SUPPLY PARTNER LOGOS
+  Gas supply partners > open a company > upload its official logo (PNG or
+  SVG with a transparent background, wide format) > Save. Add a website to
+  make the logo clickable. Until a logo is uploaded, the name is shown.
+
+PHOTO TIPS
+  - Real photos of installed equipment work best (the site's style).
+  - Landscape (wider than tall), about 1600 px wide.
+  - Keep each photo under about 500 KB (compress at squoosh.app or
+    tinypng.com), so pages load quickly on mobile data.
+
+WHAT IS NOT IN THE CMS
+  Product pages, the Solutions page and company text are fixed HTML. Ask
+  the developer for changes there (or edit the .html files on GitHub).
+
+
+-----------------------------------------------------------------------
+CONTACT FORMS
+-----------------------------------------------------------------------
+Forms open WhatsApp (0803 080 0999) or the visitor's email app
+(john@hitepower.com) with the enquiry filled in. To receive form
+submissions in an inbox instead, Netlify Forms can be enabled later (ask
+the developer).

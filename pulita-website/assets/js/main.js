@@ -64,22 +64,23 @@
   window.addEventListener('pageshow', function (e) { if (e.persisted) document.body.classList.remove('is-leaving'); });
 
   /* ---------- Scroll reveal (Intersection Observer) ---------- */
-  var revealEls = $$('[data-reveal], .tl-item, .mini-bar, [data-bars]');
-  revealEls.forEach(function (el) { if (el.dataset.delay) el.style.setProperty('--d', el.dataset.delay + 'ms'); });
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          en.target.classList.add('is-visible');
-          en.target.dispatchEvent(new CustomEvent('reveal'));
-          io.unobserve(en.target);
-        }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(function (el) { io.observe(el); });
-  } else {
-    revealEls.forEach(function (el) { el.classList.add('is-visible'); setTimeout(function () { el.dispatchEvent(new CustomEvent('reveal')); }, 0); });
+  var io = ('IntersectionObserver' in window && !reduceMotion) ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) {
+        en.target.classList.add('is-visible');
+        en.target.dispatchEvent(new CustomEvent('reveal'));
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }) : null;
+  function observeReveal(els) {
+    els.forEach(function (el) {
+      if (el.dataset.delay) el.style.setProperty('--d', el.dataset.delay + 'ms');
+      if (io) io.observe(el);
+      else { el.classList.add('is-visible'); setTimeout(function () { el.dispatchEvent(new CustomEvent('reveal')); }, 0); }
+    });
   }
+  observeReveal($$('[data-reveal], .tl-item, .mini-bar, [data-bars]'));
 
   /* ---------- Animated counters ---------- */
   function animateCount(el) {
@@ -111,10 +112,10 @@
   var compare = $('[data-compare]');
   if (compare) {
     var DATA = {
-      kwh: { unit: '/kWh', vals: { diesel: 325, lpg: 165, cng: 114 }, note: 'Comprehensive cost per kWh (Naira), 100kW reference generator.' },
-      hour: { unit: '/hr', vals: { diesel: 32500, lpg: 16560, cng: 11400 }, note: 'Fuel cost per running hour (Naira), 100kW reference generator.' }
+      kwh: { unit: '/kWh', vals: { diesel: 500, lpg: 165, cng: 114 }, note: 'Comprehensive cost per kWh (Naira), 100kW reference generator.' },
+      hour: { unit: '/hr', vals: { diesel: 50000, lpg: 16560, cng: 11400 }, note: 'Fuel cost per running hour (Naira), 100kW reference generator.' }
     };
-    var saving = { diesel: null, lpg: 50, cng: 65 };
+    var saving = { diesel: null, lpg: 67, cng: 77 };
     var mode = 'kwh', shown = false;
     function renderCompare() {
       var d = DATA[mode], max = d.vals.diesel;
@@ -158,7 +159,7 @@
     function num(el, fb) { var v = parseFloat(el.value); return isFinite(v) && v > 0 ? v : fb; }
     function renderCalc() {
       var lph = num(inputs.lph, 25), h = num(inputs.hours, 12), d = num(inputs.days, 26);
-      var pd = num(inputs.pd, 1300), pl = num(inputs.pl, 750), pc = num(inputs.pc, 380);
+      var pd = num(inputs.pd, 2000), pl = num(inputs.pl, 750), pc = num(inputs.pc, 380);
       [inputs.lph, inputs.hours, inputs.days].forEach(setRangeFill);
       $('#out-lph', calc).innerHTML = lph + '<small>L/h</small>';
       $('#out-hours', calc).innerHTML = h + '<small>hrs/day</small>';
@@ -249,14 +250,16 @@
   });
 
   /* ---------- Project filters ---------- */
-  var filterRoot = $('[data-filters]');
-  if (filterRoot) {
+  function initFilters() {
+    var filterRoot = $('[data-filters]');
+    if (!filterRoot) return;
     var cards = $$('.project-card[data-tags]');
     $$('.pill', filterRoot).forEach(function (pill) {
       var f = pill.dataset.filter;
       var count = f === 'all' ? cards.length : cards.filter(function (c) { return c.dataset.tags.split(' ').indexOf(f) > -1; }).length;
       var cEl = $('.count', pill); if (cEl) cEl.textContent = count;
-      pill.addEventListener('click', function () {
+      pill.hidden = count === 0 && f !== 'all';
+      pill.onclick = function () {
         $$('.pill', filterRoot).forEach(function (p) { p.setAttribute('aria-pressed', String(p === pill)); });
         cards.forEach(function (c, i) {
           var show = f === 'all' || c.dataset.tags.split(' ').indexOf(f) > -1;
@@ -265,13 +268,167 @@
           if (show) { c.style.animationDelay = (i % 6) * 50 + 'ms'; void c.offsetWidth; c.classList.add('is-entering'); }
         });
         var live = $('[data-filter-status]'); if (live) live.textContent = count + ' projects shown';
-      });
+      };
     });
   }
-  // touch: tap project to toggle info overlay
-  $$('.project-card').forEach(function (c) {
-    c.addEventListener('click', function () { if (!window.matchMedia('(hover: hover)').matches) c.classList.toggle('show-info'); });
-    c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); c.classList.toggle('show-info'); } });
+  function initProjectCards(root) {
+    $$('.project-card', root).forEach(function (c) {
+      c.addEventListener('click', function () { if (!window.matchMedia('(hover: hover)').matches) c.classList.toggle('show-info'); });
+      c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); c.classList.toggle('show-info'); } });
+    });
+  }
+  initProjectCards(document);
+
+  /* ---------- CMS content: News, Projects, Settings ---------- */
+  // Content lives in content/*.json and is edited by the client through Pages CMS.
+  // When the site is opened from disk (file://), the offline copy in content-fallback.js is used.
+  function loadContent(name) {
+    var fb = (window.PULITA_CONTENT || {})[name] || null;
+    if (location.protocol === 'file:' || !window.fetch) return Promise.resolve(fb);
+    return fetch('content/' + name + '.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .catch(function () { return fb; });
+  }
+  function esc(t) { return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function imgPath(p) { return esc(String(p || '').replace(/^\//, '')); }
+  var SECTOR_KEY = { 'healthcare': 'healthcare', 'telecom': 'telecom', 'gas station': 'station', 'commercial & industrial': 'commercial' };
+  var PIN = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>';
+  var CAL = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';
+  var ARR = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+  function projectCard(p, i) {
+    var fuel = String(p.fuel || '').trim();
+    var tags = [fuel.toLowerCase().replace(/\s+/g, '-'), SECTOR_KEY[String(p.sector || '').toLowerCase()] || 'other'].join(' ');
+    var cap = esc(p.capacity || '').replace(/kVA$/i, '<small style="font-size:1.4rem">kVA</small>');
+    return '<div class="project-card" tabindex="0" role="button" aria-label="' + esc(p.title) + ', ' + esc(p.capacity) + ' ' + esc(fuel) + ', ' + esc(p.location) + '" data-tags="' + esc(tags) + '" data-reveal="up" data-delay="' + ((i % 3) * 90) + '">' +
+      '<img src="' + imgPath(p.image) + '" alt="' + esc(p.title) + ': ' + esc(p.capacity) + ' ' + esc(fuel) + ' installation" loading="lazy">' +
+      '<div class="label"><span class="fuel-chip' + (fuel === 'LPG' ? ' lpg' : '') + '">' + esc(fuel) + '</span><p class="font-display text-2xl font-extrabold uppercase mt-2 leading-tight">' + esc(p.title) + '</p></div>' +
+      '<div class="reveal-info"><span class="kva">' + cap + '</span><p class="font-display text-2xl font-extrabold uppercase leading-tight">' + esc(p.title) + '</p>' +
+      '<p class="flex items-center gap-2 text-white/90 font-semibold">' + PIN + esc(p.location) + '</p>' +
+      (p.summary ? '<p class="text-white/85 text-sm leading-snug">' + esc(p.summary) + '</p>' : '') + '</div></div>';
+  }
+  function fmtDate(d) {
+    if (!d) return '';
+    var dt = new Date(String(d).slice(0, 10) + 'T00:00:00');
+    return isNaN(dt) ? esc(d) : dt.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
+  function isUpcoming(n) {
+    if (!n.date || !/exhibition|event/i.test(n.type || '')) return false;
+    var dt = new Date(String(n.date).slice(0, 10) + 'T23:59:59');
+    return !isNaN(dt) && dt >= new Date();
+  }
+  function newsCard(n, i, big) {
+    var href = n.link ? esc(n.link) : '';
+    var tag = href ? 'a' : 'article';
+    return '<' + tag + (href ? ' href="' + href + '"' : '') + ' class="news-card card card-hover' + (big ? ' news-big' : '') + '" data-reveal="up" data-delay="' + ((i % 3) * 90) + '">' +
+      '<div class="news-media">' + (n.image ? '<img src="' + imgPath(n.image) + '" alt="" loading="lazy">' : '') + '<span class="news-type">' + esc(n.type || 'News') + '</span></div>' +
+      '<div class="p-6 flex flex-col flex-1">' +
+      '<p class="news-meta">' + (n.date ? '<span>' + CAL + fmtDate(n.date) + '</span>' : '') + (n.location ? '<span>' + PIN + esc(n.location) + '</span>' : '') + '</p>' +
+      '<h3 class="font-display text-2xl font-extrabold uppercase text-blue-brand leading-tight mt-2">' + esc(n.title) + '</h3>' +
+      (n.summary ? '<p class="text-slate-600 text-[15px] mt-3">' + esc(n.summary) + '</p>' : '') +
+      (href ? '<span class="link-arrow mt-auto pt-4" style="font-size:.98rem">Read more ' + ARR + '</span>' : '') +
+      '</div></' + tag + '>';
+  }
+  function eventRow(n, i) {
+    var dt = new Date(String(n.date).slice(0, 10) + 'T00:00:00');
+    var day = isNaN(dt) ? '' : dt.getDate();
+    var mon = isNaN(dt) ? '' : dt.toLocaleDateString('en-GB', { month: 'short' });
+    return '<div class="event-row" data-reveal="up" data-delay="' + (i * 80) + '"><div class="event-date"><b>' + day + '</b><span>' + esc(mon) + '</span></div>' +
+      '<div class="flex-1"><p class="font-display text-xl font-extrabold uppercase text-blue-brand leading-tight">' + esc(n.title) + '</p>' +
+      '<p class="news-meta mt-1">' + (n.location ? '<span>' + PIN + esc(n.location) + '</span>' : '') + '<span>' + CAL + fmtDate(n.date) + '</span></p>' +
+      (n.summary ? '<p class="text-slate-600 text-[15px] mt-1">' + esc(n.summary) + '</p>' : '') + '</div>' +
+      (n.link ? '<a class="btn btn-sm btn-outline" href="' + esc(n.link) + '">Details</a>' : '') + '</div>';
+  }
+  function sortNews(list) {
+    return list.map(function (n, i) { return { n: n, i: i }; }).sort(function (a, b) {
+      if (a.n.date && b.n.date) return a.n.date < b.n.date ? 1 : a.n.date > b.n.date ? -1 : a.i - b.i;
+      return a.i - b.i;
+    }).map(function (x) { return x.n; });
+  }
+  function fill(el, html) { el.innerHTML = html; observeReveal($$('[data-reveal]', el)); }
+
+  var needProjects = $('[data-cms^="projects"]'), needNews = $('[data-cms^="news"], [data-cms="events"]');
+  if (needProjects) loadContent('projects').then(function (list) {
+    list = (list || []).filter(function (p) { return p && p.title; });
+    $$('[data-cms="projects-grid"]').forEach(function (el) { fill(el, list.map(projectCard).join('')); initProjectCards(el); });
+    $$('[data-cms="projects-featured"]').forEach(function (el) {
+      var lim = parseInt(el.dataset.limit || '6', 10);
+      var feat = list.filter(function (p) { return p.featured; });
+      list.forEach(function (p) { if (feat.length < lim && feat.indexOf(p) === -1) feat.push(p); });
+      fill(el, feat.slice(0, lim).map(projectCard).join('')); initProjectCards(el);
+    });
+    var stat = $('[data-cms-count="projects"]'); if (stat) { stat.dataset.count = list.length; stat.textContent = list.length; }
+    initFilters();
+  });
+  if (needNews) loadContent('news').then(function (list) {
+    list = sortNews((list || []).filter(function (n) { return n && n.title; }));
+    var upcoming = list.filter(isUpcoming).sort(function (a, b) { return a.date > b.date ? 1 : -1; });
+    var past = list.filter(function (n) { return !isUpcoming(n); });
+    $$('[data-cms="events"]').forEach(function (el) {
+      var empty = el.parentElement.querySelector('[data-cms-empty]');
+      if (upcoming.length) { fill(el, upcoming.map(eventRow).join('')); if (empty) empty.hidden = true; }
+      else { el.innerHTML = ''; if (empty) empty.hidden = false; }
+    });
+    $$('[data-cms="news-latest"]').forEach(function (el) { fill(el, past.slice(0, parseInt(el.dataset.limit || '3', 10)).map(function (n, i) { return newsCard(n, i); }).join('')); });
+    $$('[data-cms="news-list"]').forEach(function (el) { fill(el, past.map(function (n, i) { return newsCard(n, i, i === 0); }).join('') || '<p class="text-slate-500">News coming soon.</p>'); });
+  });
+
+  // Gas supply partners (Solutions page): logo if uploaded, otherwise the company name.
+  if ($('[data-cms="partners"]')) loadContent('partners').then(function (list) {
+    list = (list || []).filter(function (p) { return p && p.name; });
+    $$('[data-cms="partners"]').forEach(function (el) {
+      fill(el, list.map(function (p, i) {
+        var inner = p.logo ? '<img src="' + imgPath(p.logo) + '" alt="' + esc(p.name) + ' logo" loading="lazy">' : '<span>' + esc(p.name) + '</span>';
+        var url = /^https?:\/\//.test(p.website || '') ? esc(p.website) : '';
+        return url ? '<a class="partner" href="' + url + '" target="_blank" rel="noopener" title="' + esc(p.name) + '" data-reveal="up" data-delay="' + (i * 80) + '">' + inner + '</a>'
+                   : '<div class="partner" title="' + esc(p.name) + '" data-reveal="up" data-delay="' + (i * 80) + '">' + inner + '</div>';
+      }).join(''));
+    });
+  });
+
+  // Social links (edited in the CMS under Settings). Empty = placeholder.
+  loadContent('settings').then(function (st) {
+    st = st || {};
+    $$('[data-social]').forEach(function (a) {
+      var url = st[a.dataset.social];
+      if (url && /^https?:\/\//.test(url)) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.classList.remove('is-placeholder'); }
+      else { a.classList.add('is-placeholder'); a.addEventListener('click', function (e) { e.preventDefault(); toast('Our ' + (a.dataset.social === 'twitter' ? 'X (Twitter)' : 'Facebook') + ' page is coming soon.'); }); }
+    });
+  });
+
+  /* ---------- Hero photo slider ---------- */
+  $$('[data-slider]').forEach(function (root) {
+    var slides = $$('.slide', root), dots = $$('.slide-dot', root), cap = $('[data-slide-caption]', root), i = 0, timer;
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      if (cap) cap.textContent = slides[i].dataset.caption || '';
+    }
+    function play() { if (reduceMotion) return; clearInterval(timer); timer = setInterval(function () { go(i + 1); }, 6000); }
+    dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); play(); }); });
+    root.addEventListener('mouseenter', function () { clearInterval(timer); });
+    root.addEventListener('mouseleave', play);
+    go(0); play();
+  });
+
+  /* ---------- Nav dropdown ---------- */
+  $$('.nav-dd').forEach(function (dd) {
+    var btn = $('.dd-toggle', dd);
+    btn.addEventListener('click', function (e) { e.stopPropagation(); var o = btn.getAttribute('aria-expanded') !== 'true'; btn.setAttribute('aria-expanded', String(o)); dd.classList.toggle('is-open', o); });
+    document.addEventListener('click', function (e) { if (!dd.contains(e.target)) { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('is-open'); } });
+    dd.addEventListener('keydown', function (e) { if (e.key === 'Escape') { btn.setAttribute('aria-expanded', 'false'); dd.classList.remove('is-open'); btn.focus(); } });
+  });
+
+  /* ---------- Solutions flowchart ---------- */
+  $$('[data-flow]').forEach(function (root) {
+    var steps = $$('[data-step-btn]', root), panels = $$('[data-step-panel]', root);
+    function set(k) {
+      steps.forEach(function (s) { var on = s.dataset.stepBtn === k; s.setAttribute('aria-selected', String(on)); s.classList.toggle('is-active', on); });
+      panels.forEach(function (p) { p.hidden = p.dataset.stepPanel !== k; });
+    }
+    steps.forEach(function (s) { s.addEventListener('click', function () { set(s.dataset.stepBtn); }); });
+    if (steps[0]) set(steps[0].dataset.stepBtn);
   });
 
   /* ---------- Product modal ---------- */
@@ -351,28 +508,6 @@
         applySpec();
       });
     });
-  }
-
-  /* ---------- Hybrid system scenario tabs ---------- */
-  var hybrid = $('[data-hybrid]');
-  if (hybrid) {
-    var SCEN = {
-      day: { on: ['pv', 'load', 'bess'], flows: ['pv-load', 'pv-bess'] },
-      night: { on: ['bess', 'gas', 'load'], flows: ['bess-load', 'gas-load'] },
-      cloud: { on: ['bess', 'load', 'gas'], flows: ['bess-load', 'gas-load'], dimPv: true },
-      outage: { on: ['pv', 'bess', 'load'], flows: ['pv-load', 'bess-load'], gasOff: true }
-    };
-    function setScen(k) {
-      var s = SCEN[k];
-      $$('[data-scen]', hybrid).forEach(function (b) { b.setAttribute('aria-selected', String(b.dataset.scen === k)); });
-      $$('.node', hybrid).forEach(function (n) { n.classList.toggle('on', s.on.indexOf(n.dataset.node) > -1); n.classList.toggle('off', (k === 'night' || s.dimPv) && n.dataset.node === 'pv' || (s.gasOff && n.dataset.node === 'gas')); });
-      $$('.flow', hybrid).forEach(function (f) { f.classList.toggle('on', s.flows.indexOf(f.dataset.flow) > -1); });
-      var cap = $('[data-scen-caption]', hybrid);
-      var btn = $('[data-scen="' + k + '"]', hybrid);
-      if (cap && btn) cap.textContent = btn.dataset.caption;
-    }
-    $$('[data-scen]', hybrid).forEach(function (b) { b.addEventListener('click', function () { setScen(b.dataset.scen); }); });
-    setScen('day');
   }
 
   /* ---------- Timeline progress line ---------- */
