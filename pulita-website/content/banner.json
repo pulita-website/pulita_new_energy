@@ -1,14 +1,14 @@
 [
   {
-    "image": "assets/images/hero-install-genset-cascade-prms.jpg",
-    "caption": "Real installation: gas generator set, CNG cascade and PRMS"
+    "image": "assets/images/project-portland-mru-station.jpg",
+    "caption": "Real installation: CNG mobile refill unit (MRU) station"
   },
   {
-    "image": "assets/images/hero-mru-station-site.jpg",
-    "caption": "Real installation: CNG MRU refilling station, Abuja"
+    "image": "assets/images/project-cng-genset-cascade.jpg",
+    "caption": "Real installation: CNG generator set with cascade storage and PRMS"
   },
   {
-    "image": "assets/images/hero-cascade-station-site.jpg",
-    "caption": "Real installation: CNG cascade storage at a refilling station"
+    "image": "assets/images/solution-lcng-station.jpg",
+    "caption": "Real installation: L-CNG station with a Pulita CNG dispenser"
   }
 ]
