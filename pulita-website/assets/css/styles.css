@@ -1060,3 +1060,7 @@ a.cert { text-decoration: none; color: inherit; }
 .lightbox p { position: absolute; left: 0; right: 0; bottom: 3vh; text-align: center; color: #fff; font-weight: 600; padding: 0 1rem; }
 .lightbox button { position: absolute; top: 18px; right: 18px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: #fff; color: var(--ink); cursor: pointer; display: grid; place-items: center; }
 .lightbox button svg { width: 22px; height: 22px; }
+.dl-dual { align-items: flex-start; }
+.dl-btns { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .7rem; }
+.ds-link.xl { background: #1D7044; }
+.ds-link.xl:hover { background: var(--blue); }
