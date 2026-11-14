@@ -8,162 +8,162 @@ media:
 
 content:
   - name: news
-    label: News & Exhibitions
+    label: 'News & Exhibitions'
     type: file
     path: pulita-website/content/news.json
     format: json
     list: true
     fields:
       - name: title
-        label: Title
+        label: 'Title'
         type: string
         required: true
       - name: type
-        label: Type
+        label: 'Type'
         type: select
         options:
           values: [News, Exhibition, Event, Project]
       - name: date
-        label: Date (exhibitions with a future date show under "Upcoming events")
+        label: 'Date (exhibitions with a future date show under "Upcoming events")'
         type: date
       - name: location
-        label: Location
+        label: 'Location'
         type: string
       - name: image
-        label: Photo
+        label: 'Photo'
         type: image
       - name: summary
-        label: Summary (1-3 sentences)
+        label: 'Summary (1-3 sentences)'
         type: text
       - name: link
-        label: Link (optional, e.g. an event website or a page on this site)
+        label: 'Link (optional, e.g. an event website or a page on this site)'
         type: string
 
   - name: projects
-    label: Projects
+    label: 'Projects'
     type: file
     path: pulita-website/content/projects.json
     format: json
     list: true
     fields:
       - name: title
-        label: Project name
+        label: 'Project name'
         type: string
         required: true
       - name: capacity
-        label: Capacity (e.g. 450kVA, or MRU / Station)
+        label: 'Capacity (e.g. 450kVA, or MRU / Station)'
         type: string
       - name: fuel
-        label: Fuel
+        label: 'Fuel'
         type: select
         options:
           values: [LPG, CNG, Biogas, Flare gas, Landfill gas, Dual-fuel]
       - name: location
-        label: Location
+        label: 'Location'
         type: string
       - name: sector
-        label: Sector (used by the gallery filters)
+        label: 'Sector (used by the gallery filters)'
         type: select
         options:
           values: [Healthcare, Telecom, Gas station, Commercial & industrial, Other]
       - name: image
-        label: Photo
+        label: 'Photo'
         type: image
       - name: summary
-        label: Short description
+        label: 'Short description'
         type: text
       - name: application
-        label: Application (e.g. Hospital power supply)
+        label: 'Application (e.g. Hospital power supply)'
         type: string
       - name: equipment
-        label: Equipment supplied
+        label: 'Equipment supplied'
         type: text
       - name: scope
-        label: Project scope (e.g. supply, installation, commissioning)
+        label: 'Project scope (e.g. supply, installation, commissioning)'
         type: string
       - name: results
-        label: Operating results (mark estimates with *)
+        label: 'Operating results (mark estimates with *)'
         type: text
       - name: featured
-        label: Show on the home page
+        label: 'Show on the home page'
         type: boolean
 
   - name: settings
-    label: Social media links
+    label: 'Social media links'
     type: file
     path: pulita-website/content/settings.json
     format: json
     fields:
       - name: instagram
-        label: Instagram page URL, e.g. https://instagram.com/pulitaenergy
+        label: 'Instagram page URL, e.g. https://instagram.com/pulitaenergy'
         type: string
       - name: linkedin
-        label: LinkedIn page URL
+        label: 'LinkedIn page URL'
         type: string
       - name: twitter
-        label: X (Twitter) page URL, e.g. https://x.com/pulitaenergy
+        label: 'X (Twitter) page URL, e.g. https://x.com/pulitaenergy'
         type: string
       - name: facebook
-        label: Facebook page URL, e.g. https://facebook.com/pulitaenergy
+        label: 'Facebook page URL, e.g. https://facebook.com/pulitaenergy'
         type: string
 
   - name: partners
-    label: Gas supply partners
+    label: 'Gas supply partners'
     type: file
     path: pulita-website/content/partners.json
     format: json
     list: true
     fields:
       - name: name
-        label: Company name
+        label: 'Company name'
         type: string
         required: true
       - name: logo
-        label: Logo (PNG or SVG, transparent background, wide format)
+        label: 'Logo (PNG or SVG, transparent background, wide format)'
         type: image
       - name: website
-        label: Website (optional, starting with https://)
+        label: 'Website (optional, starting with https://)'
         type: string
 
   - name: contact
-    label: Contact details
+    label: 'Contact details'
     type: file
     path: pulita-website/content/contact.json
     format: json
     fields:
       - name: phone
-        label: Main phone number (shown in header, footer, contact page, Get a Quote)
+        label: 'Main phone number (shown in header, footer, contact page, Get a Quote)'
         type: string
       - name: phone2
-        label: Second phone number (optional, leave empty to hide)
+        label: 'Second phone number (optional, leave empty to hide)'
         type: string
       - name: whatsapp
-        label: WhatsApp number for Nigeria (used by all WhatsApp buttons and forms)
+        label: 'WhatsApp number for Nigeria (used by all WhatsApp buttons and forms)'
         type: string
       - name: whatsapp_factory
-        label: Factory / export WhatsApp number
+        label: 'Factory / export WhatsApp number'
         type: string
       - name: email
-        label: Email address (shown on site and used by forms)
+        label: 'Email address (shown on site and used by forms)'
         type: string
       - name: lagos_address
-        label: Lagos office address
+        label: 'Lagos office address'
         type: string
       - name: abuja_address
-        label: Abuja office address
+        label: 'Abuja office address'
         type: string
 
   - name: banner
-    label: Home page banner
+    label: 'Home page banner'
     type: file
     path: pulita-website/content/banner.json
     format: json
     list: true
     fields:
       - name: image
-        label: Photo (landscape, at least 2000 px wide, real installations)
+        label: 'Photo (landscape, at least 2000 px wide, real installations)'
         type: image
         required: true
       - name: caption
-        label: Caption (e.g. Real installation: CNG MRU refilling station, Abuja)
+        label: 'Caption (e.g. Real installation: CNG MRU refilling station, Abuja)'
         type: string
