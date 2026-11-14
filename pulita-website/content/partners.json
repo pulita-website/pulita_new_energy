@@ -1,22 +1,20 @@
 [
   {
     "name": "Vision Gas",
-    "logo": "",
-    "website": ""
+    "logo": "/assets/images/uploads/vision_gas-removebg-preview-1.png"
   },
   {
     "name": "Powergas",
-    "logo": "",
+    "logo": "/assets/images/uploads/PGLogo.svg",
     "website": "https://www.powergas.com"
   },
   {
     "name": "Portland Gas Limited",
-    "logo": "",
-    "website": ""
+    "logo": "/assets/images/uploads/Screenshot_2026-06-16_170524-removebg-preview.png"
   },
   {
     "name": "Asiko Energy",
-    "logo": "",
+    "logo": "/assets/images/uploads/PLA-GTD-MAR-20180130-AsikoLogoRGB.png-2-768x195.png",
     "website": "https://www.asikoenergy.com"
   }
 ]
