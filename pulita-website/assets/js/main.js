@@ -411,7 +411,8 @@
     $$('[data-cms="partners"]').forEach(function (el) {
       fill(el, list.map(function (p, i) {
         var inner = p.logo ? '<img src="' + imgPath(p.logo) + '" alt="' + esc(p.name) + ' logo" loading="lazy">' : '<span>' + esc(p.name) + '</span>';
-        var url = /^https?:\/\//.test(p.website || '') ? esc(p.website) : '';
+        var w = String(p.website || '').trim(); if (w && !/^https?:\/\//i.test(w) && /^[\w-]+(\.[\w-]+)+/.test(w)) w = 'https://' + w;
+        var url = /^https?:\/\/[\w-]+(\.[\w-]+)+/i.test(w) ? esc(w) : '';
         return url ? '<a class="partner" href="' + url + '" target="_blank" rel="noopener" title="' + esc(p.name) + '" data-reveal="up" data-delay="' + (i * 80) + '">' + inner + '</a>'
                    : '<div class="partner" title="' + esc(p.name) + '" data-reveal="up" data-delay="' + (i * 80) + '">' + inner + '</div>';
       }).join(''));
@@ -715,6 +716,21 @@
     });
     $$('input, select, textarea', form).forEach(function (f) { f.addEventListener('input', function () { var w = f.closest('.field'); if (w) w.classList.remove('has-error'); }); });
   });
+
+  /* ---------- Photo lightbox (Projects page) ---------- */
+  var lb = $('#lightbox');
+  if (lb) {
+    var lbImg = $('img', lb), lbCap = $('p', lb), lbLast = null;
+    function lbClose() { lb.classList.remove('is-open'); document.body.classList.remove('modal-open'); if (lbLast) lbLast.focus(); }
+    $$('[data-lb]').forEach(function (f) {
+      f.tabIndex = 0; f.setAttribute('role', 'button');
+      function open() { var im = $('img', f); lbImg.src = im.currentSrc || im.src; lbImg.alt = im.alt; lbCap.textContent = im.alt; lbLast = f; lb.classList.add('is-open'); document.body.classList.add('modal-open'); $('[data-lb-close]', lb).focus(); }
+      f.addEventListener('click', open);
+      f.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
+    });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.closest('[data-lb-close]')) lbClose(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('is-open')) lbClose(); });
+  }
 
   /* ---------- Footer year ---------- */
   $$('[data-year]').forEach(function (y) { y.textContent = new Date().getFullYear(); });
