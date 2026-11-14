@@ -2,27 +2,28 @@
   {
     "title": "MRU refilling station serving vehicles in Abuja",
     "type": "Project",
-    "date": "2025-10-11",
+    "date": "",
     "location": "Abuja, FCT",
     "image": "assets/images/hero-mru-station-site.jpg",
-    "summary": "Pulita compressors and a mobile refuelling unit (MRU) are now refilling CNG vehicles, buses and trucks at the Kubwa refilling station in Abuja.",
-    "link": "solutions.html#refuelling"
+    "link": "solutions.html#refuelling",
+    "summary": "Pulita compressors and a mobile refuelling unit (MRU) are now refilling CNG vehicles, buses and trucks at the Kubwa refilling station in Abuja."
   },
   {
     "title": "Pulita at NOG Energy Week",
     "type": "Exhibition",
-    "date": "2026-01-14",
+    "date": "",
     "location": "Nigeria",
     "image": "assets/images/nog-energy-week-team.jpg",
+    "link": "",
     "summary": "Our team joined NOG Energy Week, Nigeria’s leading oil and gas event, to meet partners and customers and present our gas-to-power and CNG refuelling solutions."
   },
   {
     "title": "Burger King Nigeria’s first green restaurant runs on Pulita LPG power",
     "type": "Project",
-    "date": "2025-06-14",
+    "date": "",
     "location": "Abeokuta, Ogun",
     "image": "assets/images/project-ogun-burger-king-80kva-lpg.jpg",
-    "summary": "An 80 kVA Pulita LPG generator set powers the Abeokuta outlet with zero diesel on site.",
-    "link": "projects.html#case-study"
+    "link": "projects.html#case-study",
+    "summary": "An 80 kVA Pulita LPG generator set powers the Abeokuta outlet with zero diesel on site."
   }
 ]
