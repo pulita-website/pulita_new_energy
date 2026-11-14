@@ -1014,3 +1014,49 @@ a.cert { text-decoration: none; color: inherit; }
 .app-card .lbl { font-family: "Barlow Condensed", sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; font-size: .82rem; color: var(--red); }
 [data-cwrap][hidden], [hidden].contact-tile { display: none !important; }
 .site-footer { overflow-x: clip; }
+
+/* ==========================================================================
+   v4: Products & Solutions split, six products, spare parts, photo gallery
+   ========================================================================== */
+.nav-dd.dd-wide .dd-panel { min-width: 600px; display: grid; grid-template-columns: 1fr 1fr; gap: .1rem; }
+.nav-dd.dd-wide .dd-panel .dd-link:last-child { grid-column: 1 / -1; border-top: 1px solid #E6ECF2; border-radius: 0 0 12px 12px; }
+.prod-tile { display: flex; flex-direction: column; overflow: hidden; text-decoration: none; }
+.prod-media { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: #EEF3F8; }
+.prod-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.prod-media.contain img { object-fit: contain; padding: 1.2rem; background: #fff; }
+.prod-tile:hover .prod-media img { transform: scale(1.05); }
+.prod-no { position: absolute; left: 14px; top: 14px; background: var(--red); color: #fff; font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 1.1rem; padding: .2rem .65rem; border-radius: 8px; }
+.prod-section { scroll-margin-top: 140px; }
+.ds-link { display: inline-flex; align-items: center; gap: .35rem; padding: .35rem .75rem; border-radius: 999px; background: var(--red); color: #fff; font-weight: 700; font-size: .85rem; text-decoration: none; transition: background-color .2s, transform .2s; }
+.ds-link:hover { background: var(--blue); transform: translateY(-1px); }
+.ds-link.ghost { background: transparent; color: var(--blue); border: 1.5px solid currentColor; }
+.ds-link.ghost:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
+.spec2.spec2-auto { min-width: 640px; }
+.spec-remark { display: flex; gap: .7rem; align-items: flex-start; margin-top: 1rem; padding: .9rem 1.1rem; border-radius: 14px; background: #FFF4F4; border: 1px solid rgba(227,30,36,.25); color: var(--ink); font-size: .95rem; }
+.spec-remark svg { color: var(--red); margin-top: .1rem; }
+.kv-table { width: 100%; border-collapse: collapse; font-size: 1rem; }
+.kv-table th { width: 32%; text-align: left; padding: .85rem 1.1rem; background: #F5F8FB; color: var(--blue); font-family: "Barlow Condensed", sans-serif; font-size: 1.1rem; font-weight: 700; border-bottom: 1px solid #E6ECF2; vertical-align: top; }
+.kv-table td { padding: .85rem 1.1rem; border-bottom: 1px solid #E6ECF2; }
+.kv-table tr:last-child th, .kv-table tr:last-child td { border-bottom: 0; }
+.dl-ico.xl { background: #1D7044; }
+.sol-card { display: flex; flex-direction: column; overflow: hidden; }
+.sol-card .sol-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.sol-card .sol-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.sol-card:hover .sol-media img { transform: scale(1.05); }
+.sol-cap { position: absolute; left: 14px; bottom: 14px; background: rgba(0,75,135,.92); color: #fff; font-family: "Barlow Condensed", sans-serif; font-weight: 800; font-size: 1.15rem; padding: .3rem .8rem; border-radius: 10px; }
+.part-card { display: flex; flex-direction: column; gap: .6rem; }
+.part-card ul { list-style: none; padding: 0; margin: .3rem 0 0; display: grid; gap: .35rem; color: #4B5563; font-size: .95rem; }
+.part-card li { display: flex; gap: .5rem; align-items: flex-start; }
+.part-card li::before { content: ""; flex: none; width: 6px; height: 6px; margin-top: .55rem; border-radius: 50%; background: var(--red); }
+.photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+@media (min-width: 768px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
+.photo-grid figure { margin: 0; position: relative; overflow: hidden; border-radius: 16px; aspect-ratio: 4 / 3; background: #EEF3F8; cursor: zoom-in; }
+.photo-grid figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+.photo-grid figure:hover img { transform: scale(1.05); }
+.photo-grid figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 1.6rem .9rem .7rem; color: #fff; font-weight: 600; font-size: .9rem; background: linear-gradient(transparent, rgba(0,0,0,.72)); }
+.lightbox { position: fixed; inset: 0; z-index: 120; display: none; align-items: center; justify-content: center; padding: 4vh 4vw; background: rgba(8,18,32,.9); }
+.lightbox.is-open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 84vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.lightbox p { position: absolute; left: 0; right: 0; bottom: 3vh; text-align: center; color: #fff; font-weight: 600; padding: 0 1rem; }
+.lightbox button { position: absolute; top: 18px; right: 18px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: #fff; color: var(--ink); cursor: pointer; display: grid; place-items: center; }
+.lightbox button svg { width: 22px; height: 22px; }
