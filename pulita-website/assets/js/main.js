@@ -640,8 +640,29 @@
   /* ---------- Sub-nav active state (products page) ---------- */
   var subnav = $('.subnav');
   if (subnav && 'IntersectionObserver' in window) {
-    var links = $$('a[href^="#"]', subnav);
+    var links = $$('a[href^="#"]', subnav), jumping = 0;
+    function setActive(id, smooth) {
+      links.forEach(function (l) {
+        var on = l.getAttribute('href') === '#' + id;
+        l.classList.toggle('is-active', on);
+        if (on) l.scrollIntoView({ block: 'nearest', inline: 'center', behavior: smooth ? 'smooth' : 'auto' });
+      });
+    }
+    // Tap a pill: jump straight to the section (no smooth scroll through the others).
+    links.forEach(function (l) {
+      l.addEventListener('click', function (e) {
+        var id = l.getAttribute('href').slice(1), target = document.getElementById(id);
+        if (!target) return;
+        e.preventDefault();
+        var header = $('.site-header'), offset = (header ? header.offsetHeight : 0) + subnav.offsetHeight + 12;
+        jumping = Date.now();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'auto' });
+        setActive(id, false);
+        if (history.replaceState) history.replaceState(null, '', '#' + id);
+      });
+    });
     var sio = new IntersectionObserver(function (entries) {
+      if (Date.now() - jumping < 400) return;
       entries.forEach(function (en) {
         if (en.isIntersecting) {
           links.forEach(function (l) {
