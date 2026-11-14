@@ -52,13 +52,17 @@ content/news.json       News & exhibitions  } edited in Pages CMS
 content/projects.json   Project gallery     }
 content/settings.json   X / Facebook links  }
 content/partners.json   Gas supply partners }
+content/contact.json    Phone, WhatsApp,    }
+                        email, addresses    }
+content/banner.json     Home banner photos  }
+assets/docs/            Downloads: LPG & CNG datasheets (PDF), SONCAP certificate
 .pages.yml              Pages CMS configuration (keep this hidden file!)
-assets/images/uploads/  Photos uploaded through the CMS
+assets/images/uploads/  Photos uploaded through the CMS (created on first upload)
 assets/css/             tailwind.css (pre-compiled) + styles.css
 assets/js/main.js       All interactions and CMS rendering
 assets/js/content-fallback.js   Offline copy of content/*.json (used only
                         when opened from disk; not needed on the live site)
-assets/fonts/           Barlow & Barlow Condensed (SIL Open Font License)
+assets/fonts/           Barlow 400/700 & Barlow Condensed 700/800 (SIL Open Font License)
 HANDOVER.txt            Hosting, DNS, CMS setup and client editing guide
 
 
@@ -83,19 +87,25 @@ HANDOVER.txt            Hosting, DNS, CMS setup and client editing guide
 
 5. TO CONFIRM WITH THE CLIENT
 -----------------------------
-a) LPG and CNG prices are still the brochure reference values (₦750/kg,
-   ₦380/m³). If gas prices have also risen, update them and the "up to 77%"
-   claims.
-b) Mother station photo: client-supplied (blurred logo on the enclosure).
-c) Gas supply partner logos: upload each company's official logo in the CMS
-   (Gas supply partners). Until then the company name is shown. Confirm the
-   partners agree to be listed. Vision Gas and Portland Gas websites unknown.
-d) CNG mother station: no Pulita capacity figures were supplied, so the page
-   describes it without numbers. Add capacity data when available.
-e) News items have no dates yet. Add the real dates in the CMS.
-f) "100+ countries" global service is shown as supplied by the client.
-g) Abuja office street address is still missing (contact.html, "EDIT:").
-h) Social media URLs: add in the CMS when the client provides them.
+a) Instagram: no official account was found online. Add the URL in the CMS
+   (Social media links); the icon shows "coming soon" until then.
+b) Home banner: no new project photos were supplied in round 5, so the
+   banner still shows the three real-installation photos. Upload new photos
+   in the CMS (Home page banner) or send them to the developer.
+c) Veinie: name spelling (Veinie / Vinnie) and profile text to confirm. The
+   supplied portrait carries a "Doubao AI generated" mark in its corner (not
+   visible in the cropped team card). Consider a real photo.
+d) Phone 0803 080 0999 was removed; 0810 518 5525 is now the main phone and
+   WhatsApp. A second number can be added in the CMS (Contact details).
+e) Case studies: application/equipment are based on the brochure and photos.
+   Scope and results are only filled where known. Savings marked * are
+   estimates. Add confirmed scope and results in the CMS (Projects).
+f) Kubwa case-study narrative (challenge/solution wording) is draft copy.
+g) LPG and CNG prices are still the brochure reference values (₦750/kg,
+   ₦380/m³). Diesel is ₦2,000/L.
+h) Gas supply partner logos and the Vision Gas / Portland Gas websites.
+i) Abuja office street address (editable in the CMS: Contact details).
+j) News items have no dates yet. Add the real dates in the CMS.
 
 
 6. PHOTOS
@@ -105,6 +115,9 @@ New real-installation photos (from the client's PRMS, Cascade and MRU folders):
   hero-mru-station-site.jpg             MRU refilling station on site (Abuja)
   hero-cascade-station-site.jpg         CNG cascades at the refilling station
   cng-mother-station.jpg                CNG mother station (client-supplied)
+  exhibition-1.jpg ... exhibition-8.jpg  Latest exhibition stand photos (About, Services)
+  team-portrait-veinie.jpg              Veinie, Sales Assistant
+  soncap-certificate.jpg                Preview of the SONCAP certificate
   install-cascade-station-site.jpg      Cascades at station (storage)
   install-cascade-genset-site.jpg       Genset + cascade + PRMS cabinet
   prms-skid-closed.jpg / prms-skid-open.jpg / prms-regulator-detail.jpg
@@ -114,3 +127,33 @@ Earlier assets (brochure crops, supplied photos, team portraits) remain as in v1
 Removed: all solar images (inverters, PV module, hybrid site photos).
 
 (c) Pulita New Energy Co., Ltd.
+
+
+7. ROUND 5 CHANGES (Nov 2026)
+-----------------------------
+- Phone and WhatsApp: 0810 518 5525 everywhere.
+- All contact details (phone, second phone, WhatsApp, factory WhatsApp,
+  email, Lagos/Abuja addresses) are editable in the CMS: Contact details.
+  They update the header, footer, contact page, Get a Quote, WhatsApp button
+  and form targets.
+- Social: Instagram, Facebook, LinkedIn (linked to the company page) and X
+  icons in the top bar, footer, mobile menu, contact page and News page.
+- About: latest exhibition photos replace the NOG photo; Richard removed;
+  Veinie (Sales Assistant) added; SONCAP certificate with View/Download.
+- Products: four category tiles; product finder by fuel, application and
+  power; separate, simplified LPG and CNG spec tables with kVA finder;
+  downloadable LPG/CNG datasheets (PDF).
+- Solutions: new "Solutions by application" section (6 sectors) linking to
+  filtered case studies.
+- Projects: click any project for location, application, equipment,
+  scope and results; new Kubwa MRU case study; links can pre-filter
+  (projects.html?filter=telecom) or open a project (projects.html?case=0).
+- Services: new service and project photos.
+- Home banner photos are editable in the CMS.
+
+8. FILE COUNT (for GitHub upload)
+---------------------------------
+The site is 81 files. Upload the CONTENTS of the pulita-website folder (not
+the ZIP and not the folder itself), including the hidden .pages.yml file.
+Removed to keep it lean: CSV spec tables (the PDFs cover them), duplicate
+and unused photos, three font weights, and the sample upload photos.

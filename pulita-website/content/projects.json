@@ -1,5 +1,9 @@
 [
   {
+    "application": "CNG refuelling for vehicles, buses and trucks; gas supply for generators",
+    "equipment": "CNG compressors; containerized mobile refuelling unit (MRU) with storage cascade and dispenser",
+    "scope": "Supply of compressors and MRU",
+    "results": "Station now refilling CNG vehicles, buses and trucks, and supplying gas to generators",
     "title": "MRU & Kubwa Refilling Station",
     "capacity": "MRU",
     "fuel": "CNG",
@@ -10,6 +14,10 @@
     "summary": "Pulita compressors and a mobile refuelling unit (MRU) supplying CNG to vehicles, buses and trucks in Abuja."
   },
   {
+    "application": "Hospital power supply",
+    "equipment": "Pulita 450 kVA CNG generator set with CNG cylinder cascade",
+    "scope": "",
+    "results": "Estimated ~77% lower fuel cost than diesel*",
     "title": "Lagos Hospital",
     "capacity": "450kVA",
     "fuel": "CNG",
@@ -20,6 +28,10 @@
     "summary": "450 kVA CNG generator set with on-site cylinder storage for round-the-clock hospital power."
   },
   {
+    "application": "Quick-service restaurant: full-site power",
+    "equipment": "Pulita 80 kVA LPG generator set",
+    "scope": "",
+    "results": "Zero diesel on site. Estimated ~67% lower fuel cost than diesel*",
     "title": "Burger King Abeokuta",
     "capacity": "80kVA",
     "fuel": "LPG",
@@ -30,6 +42,10 @@
     "summary": "80 kVA LPG generator powering Burger King Nigeria’s first green restaurant, with zero diesel on site."
   },
   {
+    "application": "Gas station power",
+    "equipment": "Pulita 100 kVA LPG generator set",
+    "scope": "",
+    "results": "Estimated ~67% lower fuel cost than diesel*",
     "title": "Abuja LPG Station",
     "capacity": "100kVA",
     "fuel": "LPG",
@@ -40,6 +56,10 @@
     "summary": "100 kVA LPG generator set running a gas station on its own fuel."
   },
   {
+    "application": "CNG station power",
+    "equipment": "Pulita 100 kVA CNG generator set",
+    "scope": "",
+    "results": "Estimated ~77% lower fuel cost than diesel*",
     "title": "Ife CNG Station",
     "capacity": "100kVA",
     "fuel": "CNG",
@@ -50,6 +70,10 @@
     "summary": "100 kVA CNG generator set for a CNG station."
   },
   {
+    "application": "Hospital power supply",
+    "equipment": "Pulita 300 kVA LPG generator set",
+    "scope": "",
+    "results": "Estimated ~67% lower fuel cost than diesel*",
     "title": "Lagos Hospital",
     "capacity": "300kVA",
     "fuel": "LPG",
@@ -60,6 +84,10 @@
     "summary": "300 kVA LPG generator set for hospital power."
   },
   {
+    "application": "Gas station power",
+    "equipment": "Pulita 200 kVA and 100 kVA LPG generator sets",
+    "scope": "",
+    "results": "Estimated ~67% lower fuel cost than diesel*",
     "title": "Abuja LPG Station",
     "capacity": "200+100kVA",
     "fuel": "LPG",
@@ -70,6 +98,10 @@
     "summary": "200 kVA and 100 kVA LPG generator sets."
   },
   {
+    "application": "Office building power",
+    "equipment": "Pulita 250 kVA LPG generator set",
+    "scope": "",
+    "results": "Estimated ~67% lower fuel cost than diesel*",
     "title": "Abuja Office",
     "capacity": "250kVA",
     "fuel": "LPG",
@@ -80,6 +112,10 @@
     "summary": "250 kVA LPG generator set for an office complex."
   },
   {
+    "application": "Manufacturing plant power",
+    "equipment": "Pulita 200 kVA LPG generator set",
+    "scope": "",
+    "results": "Estimated ~67% lower fuel cost than diesel*",
     "title": "Abuja Water Factory",
     "capacity": "200kVA",
     "fuel": "LPG",
@@ -90,6 +126,10 @@
     "summary": "200 kVA LPG generator set for a water factory."
   },
   {
+    "application": "CNG refilling with on-site gas power",
+    "equipment": "CNG refill unit and gas generator system",
+    "scope": "",
+    "results": "",
     "title": "CNG Refill Unit + Power System",
     "capacity": "Station",
     "fuel": "CNG",
@@ -100,6 +140,10 @@
     "summary": "CNG refill unit combined with a gas power system."
   },
   {
+    "application": "Telecom tower power",
+    "equipment": "Pulita 25 kVA CNG generator set",
+    "scope": "",
+    "results": "Estimated ~77% lower fuel cost than diesel*",
     "title": "Ogun Telecom Site",
     "capacity": "25kVA",
     "fuel": "CNG",
@@ -110,6 +154,10 @@
     "summary": "25 kVA CNG generator set for a telecom tower."
   },
   {
+    "application": "Telecom tower power",
+    "equipment": "Pulita 25 kVA CNG generator set",
+    "scope": "",
+    "results": "Estimated ~77% lower fuel cost than diesel*",
     "title": "Lagos Telecom Site",
     "capacity": "25kVA",
     "fuel": "CNG",
@@ -120,6 +168,10 @@
     "summary": "25 kVA CNG generator set for a telecom tower."
   },
   {
+    "application": "Industrial site power",
+    "equipment": "Pulita 50 kVA CNG generator set with CNG cylinder storage",
+    "scope": "",
+    "results": "Estimated ~77% lower fuel cost than diesel*",
     "title": "Lagos CNG Plant",
     "capacity": "50kVA",
     "fuel": "CNG",

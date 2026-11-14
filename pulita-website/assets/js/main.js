@@ -7,7 +7,7 @@
 
   var CONTACT = {
     email: 'john@hitepower.com',
-    waNigeria: '2348030800999',
+    waNigeria: '2348105185525',
     waChina: '8618678060186'
   };
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -271,10 +271,38 @@
       };
     });
   }
+  var PROJECTS_DATA = [];
+  function openCase(idx) {
+    var m = $('#case-modal'), p = PROJECTS_DATA[idx];
+    if (!m || !p) return false;
+    var rows = [['Location', p.location], ['Application', p.application], ['Capacity', p.capacity], ['Fuel', p.fuel], ['Equipment supplied', p.equipment], ['Project scope', p.scope], ['Operating results', p.results]];
+    $('[data-cm="img"]', m).src = imgPath(p.image); $('[data-cm="img"]', m).alt = p.title || '';
+    $('[data-cm="fuel"]', m).textContent = p.fuel || ''; $('[data-cm="fuel"]', m).className = 'fuel-chip' + (p.fuel === 'LPG' ? ' lpg' : '');
+    $('[data-cm="title"]', m).textContent = p.title || '';
+    $('[data-cm="summary"]', m).textContent = p.summary || '';
+    $('[data-cm="rows"]', m).innerHTML = rows.filter(function (r) { return r[1]; }).map(function (r) { return '<tr><td>' + r[0] + '</td><td>' + esc(r[1]) + '</td></tr>'; }).join('');
+    $('[data-cm="note"]', m).hidden = !/\*/.test(p.results || '');
+    $('[data-cm="wa"]', m).href = waLink(CONTACT.waNigeria, 'Hello Pulita, I saw your project "' + (p.title || '') + '" and would like a similar solution.');
+    lastFocus = document.activeElement;
+    m.classList.add('is-open'); m.setAttribute('aria-hidden', 'false'); document.body.classList.add('modal-open');
+    setTimeout(function () { $('.modal-close', m).focus(); }, 50);
+    return true;
+  }
+  function closeCase() { var m = $('#case-modal'); if (!m || !m.classList.contains('is-open')) return; m.classList.remove('is-open'); m.setAttribute('aria-hidden', 'true'); document.body.classList.remove('modal-open'); if (lastFocus) lastFocus.focus(); }
+  if ($('#case-modal')) {
+    $$('#case-modal [data-close]').forEach(function (b) { b.addEventListener('click', closeCase); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeCase(); });
+  }
   function initProjectCards(root) {
     $$('.project-card', root).forEach(function (c) {
-      c.addEventListener('click', function () { if (!window.matchMedia('(hover: hover)').matches) c.classList.toggle('show-info'); });
-      c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); c.classList.toggle('show-info'); } });
+      function act() {
+        var idx = c.dataset.idx;
+        if (idx !== undefined && openCase(+idx)) return;
+        if (idx !== undefined && !$('#case-modal')) { window.location.href = 'projects.html?case=' + idx; return; }
+        c.classList.toggle('show-info');
+      }
+      c.addEventListener('click', act);
+      c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); } });
     });
   }
   initProjectCards(document);
@@ -296,11 +324,11 @@
   var CAL = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';
   var ARR = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
-  function projectCard(p, i) {
+  function projectCard(p, i, idx) {
     var fuel = String(p.fuel || '').trim();
     var tags = [fuel.toLowerCase().replace(/\s+/g, '-'), SECTOR_KEY[String(p.sector || '').toLowerCase()] || 'other'].join(' ');
     var cap = esc(p.capacity || '').replace(/kVA$/i, '<small style="font-size:1.4rem">kVA</small>');
-    return '<div class="project-card" tabindex="0" role="button" aria-label="' + esc(p.title) + ', ' + esc(p.capacity) + ' ' + esc(fuel) + ', ' + esc(p.location) + '" data-tags="' + esc(tags) + '" data-reveal="up" data-delay="' + ((i % 3) * 90) + '">' +
+    return '<div class="project-card" tabindex="0" role="button" aria-label="' + esc(p.title) + ', ' + esc(p.capacity) + ' ' + esc(fuel) + ', ' + esc(p.location) + '" data-tags="' + esc(tags) + '"' + (idx !== undefined ? ' data-idx="' + idx + '"' : '') + ' data-reveal="up" data-delay="' + ((i % 3) * 90) + '">' +
       '<img src="' + imgPath(p.image) + '" alt="' + esc(p.title) + ': ' + esc(p.capacity) + ' ' + esc(fuel) + ' installation" loading="lazy">' +
       '<div class="label"><span class="fuel-chip' + (fuel === 'LPG' ? ' lpg' : '') + '">' + esc(fuel) + '</span><p class="font-display text-2xl font-extrabold uppercase mt-2 leading-tight">' + esc(p.title) + '</p></div>' +
       '<div class="reveal-info"><span class="kva">' + cap + '</span><p class="font-display text-2xl font-extrabold uppercase leading-tight">' + esc(p.title) + '</p>' +
@@ -350,15 +378,19 @@
   var needProjects = $('[data-cms^="projects"]'), needNews = $('[data-cms^="news"], [data-cms="events"]');
   if (needProjects) loadContent('projects').then(function (list) {
     list = (list || []).filter(function (p) { return p && p.title; });
-    $$('[data-cms="projects-grid"]').forEach(function (el) { fill(el, list.map(projectCard).join('')); initProjectCards(el); });
+    PROJECTS_DATA = list;
+    $$('[data-cms="projects-grid"]').forEach(function (el) { fill(el, list.map(function (p, i) { return projectCard(p, i, i); }).join('')); initProjectCards(el); });
     $$('[data-cms="projects-featured"]').forEach(function (el) {
       var lim = parseInt(el.dataset.limit || '6', 10);
       var feat = list.filter(function (p) { return p.featured; });
       list.forEach(function (p) { if (feat.length < lim && feat.indexOf(p) === -1) feat.push(p); });
-      fill(el, feat.slice(0, lim).map(projectCard).join('')); initProjectCards(el);
+      fill(el, feat.slice(0, lim).map(function (p, i) { return projectCard(p, i, list.indexOf(p)); }).join('')); initProjectCards(el);
     });
     var stat = $('[data-cms-count="projects"]'); if (stat) { stat.dataset.count = list.length; stat.textContent = list.length; }
     initFilters();
+    var qp = new URLSearchParams(location.search);
+    if (qp.get('filter')) { var pill = $('[data-filters] .pill[data-filter="' + qp.get('filter') + '"]'); if (pill && !pill.hidden) pill.click(); }
+    if (qp.get('case') !== null && qp.get('case') !== '') setTimeout(function () { openCase(+qp.get('case')); }, 300);
   });
   if (needNews) loadContent('news').then(function (list) {
     list = sortNews((list || []).filter(function (n) { return n && n.title; }));
@@ -386,30 +418,72 @@
     });
   });
 
-  // Social links (edited in the CMS under Settings). Empty = placeholder.
+  // Social links (edited in the CMS under Social media links). Empty = "coming soon" placeholder.
+  var SOCIAL_NAMES = { instagram: 'Instagram', facebook: 'Facebook', linkedin: 'LinkedIn', twitter: 'X (Twitter)' };
   loadContent('settings').then(function (st) {
     st = st || {};
     $$('[data-social]').forEach(function (a) {
-      var url = st[a.dataset.social];
+      var k = a.dataset.social, url = st[k] || (/^https?:/.test(a.getAttribute('href') || '') ? a.getAttribute('href') : '');
       if (url && /^https?:\/\//.test(url)) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; a.classList.remove('is-placeholder'); }
-      else { a.classList.add('is-placeholder'); a.addEventListener('click', function (e) { e.preventDefault(); toast('Our ' + (a.dataset.social === 'twitter' ? 'X (Twitter)' : 'Facebook') + ' page is coming soon.'); }); }
+      else { a.classList.add('is-placeholder'); a.addEventListener('click', function (e) { e.preventDefault(); toast('Our ' + (SOCIAL_NAMES[k] || k) + ' page is coming soon.'); }); }
     });
   });
 
-  /* ---------- Hero photo slider ---------- */
-  $$('[data-slider]').forEach(function (root) {
-    var slides = $$('.slide', root), dots = $$('.slide-dot', root), cap = $('[data-slide-caption]', root), i = 0, timer;
+  // Contact details (edited in the CMS under Contact details): phone, WhatsApp, email, addresses.
+  function telHref(n) { var d = String(n || '').replace(/[^\d+]/g, ''); if (!d) return ''; if (d.charAt(0) === '+') return 'tel:' + d; if (d.charAt(0) === '0') return 'tel:+234' + d.slice(1); return 'tel:+' + d; }
+  function waNum(n) { var d = String(n || '').replace(/\D/g, ''); if (d.charAt(0) === '0') d = '234' + d.slice(1); return d; }
+  function swapWa(a, num) { var q = (a.getAttribute('href') || '').split('?')[1]; a.href = 'https://wa.me/' + num + (q ? '?' + q : ''); }
+  loadContent('contact').then(function (c) {
+    if (!c) return;
+    ['phone', 'phone2', 'email', 'whatsapp_factory', 'lagos_address', 'abuja_address'].forEach(function (k) {
+      if (c[k]) $$('[data-ct="' + k + '"]').forEach(function (el) { el.textContent = c[k]; });
+    });
+    if (c.phone) $$('[data-ch="phone"]').forEach(function (a) { a.href = telHref(c.phone); });
+    $$('[data-cwrap="phone2"]').forEach(function (w) { w.hidden = !c.phone2; });
+    if (c.phone2) $$('[data-ch="phone2"]').forEach(function (a) { a.href = telHref(c.phone2); });
+    if (c.email) $$('[data-ch="email"]').forEach(function (a) { var q = (a.getAttribute('href') || '').split('?')[1]; a.href = 'mailto:' + c.email + (q ? '?' + q : ''); });
+    if (c.whatsapp) {
+      var wn = waNum(c.whatsapp);
+      $$('[data-ch="whatsapp"]').forEach(function (a) { swapWa(a, wn); $$('[data-ct="phone"]', a).forEach(function (el) { el.textContent = c.whatsapp; }); });
+      CONTACT.waNigeria = wn;
+    }
+    if (c.whatsapp_factory) { var fn = waNum(c.whatsapp_factory); $$('[data-ch="whatsapp_factory"]').forEach(function (a) { swapWa(a, fn); }); CONTACT.waChina = fn; }
+    if (c.email) CONTACT.email = c.email;
+  });
+
+  /* ---------- Hero photo slider (slides editable in the CMS: Home banner) ---------- */
+  function initSlider(root) {
+    clearInterval(root._timer);
+    var slides = $$('.slide', root), dots = $$('.slide-dot', root), cap = $('[data-slide-caption]', root), i = 0;
     function go(n) {
       i = (n + slides.length) % slides.length;
       slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
       dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
       if (cap) cap.textContent = slides[i].dataset.caption || '';
     }
-    function play() { if (reduceMotion) return; clearInterval(timer); timer = setInterval(function () { go(i + 1); }, 6000); }
-    dots.forEach(function (d, k) { d.addEventListener('click', function () { go(k); play(); }); });
-    root.addEventListener('mouseenter', function () { clearInterval(timer); });
-    root.addEventListener('mouseleave', play);
-    go(0); play();
+    function play() { if (reduceMotion || slides.length < 2) return; clearInterval(root._timer); root._timer = setInterval(function () { go(i + 1); }, 6000); }
+    dots.forEach(function (d, k) { d.onclick = function () { go(k); play(); }; });
+    root.onmouseenter = function () { clearInterval(root._timer); };
+    root.onmouseleave = play;
+    if (slides.length) { go(0); play(); }
+  }
+  $$('[data-slider]').forEach(initSlider);
+  $$('[data-cms="banner"]').forEach(function (root) {
+    loadContent('banner').then(function (list) {
+      list = (list || []).filter(function (b) { return b && b.image; });
+      if (!list.length) return;
+      $$('.slide', root).forEach(function (s) { s.remove(); });
+      var ui = $('.slide-ui', root), dotsWrap = $('.slide-dots', root);
+      list.forEach(function (b, k) {
+        var d = document.createElement('div');
+        d.className = 'slide' + (k === 0 ? ' is-active' : '');
+        d.dataset.caption = b.caption || '';
+        d.innerHTML = '<img src="' + imgPath(b.image) + '" alt="' + esc(b.caption || 'Pulita installation') + '"' + (k ? ' loading="lazy"' : '') + '>';
+        root.insertBefore(d, ui);
+      });
+      dotsWrap.innerHTML = list.map(function (b, k) { return '<button class="slide-dot" type="button" aria-label="Show photo ' + (k + 1) + '" aria-current="' + (k === 0) + '"></button>'; }).join('');
+      initSlider(root);
+    });
   });
 
   /* ---------- Nav dropdown ---------- */
@@ -476,37 +550,77 @@
     if (location.hash.indexOf('#product-') === 0) openModal(location.hash.replace('#product-', ''));
   }
 
-  /* ---------- Spec table: fuel filter + kVA finder ---------- */
+  /* ---------- Spec tables: LPG / CNG tabs + kVA finder ---------- */
   var specRoot = $('[data-spec]');
   if (specRoot) {
-    var rows = $$('tbody tr', specRoot);
-    var kvaInput = $('#kva-find', specRoot);
-    var result = $('[data-kva-result]', specRoot);
-    var gasFilter = 'all';
+    var kvaInput = $('#kva-find', specRoot), result = $('[data-kva-result]', specRoot), activeFuel = 'lpg';
+    function activePanel() { return $('[data-spec-panel="' + activeFuel + '"]', specRoot); }
     function applySpec() {
-      rows.forEach(function (r) { var g = r.dataset.gas; var keep = gasFilter === 'all' || (gasFilter === 'LPG' ? g.indexOf('LPG') > -1 : g === gasFilter); r.classList.toggle('is-hidden', !keep); r.classList.remove('is-match'); });
+      var panel = activePanel(); if (!panel) return;
+      var rows = $$('tbody tr', panel);
+      $$('tbody tr', specRoot).forEach(function (r) { r.classList.remove('is-match'); });
       var need = parseFloat(kvaInput && kvaInput.value);
-      if (need > 0) {
-        var visible = rows.filter(function (r) { return !r.classList.contains('is-hidden'); });
-        var match = visible.filter(function (r) { return parseFloat(r.dataset.kva) >= need; })[0];
-        if (match) {
-          match.classList.add('is-match');
-          var wrap = $('.table-wrap', specRoot);
-          wrap.scrollTo({ top: match.offsetTop - 100, behavior: reduceMotion ? 'auto' : 'smooth' });
-          result.innerHTML = 'Recommended: <b>' + match.dataset.kva + ' kVA</b> genset (prime ' + match.dataset.prime + ' kW) &mdash; ' + match.dataset.cons + ' at full load.';
-        } else {
-          result.innerHTML = 'Above ' + visible[visible.length - 1].dataset.kva + ' kVA we build customised or paralleled plants (up to 4,000 kVA). <a class="link-arrow" style="font-size:.95rem" href="services.html#quote">Ask our engineers</a>';
-        }
-      } else if (result) { result.textContent = 'Type your load to highlight the right model.'; }
+      if (!(need > 0)) { if (result) result.textContent = 'Type your load to highlight the right model.'; return; }
+      var match = rows.filter(function (r) { return parseFloat(r.dataset.kva) >= need; })[0];
+      if (match) {
+        match.classList.add('is-match');
+        var wrap = $('.table-wrap', panel);
+        wrap.scrollTo({ top: match.offsetTop - 60, behavior: reduceMotion ? 'auto' : 'smooth' });
+        result.innerHTML = 'Recommended: <b>' + Number(match.dataset.kva).toLocaleString('en-NG') + ' kVA ' + activeFuel.toUpperCase() + '</b> genset (prime ' + match.dataset.prime + ' kW), ' + match.dataset.cons + ' at full load.';
+      } else {
+        var last = rows[rows.length - 1];
+        result.innerHTML = activeFuel === 'lpg'
+          ? 'LPG sets in this table go up to ' + last.dataset.kva + ' kVA. <button type="button" class="font-bold text-blue-brand underline bg-transparent border-0 p-0 cursor-pointer" data-go-cng>See CNG sets</button> or ask our engineers.'
+          : 'Above ' + Number(last.dataset.kva).toLocaleString('en-NG') + ' kVA we build customised or paralleled plants (up to 4,000 kVA). <a class="font-bold text-blue-brand" href="services.html#quote">Ask our engineers</a>';
+        var go = $('[data-go-cng]', result); if (go) go.onclick = function () { setFuel('cng'); };
+      }
     }
+    function setFuel(f) {
+      activeFuel = f;
+      $$('[data-spec-tab]', specRoot).forEach(function (t) { t.setAttribute('aria-selected', String(t.dataset.specTab === f)); });
+      $$('[data-spec-panel]', specRoot).forEach(function (p) { p.hidden = p.dataset.specPanel !== f; });
+      applySpec();
+    }
+    $$('[data-spec-tab]', specRoot).forEach(function (t) { t.addEventListener('click', function () { setFuel(t.dataset.specTab); }); });
     if (kvaInput) kvaInput.addEventListener('input', applySpec);
-    $$('[data-gas]', specRoot).forEach(function (b) {
-      if (b.tagName !== 'BUTTON') return;
-      b.addEventListener('click', function () {
-        gasFilter = b.dataset.gas;
-        $$('button[data-gas]', specRoot).forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
-        applySpec();
+  }
+
+  /* ---------- Product finder: fuel x application x power ---------- */
+  var finder = $('[data-finder]');
+  if (finder) {
+    var sel = { fuel: 'all', app: 'all', power: 'all' };
+    var RANGES = { lt100: [0, 100], '100-500': [100, 500], '500-1250': [500, 1250], gt1250: [1250, 99999] };
+    var fcards = $$('.finder-card', finder);
+    function runFinder() {
+      var n = 0, hiddenBySize = 0;
+      fcards.forEach(function (c) {
+        var okF = sel.fuel === 'all' || c.dataset.fuels.split(' ').indexOf(sel.fuel) > -1;
+        var okA = sel.app === 'all' || c.dataset.apps.split(' ').indexOf(sel.app) > -1;
+        var okP = true;
+        if (sel.power !== 'all') {
+          var r = RANGES[sel.power], mn = parseFloat(c.dataset.kmin), mx = parseFloat(c.dataset.kmax);
+          okP = !isNaN(mn) && mn < r[1] && mx >= r[0];
+          if (okF && okA && isNaN(mn)) hiddenBySize++;
+        }
+        var show = okF && okA && okP;
+        c.hidden = !show;
+        if (show) { n++; c.classList.remove('is-entering'); void c.offsetWidth; c.classList.add('is-entering'); }
       });
+      $('[data-finder-count]', finder).textContent = n;
+      $('[data-finder-empty]', finder).hidden = n > 0;
+      $('[data-finder-note]', finder).hidden = !(sel.power !== 'all' && hiddenBySize > 0);
+    }
+    $$('.pill[data-f]', finder).forEach(function (p) {
+      p.addEventListener('click', function () {
+        sel[p.dataset.f] = p.dataset.v;
+        $$('.pill[data-f="' + p.dataset.f + '"]', finder).forEach(function (x) { x.setAttribute('aria-pressed', String(x === p)); });
+        runFinder();
+      });
+    });
+    $('[data-finder-reset]', finder).addEventListener('click', function () {
+      sel = { fuel: 'all', app: 'all', power: 'all' };
+      $$('.pill[data-f]', finder).forEach(function (x) { x.setAttribute('aria-pressed', String(x.dataset.v === 'all')); });
+      runFinder();
     });
   }
 

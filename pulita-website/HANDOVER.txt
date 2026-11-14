@@ -81,8 +81,8 @@ STEP 4: SET UP THE EDITOR (PAGES CMS)
 1. Go to https://app.pagescms.org and sign in with the GitHub account.
 2. Install the Pages CMS GitHub app on the "pulita-website" repository.
 3. Open the repository in Pages CMS. It reads .pages.yml and shows three
-   sections: News & Exhibitions, Projects, Social media links and Gas supply
-   partners.
+   sections: News & Exhibitions, Projects, Social media links, Gas supply
+   partners, Contact details and Home page banner.
 4. Invite the Pulita staff who will edit the site using Pages CMS's
    collaborator invite (by email address). Invited editors don't need a
    GitHub account or any knowledge of Git.
@@ -109,14 +109,25 @@ ADD A PROJECT
   Projects > Add entry
   - Project name, Capacity (e.g. 450kVA), Fuel, Location, Sector
   - Photo and short description
+  - Application, Equipment supplied, Project scope, Operating results:
+    shown when a visitor clicks the project (empty fields are hidden)
   - Tick "Show on the home page" for up to 6 headline projects
   Fuel and Sector power the filter buttons on the Projects page.
 
 SOCIAL MEDIA LINKS
-  Social media links > paste the full X (Twitter) and Facebook page
-  addresses (starting with https://). The icons in the header, footer and
+  Social media links > paste the full Instagram, Facebook, LinkedIn and
+  X (Twitter) page addresses (starting with https://). The icons in the header, footer and
   News page start working straight away. While a link is empty, the icon
   shows a "coming soon" message.
+
+CONTACT DETAILS (Get a Quote, header, footer, contact page)
+  Contact details > edit the phone, second phone (leave empty to hide),
+  WhatsApp, factory WhatsApp, email or office addresses > Save. Every page,
+  the WhatsApp button and the enquiry forms use the new details.
+
+HOME PAGE BANNER
+  Home page banner > add, remove or reorder photos (landscape, at least
+  2000 px wide, real installations) and write a short caption > Save.
 
 GAS SUPPLY PARTNER LOGOS
   Gas supply partners > open a company > upload its official logo (PNG or
