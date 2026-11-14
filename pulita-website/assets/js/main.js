@@ -411,7 +411,8 @@
     $$('[data-cms="partners"]').forEach(function (el) {
       fill(el, list.map(function (p, i) {
         var inner = p.logo ? '<img src="' + imgPath(p.logo) + '" alt="' + esc(p.name) + ' logo" loading="lazy">' : '<span>' + esc(p.name) + '</span>';
-        var url = /^https?:\/\//.test(p.website || '') ? esc(p.website) : '';
+        var w = String(p.website || '').trim(); if (w && !/^https?:\/\//i.test(w) && /^[\w-]+(\.[\w-]+)+/.test(w)) w = 'https://' + w;
+        var url = /^https?:\/\/[\w-]+(\.[\w-]+)+/i.test(w) ? esc(w) : '';
         return url ? '<a class="partner" href="' + url + '" target="_blank" rel="noopener" title="' + esc(p.name) + '" data-reveal="up" data-delay="' + (i * 80) + '">' + inner + '</a>'
                    : '<div class="partner" title="' + esc(p.name) + '" data-reveal="up" data-delay="' + (i * 80) + '">' + inner + '</div>';
       }).join(''));
