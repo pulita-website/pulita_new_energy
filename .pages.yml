@@ -2,7 +2,7 @@
 # social links from https://app.pagescms.org without touching code.
 # Images uploaded in the CMS are saved to assets/images/uploads/.
 media:
-  input: assets/images/uploads
+  input: pulita-website/assets/images/uploads
   output: /assets/images/uploads
   categories: [image]
 
@@ -10,7 +10,7 @@ content:
   - name: news
     label: News & Exhibitions
     type: file
-    path: content/news.json
+    path: pulita-website/content/news.json
     format: json
     list: true
     fields:
@@ -42,7 +42,7 @@ content:
   - name: projects
     label: Projects
     type: file
-    path: content/projects.json
+    path: pulita-website/content/projects.json
     format: json
     list: true
     fields:
@@ -91,7 +91,7 @@ content:
   - name: settings
     label: Social media links
     type: file
-    path: content/settings.json
+    path: pulita-website/content/settings.json
     format: json
     fields:
       - name: instagram
@@ -110,7 +110,7 @@ content:
   - name: partners
     label: Gas supply partners
     type: file
-    path: content/partners.json
+    path: pulita-website/content/partners.json
     format: json
     list: true
     fields:
@@ -128,7 +128,7 @@ content:
   - name: contact
     label: Contact details
     type: file
-    path: content/contact.json
+    path: pulita-website/content/contact.json
     format: json
     fields:
       - name: phone
@@ -156,7 +156,7 @@ content:
   - name: banner
     label: Home page banner
     type: file
-    path: content/banner.json
+    path: pulita-website/content/banner.json
     format: json
     list: true
     fields:
