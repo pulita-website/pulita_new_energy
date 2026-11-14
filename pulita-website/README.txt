@@ -92,7 +92,7 @@ a) Instagram: no official account was found online. Add the URL in the CMS
 b) Home banner: no new project photos were supplied in round 5, so the
    banner still shows the three real-installation photos. Upload new photos
    in the CMS (Home page banner) or send them to the developer.
-c) Veinie: name spelling (Veinie / Vinnie) and profile text to confirm. The
+c) Vinnie Jiang: name confirmed; profile text to confirm. The
    supplied portrait carries a "Doubao AI generated" mark in its corner (not
    visible in the cropped team card). Consider a real photo.
 d) Phone 0803 080 0999 was removed; 0810 518 5525 is now the main phone and
@@ -104,7 +104,7 @@ f) Kubwa case-study narrative (challenge/solution wording) is draft copy.
 g) LPG and CNG prices are still the brochure reference values (₦750/kg,
    ₦380/m³). Diesel is ₦2,000/L.
 h) Gas supply partner logos and the Vision Gas / Portland Gas websites.
-i) Abuja office street address (editable in the CMS: Contact details).
+i) Abuja: there is no Abuja office; the site shows the Abuja warehouse (address editable in the CMS: Contact details).
 j) News items have no dates yet. Add the real dates in the CMS.
 
 
@@ -116,7 +116,7 @@ New real-installation photos (from the client's PRMS, Cascade and MRU folders):
   hero-cascade-station-site.jpg         CNG cascades at the refilling station
   cng-mother-station.jpg                CNG mother station (client-supplied)
   exhibition-1.jpg ... exhibition-8.jpg  Latest exhibition stand photos (About, Services)
-  team-portrait-veinie.jpg              Veinie, Sales Assistant
+  team-portrait-veinie.jpg              Vinnie Jiang, Sales Assistant
   soncap-certificate.jpg                Preview of the SONCAP certificate
   install-cascade-station-site.jpg      Cascades at station (storage)
   install-cascade-genset-site.jpg       Genset + cascade + PRMS cabinet
@@ -139,7 +139,7 @@ Removed: all solar images (inverters, PV module, hybrid site photos).
 - Social: Instagram, Facebook, LinkedIn (linked to the company page) and X
   icons in the top bar, footer, mobile menu, contact page and News page.
 - About: latest exhibition photos replace the NOG photo; Richard removed;
-  Veinie (Sales Assistant) added; SONCAP certificate with View/Download.
+  Vinnie Jiang (Sales Assistant) added; SONCAP certificate with View/Download.
 - Products: four category tiles; product finder by fuel, application and
   power; separate, simplified LPG and CNG spec tables with kVA finder;
   downloadable LPG/CNG datasheets (PDF).
@@ -151,9 +151,41 @@ Removed: all solar images (inverters, PV module, hybrid site photos).
 - Services: new service and project photos.
 - Home banner photos are editable in the CMS.
 
-8. FILE COUNT (for GitHub upload)
+8. ROUND 6 CHANGES (Nov 2026, from Eric Zhao's feedback)
+---------------------------------------------------------
+- Menu: "Products" and "Solutions" are now separate. The Products menu lists
+  the six products; the Services menu adds "Spare parts supply".
+- Products page now shows only six products, each with photos, an Excel
+  download and a specification table:
+    CNG generator 20-4,000 kVA | LPG generator 20-300 kVA |
+    Biogas generator 20-1,250 kVA | CNG cascade 200-7,000 scm |
+    MRU (integrated daughter station) 600-7,000 scm/h | PRMS 20-20,000 m3/h
+- Generator tables: open type removed (silent type only). Every CNG and LPG
+  model has its own PDF datasheet (assets/docs/datasheets/). The 100 kVA CNG
+  sheet is the client's own PLT-100GF datasheet; the table uses its figures.
+- Remark on every table and datasheet: consumption, dimensions and weight are
+  for reference only and can vary with actual production.
+- Excel files: assets/docs/pulita-*-specifications.xlsx (one per product).
+- Solutions page: daughter station EPC & petrol station conversion
+  (600-7,000 m3/h), mother station EPC (2-10 MMSCF/d), L-CNG stations
+  (20-60 tons), IPP power plants. "One-stop gas station EPC" moved here from
+  Services.
+- New page: spare-parts.html (spare parts supply, like the JMG example).
+  Parts photos to be added when the client sends them.
+- About: new photos (MRU delegation, office meeting, two exhibitions).
+- Projects: new "Project photos" gallery with all the client's new photos,
+  tap to enlarge.
+- To confirm with the client: biogas, MRU and cascade/PRMS datasheets (shown
+  as "Request" until supplied); model codes (PLT-xxxGF) for other sizes; the
+  spare parts categories; what Eric's "Remove" message referred to.
+
+9. FILE COUNT (for GitHub upload)
 ---------------------------------
-The site is 81 files. Upload the CONTENTS of the pulita-website folder (not
-the ZIP and not the folder itself), including the hidden .pages.yml file.
-Removed to keep it lean: CSV spec tables (the PDFs cover them), duplicate
-and unused photos, three font weights, and the sample upload photos.
+Upload only the files that changed (see the update ZIP). Never re-upload the
+content/ folder: the CMS owns it, and uploading it overwrites client edits.
+Files no longer used (safe to delete on GitHub): assets/docs/pulita-lpg-
+generator-datasheet.pdf, assets/docs/pulita-cng-generator-datasheet.pdf, and
+in assets/images: cng-tube-skid-trailer.jpg, dual-fuel-generator.jpg,
+exhibition-1.jpg, exhibition-3.jpg, exhibition-4.jpg, gas-station-epc-1.jpg,
+lpg-generator-open-type.jpg, mru-compressor-detail.jpg, mru-open-factory.jpg,
+pulita-generator-soundproof-beige.png.
