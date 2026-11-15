@@ -487,6 +487,16 @@
     });
   });
 
+  /* Full-width hero: photo comes from the CMS (Home page banner, first photo). */
+  $$('[data-hero-bg]').forEach(function (box) {
+    loadContent('banner').then(function (list) {
+      var b = (list || []).filter(function (x) { return x && x.image; })[0];
+      if (!b) return;
+      var img = $('img', box), src = imgPath(b.image);
+      if (img.getAttribute('src') !== src) { img.src = src; img.alt = b.caption || img.alt; }
+    });
+  });
+
   /* ---------- Nav dropdown ---------- */
   $$('.nav-dd').forEach(function (dd) {
     var btn = $('.dd-toggle', dd);
@@ -747,19 +757,71 @@
     $$('input, select, textarea', form).forEach(function (f) { f.addEventListener('input', function () { var w = f.closest('.field'); if (w) w.classList.remove('has-error'); }); });
   });
 
-  /* ---------- Photo lightbox (Projects page) ---------- */
+  /* ---------- Photo lightbox with gallery (Projects page) ---------- */
   var lb = $('#lightbox');
   if (lb) {
-    var lbImg = $('img', lb), lbCap = $('p', lb), lbLast = null;
+    var lbImg = $('img', lb), lbCap = $('[data-lb-cap]', lb), lbCount = $('[data-lb-count]', lb);
+    var lbPrev = $('[data-lb-prev]', lb), lbNext = $('[data-lb-next]', lb), lbLast = null, lbList = [], lbIdx = 0, lbTitle = '';
+    function lbShow(i) {
+      lbIdx = (i + lbList.length) % lbList.length;
+      lbImg.src = lbList[lbIdx]; lbImg.alt = lbTitle;
+      lbCap.textContent = lbTitle;
+      var multi = lbList.length > 1;
+      lbCount.textContent = multi ? '(' + (lbIdx + 1) + ' / ' + lbList.length + ')' : '';
+      lbPrev.hidden = lbNext.hidden = !multi;
+      if (multi) { var pre = new Image(); pre.src = lbList[(lbIdx + 1) % lbList.length]; }
+    }
+    function lbOpen(list, title, start, from) {
+      lbList = list; lbTitle = title; lbLast = from || null;
+      lbShow(start || 0);
+      lb.classList.add('is-open'); document.body.classList.add('modal-open');
+      $('[data-lb-close]', lb).focus();
+    }
     function lbClose() { lb.classList.remove('is-open'); document.body.classList.remove('modal-open'); if (lbLast) lbLast.focus(); }
+    lbPrev.addEventListener('click', function (e) { e.stopPropagation(); lbShow(lbIdx - 1); });
+    lbNext.addEventListener('click', function (e) { e.stopPropagation(); lbShow(lbIdx + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.closest('[data-lb-close]')) lbClose(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('is-open')) return;
+      if (e.key === 'Escape') lbClose();
+      if (e.key === 'ArrowRight' && lbList.length > 1) lbShow(lbIdx + 1);
+      if (e.key === 'ArrowLeft' && lbList.length > 1) lbShow(lbIdx - 1);
+    });
+    // Swipe on phones
+    var tx = null;
+    lb.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (tx === null || lbList.length < 2) return;
+      var dx = e.changedTouches[0].clientX - tx; tx = null;
+      if (Math.abs(dx) > 40) lbShow(lbIdx + (dx < 0 ? 1 : -1));
+    });
+    // Single photos ("More from the field")
     $$('[data-lb]').forEach(function (f) {
       f.tabIndex = 0; f.setAttribute('role', 'button');
-      function open() { var im = $('img', f); lbImg.src = im.currentSrc || im.src; lbImg.alt = im.alt; lbCap.textContent = im.alt; lbLast = f; lb.classList.add('is-open'); document.body.classList.add('modal-open'); $('[data-lb-close]', lb).focus(); }
+      function open() { var im = $('img', f); lbOpen([im.currentSrc || im.src], im.alt, 0, f); }
       f.addEventListener('click', open);
       f.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
     });
-    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.closest('[data-lb-close]')) lbClose(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && lb.classList.contains('is-open')) lbClose(); });
+    // Portfolio projects: open all photos of the project
+    var PF = window.PULITA_PORTFOLIO || {};
+    $$('[data-pf]').forEach(function (card) {
+      card.addEventListener('click', function () {
+        var p = PF[card.dataset.pf]; if (!p) return;
+        lbOpen(p.photos, p.title + ' \u00b7 ' + p.loc + ' \u00b7 ' + p.use, 0, card);
+      });
+    });
+  }
+  // Portfolio filters
+  var pfFilters = $('[data-pf-filters]');
+  if (pfFilters) {
+    var pfCards = $$('[data-pf]');
+    $$('[data-pf-filter]', pfFilters).forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.dataset.pfFilter;
+        $$('[data-pf-filter]', pfFilters).forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        pfCards.forEach(function (c) { c.hidden = !(f === 'all' || (' ' + c.dataset.tags + ' ').indexOf(' ' + f + ' ') > -1); });
+      });
+    });
   }
 
   /* ---------- Footer year ---------- */
