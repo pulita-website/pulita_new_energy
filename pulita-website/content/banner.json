@@ -1,14 +1,6 @@
 [
   {
-    "image": "assets/images/project-portland-mru-station.jpg",
-    "caption": "Real installation: CNG mobile refill unit (MRU) station"
-  },
-  {
-    "image": "assets/images/project-cng-genset-cascade.jpg",
-    "caption": "Real installation: CNG generator set with cascade storage and PRMS"
-  },
-  {
-    "image": "assets/images/solution-lcng-station.jpg",
-    "caption": "Real installation: L-CNG station with a Pulita CNG dispenser"
+    "image": "assets/images/hero-pulita-container-genset-install.jpg",
+    "caption": "Pulita containerized gas generator installation"
   }
 ]
