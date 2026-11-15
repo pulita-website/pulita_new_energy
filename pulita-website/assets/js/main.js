@@ -637,43 +637,52 @@
     window.addEventListener('scroll', tick, { passive: true }); tick();
   }
 
-  /* ---------- Sub-nav active state (products page) ---------- */
+  /* ---------- Sub-nav: active pill follows the scroll, taps jump instantly ---------- */
   var subnav = $('.subnav');
-  if (subnav && 'IntersectionObserver' in window) {
-    var links = $$('a[href^="#"]', subnav), jumping = 0;
-    function setActive(id, smooth) {
-      links.forEach(function (l) {
-        var on = l.getAttribute('href') === '#' + id;
-        l.classList.toggle('is-active', on);
-        if (on) l.scrollIntoView({ block: 'nearest', inline: 'center', behavior: smooth ? 'smooth' : 'auto' });
-      });
+  if (subnav) {
+    var track = $('.subnav-track', subnav) || subnav;
+    var links = $$('a[href^="#"]', subnav);
+    var items = links.map(function (l) { return { link: l, sec: document.getElementById(l.getAttribute('href').slice(1)) }; })
+                     .filter(function (x) { return x.sec; });
+    var current = null, ticking = false;
+    function lineY() { var h = $('.site-header'); return (h ? h.offsetHeight : 0) + subnav.offsetHeight + 24; }
+    function centerPill(l, smooth) {
+      // Scroll only the pill bar sideways; never move the page.
+      if (track.scrollWidth <= track.clientWidth) return;
+      var left = l.offsetLeft - (track.clientWidth - l.offsetWidth) / 2;
+      track.scrollTo({ left: Math.max(0, left), behavior: smooth && !reduceMotion ? 'smooth' : 'auto' });
     }
-    // Tap a pill: jump straight to the section (no smooth scroll through the others).
-    links.forEach(function (l) {
-      l.addEventListener('click', function (e) {
-        var id = l.getAttribute('href').slice(1), target = document.getElementById(id);
-        if (!target) return;
+    function setActive(item, smooth) {
+      if (item === current) return;
+      if (current) current.link.classList.remove('is-active');
+      current = item;
+      if (item) { item.link.classList.add('is-active'); centerPill(item.link, smooth); }
+    }
+    function update() {
+      ticking = false;
+      var y = lineY(), found = null;
+      var foundTop = null;
+      for (var i = 0; i < items.length; i++) {
+        var t = items[i].sec.getBoundingClientRect().top;
+        if (t - y > 0) break;
+        // Side-by-side cards share a row: keep the first one in that row.
+        if (foundTop === null || Math.abs(t - foundTop) > 10) { found = items[i]; foundTop = t; }
+      }
+      // At the very bottom of the page, the last section is the active one.
+      if ((window.innerHeight + window.pageYOffset) >= document.documentElement.scrollHeight - 2) found = items[items.length - 1];
+      setActive(found, true);
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    window.addEventListener('resize', function () { requestAnimationFrame(update); });
+    items.forEach(function (it) {
+      it.link.addEventListener('click', function (e) {
         e.preventDefault();
-        var header = $('.site-header'), offset = (header ? header.offsetHeight : 0) + subnav.offsetHeight + 12;
-        jumping = Date.now();
-        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset, behavior: 'auto' });
-        setActive(id, false);
-        if (history.replaceState) history.replaceState(null, '', '#' + id);
+        window.scrollTo({ top: it.sec.getBoundingClientRect().top + window.pageYOffset - lineY() + 12, behavior: 'auto' });
+        setActive(it, false);
+        if (history.replaceState) history.replaceState(null, '', '#' + it.sec.id);
       });
     });
-    var sio = new IntersectionObserver(function (entries) {
-      if (Date.now() - jumping < 400) return;
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          links.forEach(function (l) {
-            var on = l.getAttribute('href') === '#' + en.target.id;
-            l.classList.toggle('is-active', on);
-            if (on) l.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-          });
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    links.forEach(function (l) { var s = $(l.getAttribute('href')); if (s) sio.observe(s); });
+    update();
   }
 
   /* ---------- WhatsApp widget ---------- */
