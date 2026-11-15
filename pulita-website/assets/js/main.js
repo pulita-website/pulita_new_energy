@@ -276,7 +276,18 @@
     var m = $('#case-modal'), p = PROJECTS_DATA[idx];
     if (!m || !p) return false;
     var rows = [['Location', p.location], ['Application', p.application], ['Capacity', p.capacity], ['Fuel', p.fuel], ['Equipment supplied', p.equipment], ['Project scope', p.scope], ['Operating results', p.results]];
-    $('[data-cm="img"]', m).src = imgPath(p.image); $('[data-cm="img"]', m).alt = p.title || '';
+    $('[data-cm="img"]', m).src = imgPath(p.image || (p.photos || [])[0] || ''); $('[data-cm="img"]', m).alt = p.title || '';
+    var phBtn = $('[data-cm="photos"]', m), phs = photoList(p);
+    if (phBtn) {
+      phBtn.hidden = phs.length < 1;
+      $('span', phBtn).textContent = phs.length > 1 ? 'View all ' + phs.length + ' photos' : 'View photo';
+      phBtn.onclick = function () {
+        var list = phs.map(imgPath), title = (p.title || '') + (p.location ? ' \u00b7 ' + p.location : '');
+        closeCase();
+        if (window.PULITA_LB) window.PULITA_LB(list, title, 0);
+      };
+      $('[data-cm="img"]', m).onclick = phBtn.onclick;
+    }
     $('[data-cm="fuel"]', m).textContent = p.fuel || ''; $('[data-cm="fuel"]', m).className = 'fuel-chip' + (p.fuel === 'LPG' ? ' lpg' : '');
     $('[data-cm="title"]', m).textContent = p.title || '';
     $('[data-cm="summary"]', m).textContent = p.summary || '';
@@ -319,17 +330,19 @@
   }
   function esc(t) { return String(t == null ? '' : t).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function imgPath(p) { return esc(String(p || '').replace(/^\//, '')); }
-  var SECTOR_KEY = { 'healthcare': 'healthcare', 'telecom': 'telecom', 'gas station': 'station', 'commercial & industrial': 'commercial' };
+  var SECTOR_KEY = { 'healthcare': 'healthcare', 'telecom': 'telecom', 'gas station': 'station', 'industrial': 'industry', 'commercial & residential': 'commercial', 'commercial & industrial': 'commercial' };
   var PIN = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>';
   var CAL = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';
   var ARR = '<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
 
+  function photoList(p) { var l = (p.photos || []).filter(Boolean); if (p.image && l.indexOf(p.image) < 0 && !l.length) l = [p.image]; return l; }
   function projectCard(p, i, idx) {
     var fuel = String(p.fuel || '').trim();
     var tags = [fuel.toLowerCase().replace(/\s+/g, '-'), SECTOR_KEY[String(p.sector || '').toLowerCase()] || 'other'].join(' ');
     var cap = esc(p.capacity || '').replace(/kVA$/i, '<small style="font-size:1.4rem">kVA</small>');
     return '<div class="project-card" tabindex="0" role="button" aria-label="' + esc(p.title) + ', ' + esc(p.capacity) + ' ' + esc(fuel) + ', ' + esc(p.location) + '" data-tags="' + esc(tags) + '"' + (idx !== undefined ? ' data-idx="' + idx + '"' : '') + ' data-reveal="up" data-delay="' + ((i % 3) * 90) + '">' +
-      '<img src="' + imgPath(p.image) + '" alt="' + esc(p.title) + ': ' + esc(p.capacity) + ' ' + esc(fuel) + ' installation" loading="lazy">' +
+      '<img src="' + imgPath(p.image || (p.photos || [])[0] || '') + '" alt="' + esc(p.title) + ': ' + esc(p.capacity) + ' ' + esc(fuel) + ' installation" loading="lazy">' +
+      (photoList(p).length > 1 ? '<span class="pf-count">' + photoList(p).length + ' photos</span>' : '') +
       '<div class="label"><span class="fuel-chip' + (fuel === 'LPG' ? ' lpg' : '') + '">' + esc(fuel) + '</span><p class="font-display text-2xl font-extrabold uppercase mt-2 leading-tight">' + esc(p.title) + '</p></div>' +
       '<div class="reveal-info"><span class="kva">' + cap + '</span><p class="font-display text-2xl font-extrabold uppercase leading-tight">' + esc(p.title) + '</p>' +
       '<p class="flex items-center gap-2 text-white/90 font-semibold">' + PIN + esc(p.location) + '</p>' +
@@ -777,6 +790,7 @@
       lb.classList.add('is-open'); document.body.classList.add('modal-open');
       $('[data-lb-close]', lb).focus();
     }
+    window.PULITA_LB = function (list, title, start) { lbOpen(list, title, start || 0, document.activeElement); };
     function lbClose() { lb.classList.remove('is-open'); document.body.classList.remove('modal-open'); if (lbLast) lbLast.focus(); }
     lbPrev.addEventListener('click', function (e) { e.stopPropagation(); lbShow(lbIdx - 1); });
     lbNext.addEventListener('click', function (e) { e.stopPropagation(); lbShow(lbIdx + 1); });
@@ -802,28 +816,7 @@
       f.addEventListener('click', open);
       f.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
     });
-    // Portfolio projects: open all photos of the project
-    var PF = window.PULITA_PORTFOLIO || {};
-    $$('[data-pf]').forEach(function (card) {
-      card.addEventListener('click', function () {
-        var p = PF[card.dataset.pf]; if (!p) return;
-        lbOpen(p.photos, p.title + ' \u00b7 ' + p.loc + ' \u00b7 ' + p.use, 0, card);
-      });
-    });
   }
-  // Portfolio filters
-  var pfFilters = $('[data-pf-filters]');
-  if (pfFilters) {
-    var pfCards = $$('[data-pf]');
-    $$('[data-pf-filter]', pfFilters).forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var f = btn.dataset.pfFilter;
-        $$('[data-pf-filter]', pfFilters).forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
-        pfCards.forEach(function (c) { c.hidden = !(f === 'all' || (' ' + c.dataset.tags + ' ').indexOf(' ' + f + ' ') > -1); });
-      });
-    });
-  }
-
   /* ---------- Footer year ---------- */
   $$('[data-year]').forEach(function (y) { y.textContent = new Date().getFullYear(); });
 })();
