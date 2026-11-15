@@ -179,7 +179,21 @@ Removed: all solar images (inverters, PV module, hybrid site photos).
   as "Request" until supplied); model codes (PLT-xxxGF) for other sizes; the
   spare parts categories; what Eric's "Remove" message referred to.
 
-9. FILE COUNT (for GitHub upload)
+9. ROUND 7 CHANGES (Nov 2026)
+-----------------------------
+- Homepage: one full-width banner photo behind the headline (CMS: Home page
+  banner, first photo). New photos on the Gas Generators and CNG Daughter
+  Stations cards. "LPG / CNG vs diesel" and the calculator moved up, right
+  after the four stat cards.
+- About: SONCAP panel removed (SONCAP stays in the certificates row).
+- Products: the client's own datasheets for 15, 20, 30, 50, 100, 150, 200,
+  400 and 500 kVA CNG sets replace the generated ones; table figures match
+  them; 15 kVA and 400 kVA added.
+- Projects: portfolio of 22 Nigerian projects (131 photos) in
+  assets/images/projects/, each opening a swipeable photo gallery, with
+  filters by fuel and sector.
+
+10. FILE COUNT (for GitHub upload)
 ---------------------------------
 Upload only the files that changed (see the update ZIP). Never re-upload the
 content/ folder: the CMS owns it, and uploading it overwrites client edits.
