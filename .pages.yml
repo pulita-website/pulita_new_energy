@@ -150,11 +150,11 @@ content:
         label: 'Lagos office address'
         type: string
       - name: abuja_address
-        label: 'Abuja office address'
+        label: 'Abuja warehouse location (shown in footer and contact page)'
         type: string
 
   - name: banner
-    label: 'Home page banner'
+    label: 'Home page banner (the first photo is shown full width)'
     type: file
     path: pulita-website/content/banner.json
     format: json
