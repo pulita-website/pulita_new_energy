@@ -65,10 +65,14 @@ content:
         label: 'Sector (used by the gallery filters)'
         type: select
         options:
-          values: [Healthcare, Telecom, Gas station, Commercial & industrial, Other]
+          values: [Healthcare, Telecom, Gas station, Industrial, Commercial & residential, Other]
       - name: image
-        label: 'Photo'
+        label: 'Cover photo (shown on the card)'
         type: image
+      - name: photos
+        label: 'All project photos (opened when a visitor taps the project)'
+        type: image
+        list: true
       - name: summary
         label: 'Short description'
         type: text
