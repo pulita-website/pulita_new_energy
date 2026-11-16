@@ -158,7 +158,7 @@ content:
         type: string
 
   - name: banner
-    label: 'Home page banner (the first photo is shown full width)'
+    label: 'Home page banner (photos change every 3 seconds behind the headline)'
     type: file
     path: pulita-website/content/banner.json
     format: json
