@@ -112,10 +112,10 @@
   var compare = $('[data-compare]');
   if (compare) {
     var DATA = {
-      kwh: { unit: '/kWh', vals: { diesel: 500, lpg: 165, cng: 114 }, note: 'Comprehensive cost per kWh (Naira), 100kW reference generator.' },
-      hour: { unit: '/hr', vals: { diesel: 50000, lpg: 16560, cng: 11400 }, note: 'Fuel cost per running hour (Naira), 100kW reference generator.' }
+      kwh: { unit: '/kWh', vals: { diesel: 500, lpg: 230, cng: 115 }, note: 'Comprehensive cost per kWh (Naira), 100kW reference generator.' },
+      hour: { unit: '/hr', vals: { diesel: 50000, lpg: 23000, cng: 11500 }, note: 'Comprehensive cost per running hour (Naira), 100kW reference generator.' }
     };
-    var saving = { diesel: null, lpg: 67, cng: 77 };
+    var saving = { diesel: null, lpg: 54, cng: 77 };
     var mode = 'kwh', shown = false;
     function renderCompare() {
       var d = DATA[mode], max = d.vals.diesel;
@@ -145,8 +145,8 @@
   var calc = $('[data-calc]');
   if (calc) {
     // Conversion factors derived from Pulita's 100kW reference data:
-    // diesel 25 L/h -> LPG consumed cost N16,560 @ N750/kg (22.08 kg/h) ; CNG 30 m3/h.
-    var LPG_PER_L = 22.08 / 25;  // kg LPG per litre of diesel displaced
+    // diesel 25 L/h -> LPG 23 kg/h ; CNG 30 m3/h (100 kW reference generator).
+    var LPG_PER_L = 23 / 25;  // kg LPG per litre of diesel displaced
     var CNG_PER_L = 30 / 25;     // m3 CNG per litre of diesel displaced
     var KW_PER_LPH = 100 / 25;   // ~4 kW electrical output per L/h diesel
     var fuel = 'cng';
@@ -159,7 +159,7 @@
     function num(el, fb) { var v = parseFloat(el.value); return isFinite(v) && v > 0 ? v : fb; }
     function renderCalc() {
       var lph = num(inputs.lph, 25), h = num(inputs.hours, 12), d = num(inputs.days, 26);
-      var pd = num(inputs.pd, 2000), pl = num(inputs.pl, 750), pc = num(inputs.pc, 380);
+      var pd = num(inputs.pd, 2000), pl = num(inputs.pl, 950), pc = num(inputs.pc, 380);
       [inputs.lph, inputs.hours, inputs.days].forEach(setRangeFill);
       $('#out-lph', calc).innerHTML = lph + '<small>L/h</small>';
       $('#out-hours', calc).innerHTML = h + '<small>hrs/day</small>';
@@ -500,13 +500,31 @@
     });
   });
 
-  /* Full-width hero: photo comes from the CMS (Home page banner, first photo). */
+  /* Full-width hero: background photos change every 3 seconds (CMS: Home page banner). */
   $$('[data-hero-bg]').forEach(function (box) {
+    var timer = null, i = 0;
+    function start() {
+      clearInterval(timer);
+      var imgs = $$('img', box); i = 0;
+      imgs.forEach(function (im, k) { im.classList.toggle('is-active', k === 0); });
+      if (imgs.length < 2 || reduceMotion) return;
+      timer = setInterval(function () {
+        imgs[i].classList.remove('is-active');
+        i = (i + 1) % imgs.length;
+        imgs[i].classList.add('is-active');
+      }, 3000);
+    }
+    start();
     loadContent('banner').then(function (list) {
-      var b = (list || []).filter(function (x) { return x && x.image; })[0];
-      if (!b) return;
-      var img = $('img', box), src = imgPath(b.image);
-      if (img.getAttribute('src') !== src) { img.src = src; img.alt = b.caption || img.alt; }
+      list = (list || []).filter(function (x) { return x && x.image; });
+      if (!list.length) return;
+      var cur = $$('img', box).map(function (im) { return im.getAttribute('src'); }).join('|');
+      var next = list.map(function (b) { return imgPath(b.image); });
+      if (cur === next.join('|')) return;
+      box.innerHTML = list.map(function (b, k) {
+        return '<img class="hero3-slide' + (k ? '' : ' is-active') + '" src="' + imgPath(b.image) + '" alt="' + esc(b.caption || 'Pulita installation') + '"' + (k ? ' loading="lazy"' : '') + '>';
+      }).join('');
+      start();
     });
   });
 
