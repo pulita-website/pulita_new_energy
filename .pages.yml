@@ -150,6 +150,9 @@ content:
       - name: email
         label: 'Email address (shown on site and used by forms)'
         type: string
+      - name: email2
+        label: 'Second email address (optional, leave empty to hide)'
+        type: string
       - name: lagos_address
         label: 'Lagos office address'
         type: string
