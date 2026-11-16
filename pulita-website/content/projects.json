@@ -309,7 +309,7 @@
     "application": "Gas station power",
     "equipment": "18 Pulita 100 kVA and 250 kVA LPG generator sets",
     "scope": "",
-    "results": "Estimated ~67% lower fuel cost than diesel*"
+    "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
     "title": "Lagos Gas Plant (15 units)",
@@ -334,7 +334,7 @@
     "application": "Gas plant power",
     "equipment": "15 Pulita LPG generator sets",
     "scope": "",
-    "results": "Estimated ~67% lower fuel cost than diesel*"
+    "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
     "title": "Abuja Gas Stations (13 units)",
@@ -354,7 +354,7 @@
     "application": "Gas station power",
     "equipment": "13 Pulita 30 kVA and 100 kVA LPG generator sets",
     "scope": "",
-    "results": "Estimated ~67% lower fuel cost than diesel*"
+    "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
     "title": "Abuja Residential Estate",
@@ -375,7 +375,7 @@
     "application": "Residential power",
     "equipment": "Pulita 350 kVA LPG generator set",
     "scope": "",
-    "results": "Estimated ~67% lower fuel cost than diesel*"
+    "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
     "title": "Abuja Gas Station",
@@ -394,7 +394,7 @@
     "application": "Gas station power",
     "equipment": "Pulita 100 kVA and 250 kVA LPG generator sets",
     "scope": "",
-    "results": "Estimated ~67% lower fuel cost than diesel*"
+    "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
     "title": "Port Harcourt Restaurant",
@@ -414,7 +414,7 @@
     "application": "Restaurant power",
     "equipment": "2 Pulita 100 kVA LPG generator sets with LPG storage tank",
     "scope": "",
-    "results": "Estimated ~67% lower fuel cost than diesel*"
+    "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
     "title": "Burger King Abeokuta",
@@ -437,7 +437,7 @@
     "application": "Quick-service restaurant: full-site power",
     "equipment": "Pulita 80 kVA LPG generator set",
     "scope": "",
-    "results": "Zero diesel on site. Estimated ~67% lower fuel cost than diesel*"
+    "results": "Zero diesel on site. Estimated ~54% lower fuel cost than diesel*"
   },
   {
     "title": "Lagos Telecom Site",
@@ -458,7 +458,7 @@
     "application": "Telecom tower power",
     "equipment": "Pulita 30 kVA LPG generator set",
     "scope": "",
-    "results": "Estimated ~67% lower fuel cost than diesel*"
+    "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
     "title": "Ogun Farm Biogas Plant",
