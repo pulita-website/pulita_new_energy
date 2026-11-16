@@ -1112,3 +1112,10 @@ a.cert { text-decoration: none; color: inherit; }
 .case-photos { position: absolute; left: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: .45rem; padding: .55rem 1rem; border: 0; border-radius: 999px; background: rgba(0,0,0,.7); color: #fff; font-weight: 700; font-size: .9rem; cursor: pointer; transition: background-color .2s; }
 .case-photos:hover { background: var(--red); }
 .case-photos[hidden] { display: none; }
+/* Spare parts catalogue */
+.part-item { display: flex; flex-direction: column; overflow: hidden; }
+.part-media { position: relative; display: block; aspect-ratio: 1 / 1; padding: 0; border: 0; background: #fff; cursor: zoom-in; overflow: hidden; border-bottom: 1px solid #EEF2F6; }
+.part-media img { width: 100%; height: 100%; object-fit: contain; padding: 1rem; transition: transform .5s var(--ease); }
+.part-item:hover .part-media img { transform: scale(1.06); }
+.part-media .pf-count { right: 10px; bottom: 10px; }
+.part-tag { align-self: flex-start; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red); background: #FDECEC; padding: .2rem .6rem; border-radius: 6px; }
