@@ -827,6 +827,13 @@
       var dx = e.changedTouches[0].clientX - tx; tx = null;
       if (Math.abs(dx) > 40) lbShow(lbIdx + (dx < 0 ? 1 : -1));
     });
+    // Spare parts: open all photos of a part
+    $$('[data-photos]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var list = []; try { list = JSON.parse(btn.dataset.photos); } catch (e) {}
+        if (list.length) lbOpen(list, btn.dataset.title || '', 0, btn);
+      });
+    });
     // Single photos ("More from the field")
     $$('[data-lb]').forEach(function (f) {
       f.tabIndex = 0; f.setAttribute('role', 'button');
