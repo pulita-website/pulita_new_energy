@@ -449,12 +449,14 @@
   function swapWa(a, num) { var q = (a.getAttribute('href') || '').split('?')[1]; a.href = 'https://wa.me/' + num + (q ? '?' + q : ''); }
   loadContent('contact').then(function (c) {
     if (!c) return;
-    ['phone', 'phone2', 'email', 'whatsapp_factory', 'lagos_address', 'abuja_address'].forEach(function (k) {
+    ['phone', 'phone2', 'email', 'email2', 'whatsapp_factory', 'lagos_address', 'abuja_address'].forEach(function (k) {
       if (c[k]) $$('[data-ct="' + k + '"]').forEach(function (el) { el.textContent = c[k]; });
     });
     if (c.phone) $$('[data-ch="phone"]').forEach(function (a) { a.href = telHref(c.phone); });
     $$('[data-cwrap="phone2"]').forEach(function (w) { w.hidden = !c.phone2; });
     if (c.phone2) $$('[data-ch="phone2"]').forEach(function (a) { a.href = telHref(c.phone2); });
+    $$('[data-cwrap="email2"]').forEach(function (w) { w.hidden = !c.email2; });
+    if (c.email2) $$('[data-ch="email2"]').forEach(function (a) { a.href = 'mailto:' + c.email2; });
     if (c.email) $$('[data-ch="email"]').forEach(function (a) { var q = (a.getAttribute('href') || '').split('?')[1]; a.href = 'mailto:' + c.email + (q ? '?' + q : ''); });
     if (c.whatsapp) {
       var wn = waNum(c.whatsapp);
