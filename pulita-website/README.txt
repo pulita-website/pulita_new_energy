@@ -190,7 +190,7 @@ Removed: all solar images (inverters, PV module, hybrid site photos).
   400 and 500 kVA CNG sets replace the generated ones; table figures match
   them; 15 kVA and 400 kVA added.
 - Projects: portfolio of 22 Nigerian projects (131 photos) in
-  assets/images/projects/, each opening a swipeable photo gallery, with
+  assets/images/, each opening a swipeable photo gallery, with
   filters by fuel and sector.
 
 10. FILE COUNT (for GitHub upload)
