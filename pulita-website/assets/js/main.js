@@ -516,13 +516,46 @@
 
   // Generic photo rotator: [data-rotate] with .rot-slide images, one every 3 seconds.
   $$('[data-rotate]').forEach(function (box) {
-    var imgs = $$('.rot-slide', box), i = 0;
-    if (imgs.length < 2 || reduceMotion) return;
+    var i = 0;
+    if (reduceMotion) return;
     setInterval(function () {
-      if (document.hidden) return;
+      var imgs = $$('.rot-slide', box);   // re-read each time: the CMS can replace the photos
+      if (document.hidden || imgs.length < 2) return;
+      i = i % imgs.length;
       imgs[i].classList.remove('is-active'); i = (i + 1) % imgs.length; imgs[i].classList.add('is-active');
     }, 3000);
   });
+
+  // Page text & photos (CMS: "Page: ..." sections). The built-in text stays unless staff change it.
+  (function () {
+    var els = $$('[data-pt], [data-pi], [data-pl]');
+    if (!els.length) return;
+    var keyOf = function (el) { return el.getAttribute('data-pt') || el.getAttribute('data-pi') || el.getAttribute('data-pl'); };
+    var page = keyOf(els[0]).split('.')[0];
+    var norm = function (t) { return String(t == null ? '' : t).replace(/\s+/g, ' ').trim(); };
+    var path = function (p) { return String(p || '').trim().replace(/^\//, ''); };
+    loadContent('page-' + page.replace(/_/g, '-')).then(function (d) {
+      if (!d) return;
+      els.forEach(function (el) {
+        var v = d[keyOf(el).split('.').slice(1).join('.')];
+        if (el.hasAttribute('data-pt')) {
+          if (norm(v) && norm(v) !== norm(el.textContent)) el.textContent = norm(v);
+        } else if (el.hasAttribute('data-pi')) {
+          if (path(v) && path(v) !== el.getAttribute('src')) el.setAttribute('src', path(v));
+        } else if (Array.isArray(v)) {
+          var list = v.map(path).filter(Boolean), cur = $$('img', el).map(function (im) { return im.getAttribute('src'); });
+          if (list.length && list.join('|') !== cur.join('|')) {
+            var alt = ($('img', el) || {}).alt || '';
+            $$('img', el).forEach(function (im) { im.remove(); });
+            list.forEach(function (src, k) {
+              var im = document.createElement('img'); im.className = 'rot-slide' + (k ? '' : ' is-active');
+              im.src = src; im.alt = alt; if (k) im.loading = 'lazy'; el.appendChild(im);
+            });
+          }
+        }
+      });
+    });
+  })();
 
   /* ---------- Hero photo slider (slides editable in the CMS: Home banner) ---------- */
   function initSlider(root) {
