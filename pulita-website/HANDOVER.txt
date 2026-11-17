@@ -44,9 +44,9 @@ STEP 3 - CONNECT pulitaenergy.com
 STEP 4 - PAGES CMS
 1. app.pagescms.org > Sign in with GitHub (company account).
 2. Install the Pages CMS GitHub app on pulita_new_energy when asked.
-3. Open the repository (branch main). Six sections should show:
-   News & Exhibitions, Projects, Social media links, Gas supply partners,
-   Contact details, Home page banner.
+3. Open the repository (branch main). Seven sections should show:
+   News & Exhibitions, Projects, Social media links, Contact details,
+   Home page banner, Spare parts, Product datasheets.
 4. Collaborators (Admin area): invite staff by email. They need no GitHub
    account and cannot change settings or invite others.
 
@@ -62,7 +62,7 @@ FILES
   pulita-website/assets/docs/uploads/ datasheet PDFs uploaded through the CMS
   pulita-website/content/            CMS content (JSON) - edited through the CMS:
                                      news, projects, banner, contact, settings,
-                                     partners, spare-parts, datasheets
+                                     spare-parts, datasheets
 
 RULES
 - Never upload over pulita-website/content/ - it holds staff edits.
