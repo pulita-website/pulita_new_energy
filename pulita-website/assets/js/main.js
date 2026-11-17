@@ -14,6 +14,15 @@
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
+  // Old links to the removed Solutions refuelling section now open the Kubwa case study on the Projects page.
+  if (/solutions\.html$/.test(location.pathname) && location.hash === '#refuelling') { location.replace('projects.html#case-kubwa'); return; }
+  $$('a[href*="solutions.html#refuelling"]').forEach(function (a) { a.setAttribute('href', 'projects.html#case-kubwa'); });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="solutions.html#refuelling"]');
+    if (a) a.setAttribute('href', 'projects.html#case-kubwa');
+  }, true);
+
+
   /* ---------- Naira formatting ---------- */
   function naira(n) { return '₦' + Math.round(n).toLocaleString('en-NG'); }
   function nairaShort(n) {
