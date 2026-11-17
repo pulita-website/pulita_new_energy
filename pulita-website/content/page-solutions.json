@@ -1,0 +1,21 @@
+{
+  "hero_photo": "assets/images/solution-cng-mother-station.jpg",
+  "hero_title": "From gas source to kilowatt.",
+  "hero_text": "Pulita designs, builds and supports the whole chain: refuelling stations, mother stations, L-CNG stations and gas-fired power plants.",
+  "intro_title": "Daughter stations, mother stations and power plants.",
+  "intro_text": "Pulita delivers each solution turnkey: design, equipment, construction, commissioning and local service.",
+  "daughter_epc_photo": "assets/images/solution-daughter-mru-station.jpg",
+  "daughter_epc_title": "Standard CNG daughter station EPC & petrol station conversion",
+  "daughter_epc_text": "Turnkey CNG daughter stations supporting gas flow rates of 600–7,000 m³/h. We also convert old petrol stations into CNG/LNG refuelling stations, so existing forecourts can start selling gas quickly.",
+  "mother_station_photo": "assets/images/solution-cng-mother-station.jpg",
+  "mother_station_title": "EPC services for CNG mother stations",
+  "mother_station_text": "Pipeline-fed CNG mother stations with capacities from 2 to 10 MMSCF/d. Gas is treated, metered and compressed to 250 bar, then loaded into tube trailers that supply daughter stations, MRUs and gas-powered sites.",
+  "lcng_photo": "assets/images/solution-lcng-station.jpg",
+  "lcng_title": "L-CNG refuelling stations",
+  "lcng_text": "L-CNG stations store LNG on site and convert it to CNG for dispensing, bringing natural gas to locations far from any pipeline. Station capacities range from 20 to 60 tons.",
+  "ipp_photo": "assets/images/solution-ipp-container-plant.jpg",
+  "ipp_title": "IPP power plants",
+  "ipp_text": "Independent power plants built from synchronised Pulita gas generator sets and containerized power units, with gas supply, PRMS and switchgear engineered and delivered as one project.",
+  "ev_title": "EV charging stations, powered your way.",
+  "ev_text": "Pulita designs and supplies EV charging stations for electric cars and buses. Each station draws on a hybrid mix of solar power, battery storage, gas generator sets and grid electricity, so charging never stops when one source does."
+}
