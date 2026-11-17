@@ -6,8 +6,8 @@
   document.documentElement.classList.remove('no-js');
 
   var CONTACT = {
-    email: 'john@hitepower.com',
-    waNigeria: '2348105185525',
+    email: 'eric@hitepower.com',
+    waNigeria: '8618678002095',
     waChina: '8618678060186'
   };
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -447,24 +447,71 @@
   function telHref(n) { var d = String(n || '').replace(/[^\d+]/g, ''); if (!d) return ''; if (d.charAt(0) === '+') return 'tel:' + d; if (d.charAt(0) === '0') return 'tel:+234' + d.slice(1); return 'tel:+' + d; }
   function waNum(n) { var d = String(n || '').replace(/\D/g, ''); if (d.charAt(0) === '0') d = '234' + d.slice(1); return d; }
   function swapWa(a, num) { var q = (a.getAttribute('href') || '').split('?')[1]; a.href = 'https://wa.me/' + num + (q ? '?' + q : ''); }
+  // Two contacts: phone / email / whatsapp (contact 1, also used by every WhatsApp button and form)
+  // and phone2 / email2 / whatsapp2 (contact 2). An empty field is hidden on the site.
   loadContent('contact').then(function (c) {
     if (!c) return;
-    ['phone', 'phone2', 'email', 'email2', 'whatsapp_factory', 'lagos_address', 'abuja_address'].forEach(function (k) {
-      if (c[k]) $$('[data-ct="' + k + '"]').forEach(function (el) { el.textContent = c[k]; });
+    if (c.whatsapp2 === undefined && c.whatsapp_factory !== undefined) c.whatsapp2 = c.whatsapp_factory;
+    var has = function (k) { return Object.prototype.hasOwnProperty.call(c, k); };
+    var val = function (k) { return String(c[k] || '').trim(); };
+    ['phone', 'phone2', 'email', 'email2', 'whatsapp', 'whatsapp2', 'lagos_address', 'abuja_address', 'factory_address'].forEach(function (k) {
+      if (val(k)) $$('[data-ct="' + k + '"]').forEach(function (el) { el.textContent = val(k); });
     });
-    if (c.phone) $$('[data-ch="phone"]').forEach(function (a) { a.href = telHref(c.phone); });
-    $$('[data-cwrap="phone2"]').forEach(function (w) { w.hidden = !c.phone2; });
-    if (c.phone2) $$('[data-ch="phone2"]').forEach(function (a) { a.href = telHref(c.phone2); });
-    $$('[data-cwrap="email2"]').forEach(function (w) { w.hidden = !c.email2; });
-    if (c.email2) $$('[data-ch="email2"]').forEach(function (a) { a.href = 'mailto:' + c.email2; });
-    if (c.email) $$('[data-ch="email"]').forEach(function (a) { var q = (a.getAttribute('href') || '').split('?')[1]; a.href = 'mailto:' + c.email + (q ? '?' + q : ''); });
-    if (c.whatsapp) {
-      var wn = waNum(c.whatsapp);
-      $$('[data-ch="whatsapp"]').forEach(function (a) { swapWa(a, wn); $$('[data-ct="phone"]', a).forEach(function (el) { el.textContent = c.whatsapp; }); });
-      CONTACT.waNigeria = wn;
+    ['phone', 'phone2'].forEach(function (k) { if (val(k)) $$('[data-ch="' + k + '"]').forEach(function (a) { a.href = telHref(val(k)); }); });
+    ['email', 'email2'].forEach(function (k) { if (val(k)) $$('[data-ch="' + k + '"]').forEach(function (a) { var q = (a.getAttribute('href') || '').split('?')[1]; a.href = 'mailto:' + val(k) + (q ? '?' + q : ''); }); });
+    ['whatsapp', 'whatsapp2'].forEach(function (k) { if (val(k)) { var n = waNum(val(k)); $$('[data-ch="' + k + '"]').forEach(function (a) { swapWa(a, n); }); } });
+    ['phone2', 'email2', 'whatsapp', 'whatsapp2'].forEach(function (k) { if (has(k)) $$('[data-cwrap="' + k + '"]').forEach(function (w) { w.hidden = !val(k); }); });
+    $$('[data-cwrap="contact2"]').forEach(function (w) { w.hidden = !(val('phone2') || val('email2') || val('whatsapp2')); });
+    if (val('lagos_address') && val('lagos_address') !== '23 Younis Bashorun Street, Victoria Island, Lagos 106104') {
+      var q = encodeURIComponent(val('lagos_address') + ', Nigeria');
+      $$('[data-map="link"]').forEach(function (a) { a.href = 'https://www.google.com/maps/search/?api=1&query=' + q; });
+      $$('[data-map="embed"]').forEach(function (f) { f.src = 'https://maps.google.com/maps?q=' + q + '&z=15&output=embed'; });
     }
-    if (c.whatsapp_factory) { var fn = waNum(c.whatsapp_factory); $$('[data-ch="whatsapp_factory"]').forEach(function (a) { swapWa(a, fn); }); CONTACT.waChina = fn; }
-    if (c.email) CONTACT.email = c.email;
+    if (val('whatsapp')) CONTACT.waNigeria = waNum(val('whatsapp'));
+    if (val('whatsapp2')) CONTACT.waChina = waNum(val('whatsapp2'));
+    if (val('email')) CONTACT.email = val('email');
+  });
+
+  // Spare parts (edited in the CMS under Spare parts): name, tag, description, photos.
+  var EXPAND = '<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+  $$('[data-cms="spare-parts"]').forEach(function (grid) {
+    Promise.all([loadContent('spare-parts'), loadContent('contact')]).then(function (r) {
+      var list = (r[0] || []).filter(function (p) { return p && p.name; }), c = r[1] || {};
+      if (!list.length) return;
+      var wa = c.whatsapp ? waNum(c.whatsapp) : CONTACT.waNigeria;
+      fill(grid, list.map(function (p, i) {
+        var photos = (p.photos || []).filter(Boolean).map(function (x) { return String(x).replace(/^\//, ''); });
+        var first = photos[0] ? '<img src="' + esc(photos[0]) + '" alt="' + esc(p.name) + '" loading="lazy">' : '';
+        var count = photos.length > 1 ? '<span class="pf-count">' + EXPAND + photos.length + ' photos</span>' : '';
+        var href = waLink(wa, 'Hello Pulita, I need ' + String(p.name).toLowerCase() + ' for my generator. Model / serial number: ');
+        return '<article class="card card-hover part-item" data-reveal="up" data-delay="' + ((i % 4) * 70) + '">' +
+          '<button type="button" class="part-media" data-photos="' + esc(JSON.stringify(photos)) + '" data-title="' + esc(p.name) + '" aria-label="View photos of ' + esc(p.name) + '">' + first + count + '</button>' +
+          '<div class="p-5 flex flex-col flex-1">' + (p.tag ? '<span class="part-tag">' + esc(p.tag) + '</span>' : '') +
+          '<h3 class="font-display text-xl font-extrabold uppercase text-blue-brand leading-tight mt-2">' + esc(p.name) + '</h3>' +
+          (p.description ? '<p class="text-slate-600 text-[15px] mt-2">' + esc(p.description) + '</p>' : '') +
+          '<a class="link-arrow mt-auto pt-4" style="font-size:.95rem" href="' + esc(href) + '" target="_blank" rel="noopener">Ask for price ' + ARR + '</a></div></article>';
+      }).join(''));
+    });
+  });
+
+  // Product datasheets uploaded in the CMS replace the built-in PDF for that model.
+  if ($('[data-ds]')) loadContent('datasheets').then(function (list) {
+    var KEY = { 'cng generator': 'cng', 'lpg generator': 'lpg', 'biogas generator': 'biogas', 'mru': 'mru' };
+    (list || []).forEach(function (d) {
+      if (!d || !d.file || !d.model) return;
+      var k = ((KEY[String(d.product || '').toLowerCase()] || '') + '|' + String(d.model).trim().replace(/,/g, '').replace(/\s+/g, ' ')).toUpperCase();
+      $$('[data-ds]').forEach(function (a) { if (a.dataset.ds.toUpperCase() === k) a.href = String(d.file).replace(/^\//, ''); });
+    });
+  });
+
+  // Generic photo rotator: [data-rotate] with .rot-slide images, one every 3 seconds.
+  $$('[data-rotate]').forEach(function (box) {
+    var imgs = $$('.rot-slide', box), i = 0;
+    if (imgs.length < 2 || reduceMotion) return;
+    setInterval(function () {
+      if (document.hidden) return;
+      imgs[i].classList.remove('is-active'); i = (i + 1) % imgs.length; imgs[i].classList.add('is-active');
+    }, 3000);
   });
 
   /* ---------- Hero photo slider (slides editable in the CMS: Home banner) ---------- */
@@ -829,12 +876,11 @@
       var dx = e.changedTouches[0].clientX - tx; tx = null;
       if (Math.abs(dx) > 40) lbShow(lbIdx + (dx < 0 ? 1 : -1));
     });
-    // Spare parts: open all photos of a part
-    $$('[data-photos]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var list = []; try { list = JSON.parse(btn.dataset.photos); } catch (e) {}
-        if (list.length) lbOpen(list, btn.dataset.title || '', 0, btn);
-      });
+    // Spare parts: open all photos of a part (delegated, so CMS-rendered cards work too)
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('[data-photos]'); if (!btn) return;
+      var list = []; try { list = JSON.parse(btn.dataset.photos); } catch (err) {}
+      if (list.length) lbOpen(list, btn.dataset.title || '', 0, btn);
     });
     // Single photos ("More from the field")
     $$('[data-lb]').forEach(function (f) {
