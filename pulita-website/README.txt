@@ -1,205 +1,43 @@
-PULITA NEW ENERGY: WEBSITE v2 (www.pulitaenergy.com)
-====================================================
+PULITA NEW ENERGY WEBSITE (www.pulitaenergy.com)
+================================================
 
-An eight-page, fully responsive website presenting Pulita as a complete
-gas-to-power solutions provider. Built with HTML5, CSS3 (Tailwind + custom
-styles) and vanilla JavaScript. News, Projects and social links can be
-edited by the client through Pages CMS (see HANDOVER.txt).
+A nine-page, fully responsive website built with HTML5, CSS3 (Tailwind +
+custom styles) and plain JavaScript. There is no build step: the files in
+this folder are the finished website.
 
+PAGES
+  index.html        Home
+  about.html        About
+  products.html     Products (CNG, LPG and biogas generators, CNG cascade,
+                    MRU, PRMS) with spec tables and PDF datasheets
+  solutions.html    Solutions
+  projects.html     Projects and case studies
+  news.html         News & exhibitions
+  services.html     Services and quote form
+  spare-parts.html  Spare parts
+  contact.html      Contact
 
-1. OPEN THE SITE LOCALLY
-------------------------
-Double-click index.html. Everything works offline (News and Projects use a
-built-in copy of the content when opened from disk).
-For a test identical to live hosting, run inside this folder:
-    python3 -m http.server 8000      then open http://localhost:8000
+FOLDERS
+  assets/css/       styles.css, tailwind.css (design)
+  assets/js/        main.js (menus, banner, gallery, calculator, CMS loading),
+                    content-fallback.js (offline copy of the CMS content)
+  assets/images/    all site photos; uploads/ holds photos added in the CMS
+  assets/docs/      PDF datasheets and spec sheets, SONCAP certificate;
+                    uploads/ holds PDFs added in the CMS
+  content/          CMS content (JSON): news, projects, banner, contact,
+                    settings (social links), spare-parts, datasheets,
+                    page-*.json (each page's headlines, text and main photos)
 
-To publish, connect the domain and set up the editor: see HANDOVER.txt.
+EDITING
+  Day-to-day content is edited in Pages CMS (app.pagescms.org). The CMS
+  settings file .pages.yml sits at the TOP of the repository, next to this
+  pulita-website folder.
 
+HOSTING
+  See "Pulita Website - Owner Setup and Hosting Guide.pdf" and HANDOVER.txt.
+  Vercel: Root Directory = pulita-website, Framework Preset = Other.
+  Netlify: Base directory empty, Publish directory = pulita-website.
 
-2. PAGES
---------
-index.html      Home: real-installation hero slider; data band (30,000+ m²,
-                20–4,000 kVA, up to 44% efficiency, 100+ countries) with Turnkey
-                EPC and Modular Design badges; product hierarchy (1 Gas
-                Generators, 2 CNG Daughter Stations, 3 CNG Mother Stations,
-                then other core products); ecosystem flow; completed projects
-                (CMS); news & exhibitions (CMS); savings calculator; local support
-about.html      Story, mission & vision, global map, quality control, certificates,
-                team (John Wang, Eric Zhao, Richard Chinemelum Arannonu)
-products.html   01 Gas generators (LPG, CNG/natural gas, flare gas, biogas,
-                landfill gas) with the full spec table and kVA finder; 02 CNG
-                daughter stations & MRUs; 03 CNG mother stations; CNG compression,
-                storage & transport (CNG/LNG); PRMS/DRS skids; gas processing
-solutions.html  Interactive ecosystem flowchart (gas processing → CNG compression
-                → storage/transport → refuelling → power generation); MRU & Kubwa
-                refilling station, Abuja; partner business model and gas supply
-                partners (Vision Gas, Powergas, Portland Gas Limited, Asiko Energy;
-                editable with logos in the CMS); gas-to-power; EV charging stations
-projects.html   Filterable project gallery (CMS) + Burger King case study
-news.html       Upcoming events + news list (CMS)
-services.html   After-sales, process, gas station EPC, quote form
-contact.html    Contacts, offices, Google Map, contact form
-
-Navigation: "Products & Solutions" is a dropdown with Products and Solutions.
-Solar products and imagery have been removed; solar appears only as one power
-source in the EV charging solution.
-
-
-3. FOLDERS
-----------
-content/news.json       News & exhibitions  } edited in Pages CMS
-content/projects.json   Project gallery     }
-content/settings.json   X / Facebook links  }
-content/partners.json   Gas supply partners }
-content/contact.json    Phone, WhatsApp,    }
-                        email, addresses    }
-content/banner.json     Home banner photos  }
-assets/docs/            Downloads: LPG & CNG datasheets (PDF), SONCAP certificate
-.pages.yml              Pages CMS configuration (keep this hidden file!)
-assets/images/uploads/  Photos uploaded through the CMS (created on first upload)
-assets/css/             tailwind.css (pre-compiled) + styles.css
-assets/js/main.js       All interactions and CMS rendering
-assets/js/content-fallback.js   Offline copy of content/*.json (used only
-                        when opened from disk; not needed on the live site)
-assets/fonts/           Barlow 400/700 & Barlow Condensed 700/800 (SIL Open Font License)
-HANDOVER.txt            Hosting, DNS, CMS setup and client editing guide
-
-
-4. FEATURES
------------
-- Hero slider of real installation photos (auto-advances, pausable).
-- Savings calculator and LPG/CNG vs diesel comparison (brochure reference
-  prices: diesel ₦2,000/L (client-confirmed), LPG ₦750/kg and CNG ₦380/m³
-  (brochure reference); edit in index.html). Resulting savings vs diesel:
-  LPG ~67%, CNG ~77%. These figures are used site-wide.
-- Product detail pop-ups; "Request a Quote" pre-selects the product.
-- kVA finder on the generator spec table.
-- Interactive gas-to-power flowchart on the Solutions page.
-- Upcoming events appear automatically for Exhibition/Event entries with a
-  future date.
-- X (Twitter) and Facebook icons in header, footer and mobile menu. They
-  show "coming soon" until the links are added in the CMS.
-- Floating WhatsApp button (Nigeria + factory desk).
-- Scroll animations, counters and hover effects; respects "reduce motion".
-- Forms open WhatsApp or email with the enquiry pre-filled.
-
-
-5. TO CONFIRM WITH THE CLIENT
------------------------------
-a) Instagram: no official account was found online. Add the URL in the CMS
-   (Social media links); the icon shows "coming soon" until then.
-b) Home banner: no new project photos were supplied in round 5, so the
-   banner still shows the three real-installation photos. Upload new photos
-   in the CMS (Home page banner) or send them to the developer.
-c) Vinnie Jiang: name confirmed; profile text to confirm. The
-   supplied portrait carries a "Doubao AI generated" mark in its corner (not
-   visible in the cropped team card). Consider a real photo.
-d) Phone 0803 080 0999 was removed; 0810 518 5525 is now the main phone and
-   WhatsApp. A second number can be added in the CMS (Contact details).
-e) Case studies: application/equipment are based on the brochure and photos.
-   Scope and results are only filled where known. Savings marked * are
-   estimates. Add confirmed scope and results in the CMS (Projects).
-f) Kubwa case-study narrative (challenge/solution wording) is draft copy.
-g) LPG and CNG prices are still the brochure reference values (₦750/kg,
-   ₦380/m³). Diesel is ₦2,000/L.
-h) Gas supply partner logos and the Vision Gas / Portland Gas websites.
-i) Abuja: there is no Abuja office; the site shows the Abuja warehouse (address editable in the CMS: Contact details).
-j) News items have no dates yet. Add the real dates in the CMS.
-
-
-6. PHOTOS
----------
-New real-installation photos (from the client's PRMS, Cascade and MRU folders):
-  hero-install-genset-cascade-prms.jpg  Gas genset + CNG cascade + PRMS on site
-  hero-mru-station-site.jpg             MRU refilling station on site (Abuja)
-  hero-cascade-station-site.jpg         CNG cascades at the refilling station
-  cng-mother-station.jpg                CNG mother station (client-supplied)
-  exhibition-1.jpg ... exhibition-8.jpg  Latest exhibition stand photos (About, Services)
-  team-portrait-veinie.jpg              Vinnie Jiang, Sales Assistant
-  soncap-certificate.jpg                Preview of the SONCAP certificate
-  install-cascade-station-site.jpg      Cascades at station (storage)
-  install-cascade-genset-site.jpg       Genset + cascade + PRMS cabinet
-  prms-skid-closed.jpg / prms-skid-open.jpg / prms-regulator-detail.jpg
-  mru-dispenser-factory.jpg / mru-open-factory.jpg / mru-units-factory.jpg
-  mru-team-factory.jpg / mru-station-site-portrait.jpg / mru-compressor-detail.jpg
-Earlier assets (brochure crops, supplied photos, team portraits) remain as in v1.
-Removed: all solar images (inverters, PV module, hybrid site photos).
-
-(c) Pulita New Energy Co., Ltd.
-
-
-7. ROUND 5 CHANGES (Nov 2026)
------------------------------
-- Phone and WhatsApp: 0810 518 5525 everywhere.
-- All contact details (phone, second phone, WhatsApp, factory WhatsApp,
-  email, Lagos/Abuja addresses) are editable in the CMS: Contact details.
-  They update the header, footer, contact page, Get a Quote, WhatsApp button
-  and form targets.
-- Social: Instagram, Facebook, LinkedIn (linked to the company page) and X
-  icons in the top bar, footer, mobile menu, contact page and News page.
-- About: latest exhibition photos replace the NOG photo; Richard removed;
-  Vinnie Jiang (Sales Assistant) added; SONCAP certificate with View/Download.
-- Products: four category tiles; product finder by fuel, application and
-  power; separate, simplified LPG and CNG spec tables with kVA finder;
-  downloadable LPG/CNG datasheets (PDF).
-- Solutions: new "Solutions by application" section (6 sectors) linking to
-  filtered case studies.
-- Projects: click any project for location, application, equipment,
-  scope and results; new Kubwa MRU case study; links can pre-filter
-  (projects.html?filter=telecom) or open a project (projects.html?case=0).
-- Services: new service and project photos.
-- Home banner photos are editable in the CMS.
-
-8. ROUND 6 CHANGES (Nov 2026, from Eric Zhao's feedback)
----------------------------------------------------------
-- Menu: "Products" and "Solutions" are now separate. The Products menu lists
-  the six products; the Services menu adds "Spare parts supply".
-- Products page now shows only six products, each with photos, an Excel
-  download and a specification table:
-    CNG generator 20-4,000 kVA | LPG generator 20-300 kVA |
-    Biogas generator 20-1,250 kVA | CNG cascade 200-7,000 scm |
-    MRU (integrated daughter station) 600-7,000 scm/h | PRMS 20-20,000 m3/h
-- Generator tables: open type removed (silent type only). Every CNG and LPG
-  model has its own PDF datasheet (assets/docs/datasheets/). The 100 kVA CNG
-  sheet is the client's own PLT-100GF datasheet; the table uses its figures.
-- Remark on every table and datasheet: consumption, dimensions and weight are
-  for reference only and can vary with actual production.
-- Excel files: assets/docs/pulita-*-specifications.xlsx (one per product).
-- Solutions page: daughter station EPC & petrol station conversion
-  (600-7,000 m3/h), mother station EPC (2-10 MMSCF/d), L-CNG stations
-  (20-60 tons), IPP power plants. "One-stop gas station EPC" moved here from
-  Services.
-- New page: spare-parts.html (spare parts supply, like the JMG example).
-  Parts photos to be added when the client sends them.
-- About: new photos (MRU delegation, office meeting, two exhibitions).
-- Projects: new "Project photos" gallery with all the client's new photos,
-  tap to enlarge.
-- To confirm with the client: biogas, MRU and cascade/PRMS datasheets (shown
-  as "Request" until supplied); model codes (PLT-xxxGF) for other sizes; the
-  spare parts categories; what Eric's "Remove" message referred to.
-
-9. ROUND 7 CHANGES (Nov 2026)
------------------------------
-- Homepage: one full-width banner photo behind the headline (CMS: Home page
-  banner, first photo). New photos on the Gas Generators and CNG Daughter
-  Stations cards. "LPG / CNG vs diesel" and the calculator moved up, right
-  after the four stat cards.
-- About: SONCAP panel removed (SONCAP stays in the certificates row).
-- Products: the client's own datasheets for 15, 20, 30, 50, 100, 150, 200,
-  400 and 500 kVA CNG sets replace the generated ones; table figures match
-  them; 15 kVA and 400 kVA added.
-- Projects: portfolio of 22 Nigerian projects (131 photos) in
-  assets/images/, each opening a swipeable photo gallery, with
-  filters by fuel and sector.
-
-10. FILE COUNT (for GitHub upload)
----------------------------------
-Upload only the files that changed (see the update ZIP). Never re-upload the
-content/ folder: the CMS owns it, and uploading it overwrites client edits.
-Files no longer used (safe to delete on GitHub): assets/docs/pulita-lpg-
-generator-datasheet.pdf, assets/docs/pulita-cng-generator-datasheet.pdf, and
-in assets/images: cng-tube-skid-trailer.jpg, dual-fuel-generator.jpg,
-exhibition-1.jpg, exhibition-3.jpg, exhibition-4.jpg, gas-station-epc-1.jpg,
-lpg-generator-open-type.jpg, mru-compressor-detail.jpg, mru-open-factory.jpg,
-pulita-generator-soundproof-beige.png.
+OPEN LOCALLY
+  Double-click index.html, or run "python3 -m http.server 8000" inside this
+  folder and open http://localhost:8000.
