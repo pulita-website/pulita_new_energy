@@ -124,26 +124,6 @@ content:
         label: 'Facebook page URL, e.g. https://facebook.com/pulitaenergy'
         type: string
 
-  - name: partners
-    label: 'Gas supply partners'
-    type: file
-    path: pulita-website/content/partners.json
-    format: json
-    list: true
-    fields:
-      - name: name
-        label: 'Company name'
-        type: string
-        required: true
-      - name: logo
-        label: 'Logo (PNG or SVG, transparent background, wide format)'
-        type: image
-        options:
-          media: images
-      - name: website
-        label: 'Website (optional, starting with https://)'
-        type: string
-
   - name: contact
     label: 'Contact details'
     type: file
