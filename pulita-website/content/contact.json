@@ -1,10 +1,11 @@
 {
   "phone": "0810 518 5525",
+  "email": "eric@hitepower.com",
+  "whatsapp": "+86 186 7800 2095",
   "phone2": "0803 080 0999",
-  "whatsapp": "0810 518 5525",
-  "whatsapp_factory": "+86 186 7806 0186",
-  "email": "john@hitepower.com",
-  "email2": "eric@hitepower.com",
+  "email2": "john@hitepower.com",
+  "whatsapp2": "+86 186 7806 0186",
   "lagos_address": "23 Younis Bashorun Street, Victoria Island, Lagos 106104",
-  "abuja_address": "Federal Capital Territory, Abuja"
+  "abuja_address": "Federal Capital Territory, Abuja",
+  "factory_address": "East of Bohai Road, Binhai Industrial Park, Binhai Economic Development Zone, Weifang City, Shandong Province, China"
 }

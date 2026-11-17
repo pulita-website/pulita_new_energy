@@ -1,0 +1,66 @@
+[
+  {
+    "name": "High-voltage ignition leads",
+    "tag": "Ignition",
+    "description": "Spark plug leads for 4- and 6-cylinder Pulita gas engines.",
+    "photos": [
+      "assets/images/part-hv-leads-3.jpg",
+      "assets/images/part-hv-leads-4.jpg",
+      "assets/images/part-hv-leads-5.jpg",
+      "assets/images/part-hv-leads-6.jpg",
+      "assets/images/part-hv-leads-1.jpg",
+      "assets/images/part-hv-leads-2.jpg"
+    ]
+  },
+  {
+    "name": "Ignition coils",
+    "tag": "Ignition",
+    "description": "Coil-on-plug ignition coils for reliable starting and smooth running.",
+    "photos": [
+      "assets/images/part-ignition-coil-1.jpg",
+      "assets/images/part-ignition-coil-2.jpg"
+    ]
+  },
+  {
+    "name": "Spark plugs",
+    "tag": "Ignition",
+    "description": "Spark plugs matched to each gas engine model.",
+    "photos": [
+      "assets/images/part-spark-plug.jpg"
+    ]
+  },
+  {
+    "name": "Oil pressure sensors",
+    "tag": "Sensors",
+    "description": "Oil pressure senders for engine protection and controller readings.",
+    "photos": [
+      "assets/images/part-oil-pressure-sensor.jpg"
+    ]
+  },
+  {
+    "name": "Oxygen sensors",
+    "tag": "Sensors",
+    "description": "Oxygen sensors for accurate air-fuel control and lower emissions.",
+    "photos": [
+      "assets/images/part-oxygen-sensor.jpg"
+    ]
+  },
+  {
+    "name": "Speed sensors",
+    "tag": "Sensors",
+    "description": "Engine speed sensors (magnetic pickups) for the governor and controller.",
+    "photos": [
+      "assets/images/part-speed-sensor.jpg",
+      "assets/images/part-sensor-pickup.jpg",
+      "assets/images/part-sensors-assorted.jpg"
+    ]
+  },
+  {
+    "name": "Temperature sensors",
+    "tag": "Sensors",
+    "description": "Coolant temperature sensors for high-temperature alarms and shutdown.",
+    "photos": [
+      "assets/images/part-temperature-sensor.jpg"
+    ]
+  }
+]

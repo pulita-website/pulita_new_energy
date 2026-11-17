@@ -1,5 +1,22 @@
 [
   {
+    "title": "Kano Plastics Factory",
+    "capacity": "750kVA",
+    "fuel": "CNG",
+    "location": "Kano",
+    "sector": "Industrial",
+    "image": "assets/images/kano-750kva-cng-plastics-factory-cover.jpg",
+    "photos": [
+      "assets/images/kano-750kva-cng-plastics-factory-01.jpg"
+    ],
+    "featured": true,
+    "summary": "A containerized 750 kVA Pulita CNG generator set powering a plastics factory in Kano, 24 hours a day.",
+    "application": "Plastics factory power, 24 hours a day",
+    "equipment": "Pulita 750 kVA CNG generator set with gas regulating cabinet",
+    "scope": "",
+    "results": "Runs 24 hours a day. Estimated ~77% lower fuel cost than diesel*"
+  },
+  {
     "title": "Uyo Hotel Power Plant",
     "capacity": "3.6 MW",
     "fuel": "CNG",
