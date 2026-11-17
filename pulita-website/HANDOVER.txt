@@ -1,154 +1,91 @@
-PULITA NEW ENERGY: HOSTING, DOMAIN & CMS HANDOVER GUIDE
-=======================================================
+PULITA NEW ENERGY WEBSITE - HANDOVER & HOSTING NOTES
+====================================================
+For Pulita's IT person. Updated 16 Nov 2026.
+The same steps, with screenshots-friendly formatting, are in the shared guide
+"Pulita Website: Handover & Hosting Guide". Staff instructions for editing
+content are in "How to Update the Pulita Website".
 
-This guide puts the site online at the client's own domain and gives the
-Pulita team a simple editor for News, Projects and social links.
+WHAT THE SITE IS
+- Plain HTML, CSS and JavaScript. No build step, no database, no server code.
+- Repository: pulita_new_energy (GitHub). The website lives in the folder
+  "pulita-website". The CMS settings file ".pages.yml" sits at the TOP of the
+  repository (not inside pulita-website).
 
-Recommended free setup:
-  GitHub (stores the site)  ->  Netlify (hosts it, free SSL)  ->  Pages CMS (editor)
+STEP 1 - ACCEPT THE GITHUB REPOSITORY
+1. Create a free company GitHub account (github.com) with a company email.
+2. The developer transfers the repository to that account
+   (Settings > General > Danger Zone > Transfer ownership).
+3. Accept the emailed invitation within 24 hours.
+4. Turn on two-factor sign-in. This account controls the website and the CMS.
 
-Why this setup: the site is static (fast, secure, nothing to patch). Pages CMS
-edits the content files directly on GitHub. Netlify republishes the site about
-a minute after every save, so no server or database needs maintaining.
+STEP 2 - HOST THE WEBSITE (choose one)
+Vercel:
+1. Sign up at vercel.com with the company GitHub account.
+2. Add New > Project > import pulita_new_energy.
+3. Root Directory: pulita-website. Framework Preset: Other.
+   Leave build command and output directory empty. Deploy.
+   Note: Vercel's free Hobby plan is non-commercial; use Pro for a company site.
+Netlify:
+1. Sign up at netlify.com with the company GitHub account.
+2. Add new site > Import an existing project > GitHub > pulita_new_energy.
+3. Base directory: pulita-website. Build command: empty.
+   Publish directory: pulita-website. Deploy.
+Both hosts republish automatically about a minute after every change saved
+to GitHub, including every CMS save.
 
+STEP 3 - CONNECT pulitaenergy.com
+1. In the host, add pulitaenergy.com and www.pulitaenergy.com.
+2. Create the DNS records the host shows, at the domain registrar. Usually:
+      A      @     76.76.21.21 (Vercel)   or 75.2.60.5 (Netlify)
+      CNAME  www   cname.vercel-dns.com   or <your-site>.netlify.app
+   Remove old A/CNAME records for the same names. Leave MX/TXT (email) alone.
+3. Wait for verification. The https certificate is issued automatically.
 
------------------------------------------------------------------------
-STEP 1: PUT THE SITE ON GITHUB  (developer, about 10 minutes)
------------------------------------------------------------------------
-1. Create a free GitHub account (ideally one owned by Pulita, so the
-   client keeps ownership), e.g. github.com/pulitaenergy
-2. Create a new PRIVATE repository, e.g. "pulita-website".
-3. Upload the CONTENTS of the pulita-website folder (index.html at the top
-   level, plus the assets/, content/ folders and the .pages.yml file).
-   Make sure the hidden file ".pages.yml" is included.
+STEP 4 - PAGES CMS
+1. app.pagescms.org > Sign in with GitHub (company account).
+2. Install the Pages CMS GitHub app on pulita_new_energy when asked.
+3. Open the repository (branch main). Six sections should show:
+   News & Exhibitions, Projects, Social media links, Gas supply partners,
+   Contact details, Home page banner.
+4. Collaborators (Admin area): invite staff by email. They need no GitHub
+   account and cannot change settings or invite others.
 
+FILES
+  .pages.yml                         CMS settings (top of repo) - IT only
+  pulita-website/*.html              9 pages
+  pulita-website/assets/css/         styles.css, tailwind.css
+  pulita-website/assets/js/          main.js, content-fallback.js
+  pulita-website/assets/images/      all site photos (project photos included)
+  pulita-website/assets/images/uploads/   photos uploaded through the CMS
+  pulita-website/assets/docs/        datasheets (PDF), spec sheets (PDF/Excel),
+                                     SONCAP certificate
+  pulita-website/assets/docs/uploads/ datasheet PDFs uploaded through the CMS
+  pulita-website/content/            CMS content (JSON) - edited through the CMS:
+                                     news, projects, banner, contact, settings,
+                                     partners, spare-parts, datasheets
 
------------------------------------------------------------------------
-STEP 2: HOST ON NETLIFY  (developer, about 5 minutes)
------------------------------------------------------------------------
-1. Sign up at netlify.com with the same GitHub account.
-2. "Add new project" > "Import an existing project" > GitHub >
-   choose "pulita-website".
-3. Build command: leave EMPTY. Publish directory: leave as "/" (root).
-4. Deploy. Netlify gives a temporary address such as
-   pulita-website.netlify.app. Check the site there.
-5. Optional: rename the project (Project configuration > Change project
-   name) to e.g. "pulitaenergy" -> pulitaenergy.netlify.app
+RULES
+- Never upload over pulita-website/content/ - it holds staff edits.
+- Never re-upload the backup ZIP over the repository.
+- Keep .pages.yml at the top of the repository with paths starting
+  "pulita-website/". A copy inside pulita-website is ignored.
+- On github.com, open the target folder first, then Add file > Upload files,
+  and drag the files themselves (not their parent folder).
+- Every change, including CMS saves, is a commit: undo from the history.
 
+HANDOVER CHECKLIST
+[ ] Company GitHub account, two-factor on
+[ ] Repository transfer accepted
+[ ] Site deployed on Pulita's own Vercel/Netlify, test address checked
+[ ] pulitaenergy.com + www connected, https working
+[ ] Pages CMS opened with the company account, six sections visible
+[ ] Staff invited, staff guide shared
+[ ] Contact details checked in the CMS
+[ ] Backup ZIP stored safely
+[ ] Developer's old Vercel project deleted
 
------------------------------------------------------------------------
-STEP 3: CONNECT THE DOMAIN (DNS)
------------------------------------------------------------------------
-Note on the "IP address": a static host like Netlify serves the site from a
-global network, so the client points the domain at Netlify's load balancer
-rather than at a server IP of its own. The values below are Netlify's
-published DNS settings. If you choose a different host, use that host's
-values instead.
-
-1. In Netlify: Domain management > Add a domain > enter pulitaenergy.com
-   (choose "add a domain you already own"). Netlify confirms the exact
-   records for your project; follow its screen if anything differs.
-2. At the client's domain registrar (where pulitaenergy.com was bought),
-   open the DNS settings and add:
-
-   Type    Host / Name    Value                                  TTL
-   ------  -------------  -------------------------------------  ----------
-   A       @              75.2.60.5                              Auto / 3600
-   CNAME   www            <your-project-name>.netlify.app        Auto / 3600
-
-   e.g. CNAME  www  ->  pulitaenergy.netlify.app
-
-   If the registrar supports ALIAS / ANAME / "flattened CNAME" records for
-   the root domain, Netlify recommends using that instead of the A record:
-   ALIAS   @   apex-loadbalancer.netlify.com
-
-   Delete any old A or CNAME records for "@" and "www" that point elsewhere
-   (e.g. a parking page). Do NOT touch MX records: those carry email.
-
-3. Set www.pulitaenergy.com as the primary domain in Netlify (recommended
-   by Netlify when DNS stays with the registrar).
-4. Wait for DNS to update (minutes to 48 hours). Netlify then issues a free
-   SSL certificate automatically, so the site loads on https://.
-
-Alternative: switch the domain's nameservers to Netlify DNS (Netlify shows
-the four nameservers). Simpler long-term, but then email (MX) records must
-be re-created inside Netlify before switching.
-
-
------------------------------------------------------------------------
-STEP 4: SET UP THE EDITOR (PAGES CMS)
------------------------------------------------------------------------
-1. Go to https://app.pagescms.org and sign in with the GitHub account.
-2. Install the Pages CMS GitHub app on the "pulita-website" repository.
-3. Open the repository in Pages CMS. It reads .pages.yml and shows three
-   sections: News & Exhibitions, Projects, Social media links, Gas supply
-   partners, Contact details and Home page banner.
-4. Invite the Pulita staff who will edit the site using Pages CMS's
-   collaborator invite (by email address). Invited editors don't need a
-   GitHub account or any knowledge of Git.
-
-
------------------------------------------------------------------------
-STEP 5: HOW THE PULITA TEAM EDITS THE SITE  (client guide)
------------------------------------------------------------------------
-Log in at https://app.pagescms.org, open "pulita-website", then:
-
-ADD NEWS OR AN EXHIBITION
-  News & Exhibitions > Add entry
-  - Title, Type (News / Exhibition / Event / Project), Date, Location
-  - Photo: upload a landscape photo (see photo tips below)
-  - Summary: 1-3 sentences
-  - Link (optional): an event website, or a page on the site such as
-    solutions.html#refuelling
-  Save. The site updates in about a minute.
-  Exhibitions and Events with a FUTURE date appear automatically under
-  "Upcoming events" on the Home and News pages, and move into the news list
-  once the date passes. Drag entries to change their order.
-
-ADD A PROJECT
-  Projects > Add entry
-  - Project name, Capacity (e.g. 450kVA), Fuel, Location, Sector
-  - Photo and short description
-  - Application, Equipment supplied, Project scope, Operating results:
-    shown when a visitor clicks the project (empty fields are hidden)
-  - Tick "Show on the home page" for up to 6 headline projects
-  Fuel and Sector power the filter buttons on the Projects page.
-
-SOCIAL MEDIA LINKS
-  Social media links > paste the full Instagram, Facebook, LinkedIn and
-  X (Twitter) page addresses (starting with https://). The icons in the header, footer and
-  News page start working straight away. While a link is empty, the icon
-  shows a "coming soon" message.
-
-CONTACT DETAILS (Get a Quote, header, footer, contact page)
-  Contact details > edit the phone, second phone (leave empty to hide),
-  WhatsApp, factory WhatsApp, email or office addresses > Save. Every page,
-  the WhatsApp button and the enquiry forms use the new details.
-
-HOME PAGE BANNER
-  Home page banner > add, remove or reorder photos (landscape, at least
-  2000 px wide, real installations) and write a short caption > Save.
-
-GAS SUPPLY PARTNER LOGOS
-  Gas supply partners > open a company > upload its official logo (PNG or
-  SVG with a transparent background, wide format) > Save. Add a website to
-  make the logo clickable. Until a logo is uploaded, the name is shown.
-
-PHOTO TIPS
-  - Real photos of installed equipment work best (the site's style).
-  - Landscape (wider than tall), about 1600 px wide.
-  - Keep each photo under about 500 KB (compress at squoosh.app or
-    tinypng.com), so pages load quickly on mobile data.
-
-WHAT IS NOT IN THE CMS
-  Product pages, the Solutions page and company text are fixed HTML. Ask
-  the developer for changes there (or edit the .html files on GitHub).
-
-
------------------------------------------------------------------------
-CONTACT FORMS
------------------------------------------------------------------------
-Forms open WhatsApp (0803 080 0999) or the visitor's email app
-(john@hitepower.com) with the enquiry filled in. To receive form
-submissions in an inbox instead, Netlify Forms can be enabled later (ask
-the developer).
+CONTACT DETAILS
+- Every phone, email, WhatsApp number and address shown on the pages comes from
+  the CMS (Contact details). Fixed copies also sit in each page's hidden page
+  description / business info (top of each .html file) and in the generated
+  PDF datasheets. If the numbers change, update those copies too.
