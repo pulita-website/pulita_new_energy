@@ -150,6 +150,9 @@ content:
     path: pulita-website/content/contact.json
     format: json
     fields:
+      - name: name
+        label: 'Contact 1: name and role, shown above their details (e.g. Eric (Sales))'
+        type: string
       - name: phone
         label: 'Contact 1: phone number (also shown in the top bar)'
         type: string
@@ -158,6 +161,9 @@ content:
         type: string
       - name: whatsapp
         label: 'Contact 1: WhatsApp number, with country code (used by every WhatsApp button and form)'
+        type: string
+      - name: name2
+        label: 'Contact 2: name and role, shown above their details (e.g. John (Service))'
         type: string
       - name: phone2
         label: 'Contact 2: phone number (leave empty to hide)'
