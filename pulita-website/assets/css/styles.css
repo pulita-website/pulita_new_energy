@@ -1137,3 +1137,10 @@ a.cert { text-decoration: none; color: inherit; }
 .rotator { position: relative; }
 .rotator .rot-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .9s ease; }
 .rotator .rot-slide.is-active { opacity: 1; }
+
+/* Contact person labels (CMS: Contact details > Contact 1/2 name) */
+.contact-name { display: flex; align-items: center; gap: .55rem; padding: .55rem .8rem .35rem; font-family: var(--font-display, inherit); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 1.15rem; color: var(--blue); border-bottom: 1px solid #E6ECF2; margin-bottom: .25rem; }
+.contact-name svg { width: 22px; height: 22px; color: var(--red); flex: none; }
+.fc-name { color: #fff; font-weight: 700; font-size: .95rem; letter-spacing: .02em; }
+.topbar-name { font-weight: 700; color: #fff; opacity: .9; margin-right: -.9rem; }
+.topbar-name::after { content: ':'; }
