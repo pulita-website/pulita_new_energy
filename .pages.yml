@@ -101,9 +101,6 @@ content:
       - name: results
         label: 'Operating results (mark estimates with *)'
         type: text
-      - name: featured
-        label: 'Show on the home page'
-        type: boolean
 
   - name: settings
     label: 'Social media links'
@@ -227,3 +224,382 @@ content:
         options:
           media: documents
           extensions: [pdf]
+
+  - name: page-home
+    label: 'Page: Home'
+    type: file
+    path: pulita-website/content/page-home.json
+    format: json
+    fields:
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
+      - name: products_title
+        label: 'Products & solutions section: heading'
+        type: string
+      - name: products_text
+        label: 'Products & solutions section: text'
+        type: text
+      - name: line1_photo
+        label: 'Product line 1: photo'
+        type: image
+        options:
+          media: images
+      - name: line1_title
+        label: 'Product line 1: heading'
+        type: string
+      - name: line1_text
+        label: 'Product line 1: text'
+        type: text
+      - name: line2_photo
+        label: 'Product line 2: photo'
+        type: image
+        options:
+          media: images
+      - name: line2_title
+        label: 'Product line 2: heading'
+        type: string
+      - name: line2_text
+        label: 'Product line 2: text'
+        type: text
+      - name: line3_photo
+        label: 'Product line 3: photo'
+        type: image
+        options:
+          media: images
+      - name: line3_title
+        label: 'Product line 3: heading'
+        type: string
+      - name: line3_text
+        label: 'Product line 3: text'
+        type: text
+      - name: line4_photo
+        label: 'Product line 4: photo'
+        type: image
+        options:
+          media: images
+      - name: line4_title
+        label: 'Product line 4: heading'
+        type: string
+      - name: line4_text
+        label: 'Product line 4: text'
+        type: text
+  - name: page-about
+    label: 'Page: About'
+    type: file
+    path: pulita-website/content/page-about.json
+    format: json
+    fields:
+      - name: hero_photo
+        label: 'Top banner: background photo'
+        type: image
+        options:
+          media: images
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
+      - name: story_title
+        label: 'Our story: heading'
+        type: string
+      - name: story_text_1
+        label: 'Our story: paragraph 1'
+        type: text
+      - name: story_text_2
+        label: 'Our story: paragraph 2'
+        type: text
+      - name: story_text_3
+        label: 'Our story: paragraph 3'
+        type: text
+      - name: story_text_4
+        label: 'Our story: paragraph 4'
+        type: text
+      - name: story_photo
+        label: 'Our story: photo'
+        type: image
+        options:
+          media: images
+      - name: factory_photo_1
+        label: 'Factory photo 1'
+        type: image
+        options:
+          media: images
+      - name: factory_photo_2
+        label: 'Factory photo 2'
+        type: image
+        options:
+          media: images
+      - name: team_photo_1
+        label: 'Team photo 1'
+        type: image
+        options:
+          media: images
+      - name: team_photo_2
+        label: 'Team photo 2'
+        type: image
+        options:
+          media: images
+      - name: team_photo_3
+        label: 'Team photo 3'
+        type: image
+        options:
+          media: images
+      - name: people_title
+        label: 'Our people section: heading'
+        type: string
+      - name: people_text
+        label: 'Our people section: text'
+        type: text
+  - name: page-products
+    label: 'Page: Products'
+    type: file
+    path: pulita-website/content/page-products.json
+    format: json
+    fields:
+      - name: hero_photo
+        label: 'Top banner: background photo'
+        type: image
+        options:
+          media: images
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
+      - name: overview_title
+        label: 'Our products section: heading'
+        type: string
+      - name: overview_text
+        label: 'Our products section: text'
+        type: text
+      - name: cng_generator_photo
+        label: 'CNG generator: photo'
+        type: image
+        options:
+          media: images
+      - name: cng_generator_text
+        label: 'CNG generator: text'
+        type: text
+      - name: lpg_generator_photo
+        label: 'LPG generator: photo'
+        type: image
+        options:
+          media: images
+      - name: lpg_generator_text
+        label: 'LPG generator: text'
+        type: text
+      - name: biogas_generator_photo
+        label: 'Biogas generator: photo'
+        type: image
+        options:
+          media: images
+      - name: biogas_generator_text
+        label: 'Biogas generator: text'
+        type: text
+      - name: cng_cascade_photo
+        label: 'CNG cascade: photo'
+        type: image
+        options:
+          media: images
+      - name: cng_cascade_text
+        label: 'CNG cascade: text'
+        type: text
+      - name: mru_photo
+        label: 'MRU: photo'
+        type: image
+        options:
+          media: images
+      - name: mru_text
+        label: 'MRU: text'
+        type: text
+      - name: prms_photo
+        label: 'PRMS: photo'
+        type: image
+        options:
+          media: images
+      - name: prms_text
+        label: 'PRMS: text'
+        type: text
+  - name: page-solutions
+    label: 'Page: Solutions'
+    type: file
+    path: pulita-website/content/page-solutions.json
+    format: json
+    fields:
+      - name: hero_photo
+        label: 'Top banner: background photo'
+        type: image
+        options:
+          media: images
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
+      - name: intro_title
+        label: 'Our solutions section: heading'
+        type: string
+      - name: intro_text
+        label: 'Our solutions section: text'
+        type: text
+      - name: daughter_epc_photo
+        label: 'Daughter station card: photo'
+        type: image
+        options:
+          media: images
+      - name: daughter_epc_title
+        label: 'Daughter station card: heading'
+        type: string
+      - name: daughter_epc_text
+        label: 'Daughter station card: text'
+        type: text
+      - name: mother_station_photo
+        label: 'Mother station card: photo'
+        type: image
+        options:
+          media: images
+      - name: mother_station_title
+        label: 'Mother station card: heading'
+        type: string
+      - name: mother_station_text
+        label: 'Mother station card: text'
+        type: text
+      - name: lcng_photo
+        label: 'L-CNG card: photo'
+        type: image
+        options:
+          media: images
+      - name: lcng_title
+        label: 'L-CNG card: heading'
+        type: string
+      - name: lcng_text
+        label: 'L-CNG card: text'
+        type: text
+      - name: ipp_photo
+        label: 'IPP power plants card: photo'
+        type: image
+        options:
+          media: images
+      - name: ipp_title
+        label: 'IPP power plants card: heading'
+        type: string
+      - name: ipp_text
+        label: 'IPP power plants card: text'
+        type: text
+      - name: ev_title
+        label: 'EV charging section: heading'
+        type: string
+      - name: ev_text
+        label: 'EV charging section: text'
+        type: text
+  - name: page-projects
+    label: 'Page: Projects'
+    type: file
+    path: pulita-website/content/page-projects.json
+    format: json
+    fields:
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
+  - name: page-news
+    label: 'Page: News'
+    type: file
+    path: pulita-website/content/page-news.json
+    format: json
+    fields:
+      - name: hero_photo
+        label: 'Top banner: background photo'
+        type: image
+        options:
+          media: images
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
+  - name: page-services
+    label: 'Page: Services'
+    type: file
+    path: pulita-website/content/page-services.json
+    format: json
+    fields:
+      - name: hero_photo
+        label: 'Top banner: background photo'
+        type: image
+        options:
+          media: images
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
+      - name: aftersales_photos
+        label: 'After-sales section: photos (they change every 3 seconds)'
+        type: image
+        options:
+          media: images
+        list: true
+      - name: aftersales_title
+        label: 'After-sales section: heading'
+        type: string
+      - name: aftersales_text
+        label: 'After-sales section: text'
+        type: text
+      - name: quote_title
+        label: 'Quote section: heading'
+        type: string
+      - name: quote_text
+        label: 'Quote section: text'
+        type: text
+      - name: quote_photo
+        label: 'Quote section: photo'
+        type: image
+        options:
+          media: images
+  - name: page-spare-parts
+    label: 'Page: Spare parts'
+    type: file
+    path: pulita-website/content/page-spare-parts.json
+    format: json
+    fields:
+      - name: hero_photo
+        label: 'Top banner: background photo'
+        type: image
+        options:
+          media: images
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
+      - name: catalogue_title
+        label: 'Parts catalogue section: heading'
+        type: string
+      - name: catalogue_text
+        label: 'Parts catalogue section: text'
+        type: text
+  - name: page-contact
+    label: 'Page: Contact'
+    type: file
+    path: pulita-website/content/page-contact.json
+    format: json
+    fields:
+      - name: hero_title
+        label: 'Top banner: headline'
+        type: string
+      - name: hero_text
+        label: 'Top banner: text under the headline'
+        type: text
