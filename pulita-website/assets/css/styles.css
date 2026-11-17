@@ -1119,3 +1119,21 @@ a.cert { text-decoration: none; color: inherit; }
 .part-item:hover .part-media img { transform: scale(1.06); }
 .part-media .pf-count { right: 10px; bottom: 10px; }
 .part-tag { align-self: flex-start; font-family: "Barlow Condensed", sans-serif; font-weight: 700; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--red); background: #FDECEC; padding: .2rem .6rem; border-radius: 6px; }
+
+/* Two contacts (footer + contact page). Each field can be hidden from the CMS by leaving it empty. */
+[data-cwrap][hidden] { display: none !important; }
+.footer-contacts { margin-top: .9rem; }
+.footer-list li.fc-group { flex-direction: column; align-items: stretch; gap: .55rem; padding-top: .85rem; border-top: 1px solid rgba(255,255,255,.1); }
+.fc-group a { display: flex; gap: .7rem; align-items: center; }
+.fc-group svg { margin-top: 0; }
+.fc-wa { width: 18px; height: 18px; flex: none; display: inline-block; }
+.footer-list .fc-wa svg { color: #25D366; }
+.contact-card { padding: .75rem; display: grid; gap: .15rem; }
+.contact-card .contact-tile { padding: .75rem .8rem; border-radius: 14px; transition: background .25s var(--ease); }
+.contact-card .contact-tile:hover { background: var(--blue-soft); }
+.contact-card .contact-tile .ic { width: 48px; height: 48px; }
+
+/* Photo rotator (Services "Engineers & parts"): photos crossfade every 3 seconds */
+.rotator { position: relative; }
+.rotator .rot-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .9s ease; }
+.rotator .rot-slide.is-active { opacity: 1; }
