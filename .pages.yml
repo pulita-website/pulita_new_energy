@@ -1,10 +1,17 @@
 # Pages CMS configuration: lets the Pulita team edit News, Projects and
 # social links from https://app.pagescms.org without touching code.
-# Images uploaded in the CMS are saved to assets/images/uploads/.
+# Images uploaded in the CMS are saved to assets/images/uploads/, PDFs to assets/docs/uploads/.
 media:
-  input: pulita-website/assets/images/uploads
-  output: /assets/images/uploads
-  categories: [image]
+  - name: images
+    label: 'Images'
+    input: pulita-website/assets/images/uploads
+    output: /assets/images/uploads
+    categories: [image]
+  - name: documents
+    label: 'Documents (PDF)'
+    input: pulita-website/assets/docs/uploads
+    output: /assets/docs/uploads
+    categories: [document]
 
 content:
   - name: news
@@ -32,6 +39,8 @@ content:
       - name: image
         label: 'Photo'
         type: image
+        options:
+          media: images
       - name: summary
         label: 'Summary (1-3 sentences)'
         type: text
@@ -69,9 +78,13 @@ content:
       - name: image
         label: 'Cover photo (shown on the card)'
         type: image
+        options:
+          media: images
       - name: photos
         label: 'All project photos (opened when a visitor taps the project)'
         type: image
+        options:
+          media: images
         list: true
       - name: summary
         label: 'Short description'
@@ -125,6 +138,8 @@ content:
       - name: logo
         label: 'Logo (PNG or SVG, transparent background, wide format)'
         type: image
+        options:
+          media: images
       - name: website
         label: 'Website (optional, starting with https://)'
         type: string
@@ -136,22 +151,22 @@ content:
     format: json
     fields:
       - name: phone
-        label: 'Main phone number (shown in header, footer, contact page, Get a Quote)'
-        type: string
-      - name: phone2
-        label: 'Second phone number (optional, leave empty to hide)'
-        type: string
-      - name: whatsapp
-        label: 'WhatsApp number for Nigeria (used by all WhatsApp buttons and forms)'
-        type: string
-      - name: whatsapp_factory
-        label: 'Factory / export WhatsApp number'
+        label: 'Contact 1: phone number (also shown in the top bar)'
         type: string
       - name: email
-        label: 'Email address (shown on site and used by forms)'
+        label: 'Contact 1: email (also used by the website forms)'
+        type: string
+      - name: whatsapp
+        label: 'Contact 1: WhatsApp number, with country code (used by every WhatsApp button and form)'
+        type: string
+      - name: phone2
+        label: 'Contact 2: phone number (leave empty to hide)'
         type: string
       - name: email2
-        label: 'Second email address (optional, leave empty to hide)'
+        label: 'Contact 2: email (leave empty to hide)'
+        type: string
+      - name: whatsapp2
+        label: 'Contact 2: WhatsApp number, with country code (leave empty to hide)'
         type: string
       - name: lagos_address
         label: 'Lagos office address'
@@ -159,6 +174,9 @@ content:
       - name: abuja_address
         label: 'Abuja warehouse location (shown in footer and contact page)'
         type: string
+      - name: factory_address
+        label: 'Factory / headquarters address in China (Contact page)'
+        type: text
 
   - name: banner
     label: 'Home page banner (photos change every 3 seconds behind the headline)'
@@ -170,7 +188,56 @@ content:
       - name: image
         label: 'Photo (landscape, at least 2000 px wide, real installations)'
         type: image
+        options:
+          media: images
         required: true
       - name: caption
         label: 'Caption (e.g. Real installation: CNG MRU refilling station, Abuja)'
         type: string
+
+  - name: spare-parts
+    label: 'Spare parts'
+    type: file
+    path: pulita-website/content/spare-parts.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: 'Part name'
+        type: string
+        required: true
+      - name: tag
+        label: 'Category tag (e.g. Ignition, Sensors, Filters)'
+        type: string
+      - name: description
+        label: 'Short description (one sentence)'
+        type: text
+      - name: photos
+        label: 'Photos (the first one shows on the card; visitors can swipe through all of them)'
+        type: image
+        options:
+          media: images
+        list: true
+
+  - name: datasheets
+    label: 'Product datasheets (PDF per model)'
+    type: file
+    path: pulita-website/content/datasheets.json
+    format: json
+    list: true
+    fields:
+      - name: product
+        label: 'Product'
+        type: select
+        options:
+          values: [CNG generator, LPG generator, Biogas generator, MRU]
+      - name: model
+        label: 'Model, exactly as shown in the table (e.g. PLT-100GF or MRU 600)'
+        type: string
+        required: true
+      - name: file
+        label: 'Datasheet PDF (replaces the PDF button for this model)'
+        type: file
+        options:
+          media: documents
+          extensions: [pdf]
