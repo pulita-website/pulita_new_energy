@@ -454,7 +454,7 @@
     if (c.whatsapp2 === undefined && c.whatsapp_factory !== undefined) c.whatsapp2 = c.whatsapp_factory;
     var has = function (k) { return Object.prototype.hasOwnProperty.call(c, k); };
     var val = function (k) { return String(c[k] || '').trim(); };
-    ['phone', 'phone2', 'email', 'email2', 'whatsapp', 'whatsapp2', 'lagos_address', 'abuja_address', 'factory_address'].forEach(function (k) {
+    ['name', 'name2', 'phone', 'phone2', 'email', 'email2', 'whatsapp', 'whatsapp2', 'lagos_address', 'abuja_address', 'factory_address'].forEach(function (k) {
       if (val(k)) $$('[data-ct="' + k + '"]').forEach(function (el) { el.textContent = val(k); });
     });
     ['phone', 'phone2'].forEach(function (k) { if (val(k)) $$('[data-ch="' + k + '"]').forEach(function (a) { a.href = telHref(val(k)); }); });
@@ -462,6 +462,7 @@
     ['whatsapp', 'whatsapp2'].forEach(function (k) { if (val(k)) { var n = waNum(val(k)); $$('[data-ch="' + k + '"]').forEach(function (a) { swapWa(a, n); }); } });
     ['phone2', 'email2', 'whatsapp', 'whatsapp2'].forEach(function (k) { if (has(k)) $$('[data-cwrap="' + k + '"]').forEach(function (w) { w.hidden = !val(k); }); });
     $$('[data-cwrap="contact2"]').forEach(function (w) { w.hidden = !(val('phone2') || val('email2') || val('whatsapp2')); });
+    $$('.wa-contact .av').forEach(function (av) { var n = av.parentNode.querySelector('[data-ct]'); if (n && n.textContent) av.textContent = n.textContent.trim().charAt(0).toUpperCase(); });
     if (val('lagos_address') && val('lagos_address') !== '23 Younis Bashorun Street, Victoria Island, Lagos 106104') {
       var q = encodeURIComponent(val('lagos_address') + ', Nigeria');
       $$('[data-map="link"]').forEach(function (a) { a.href = 'https://www.google.com/maps/search/?api=1&query=' + q; });
