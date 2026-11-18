@@ -40,26 +40,12 @@
     "results": "The completion of the project has addressed the demand for natural gas in the Kano region—specifically for power generation as well as for refueling passenger vehicles and heavy-duty trucks—thereby delivering significant social benefits."
   },
   {
-    "title": "Port Harcourt LPG Plant",
+    "title": "Falcon Port Harcourt LPG Plant",
     "capacity": "1.75 MW",
     "fuel": "CNG",
     "location": "Port Harcourt, Rivers",
     "sector": "Industrial",
     "image": "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-cover.jpg",
-    "photos": [
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-01.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-02.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-03.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-04.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-05.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-06.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-07.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-08.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-09.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-10.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-11.jpg",
-      "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-12.jpg"
-    ],
     "summary": "1.75 MW of Pulita CNG generator sets powering an LPG plant in Port Harcourt.",
     "application": "LPG plant power",
     "equipment": "Pulita CNG generator sets, 1.75 MW in total",
