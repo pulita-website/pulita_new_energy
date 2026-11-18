@@ -101,13 +101,17 @@
     "results": "This unit utilizes piped natural gas, which significantly lowers equipment costs and delivers substantial cost savings for the owner's production operations."
   },
   {
-    "title": "Lagos Factory",
+    "title": "Lagos commercial building",
     "capacity": "100kVA",
     "fuel": "CNG",
     "location": "Lagos",
-    "sector": "Industrial",
-    "summary": "A 100 kVA Pulita CNG generator set powering a factory in Lagos.",
-    "application": "Factory power",
+    "sector": "Commercial & residential",
+    "image": "/assets/images/PULITA_CNG_Site_Landscape.jpg",
+    "photos": [
+      "/assets/images/PULITA_CNG_Site_Portrait.jpg"
+    ],
+    "summary": "A 100 kVA Pulita CNG generator set powering a commercial building in Lagos.",
+    "application": "commercial building",
     "equipment": "Pulita 100 kVA CNG generator set with CNG cascade",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
