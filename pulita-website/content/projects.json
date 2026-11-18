@@ -217,54 +217,11 @@
     "sector": "Commercial & residential",
     "image": "/assets/images/port-harcourt-2x100kva-lpg-restaurant-cover.jpg",
     "photos": [
-      "/assets/images/port-harcourt-2x100kva-lpg-restaurant-01.jpg",
-      "/assets/images/port-harcourt-2x100kva-lpg-restaurant-02.jpg",
-      "/assets/images/port-harcourt-2x100kva-lpg-restaurant-03.jpg",
-      "/assets/images/port-harcourt-2x100kva-lpg-restaurant-04.jpg"
+      "/assets/images/port-harcourt-2x100kva-lpg-restaurant-03.jpg"
     ],
     "summary": "Two 100 kVA Pulita LPG generator sets powering a restaurant in Port Harcourt.",
     "application": "Restaurant power",
     "equipment": "2 Pulita 100 kVA LPG generator sets with LPG storage tank",
-    "results": "Estimated ~54% lower fuel cost than diesel*"
-  },
-  {
-    "title": "Burger King Abeokuta",
-    "capacity": "80kVA",
-    "fuel": "LPG",
-    "location": "Abeokuta, Ogun",
-    "sector": "Commercial & residential",
-    "image": "/assets/images/ogun-burger-king-80kva-lpg-cover.jpg",
-    "photos": [
-      "/assets/images/ogun-burger-king-80kva-lpg-01.jpg",
-      "/assets/images/ogun-burger-king-80kva-lpg-02.jpg",
-      "/assets/images/ogun-burger-king-80kva-lpg-03.jpg",
-      "/assets/images/ogun-burger-king-80kva-lpg-04.jpg",
-      "/assets/images/ogun-burger-king-80kva-lpg-05.jpg",
-      "/assets/images/ogun-burger-king-80kva-lpg-06.jpg",
-      "/assets/images/ogun-burger-king-80kva-lpg-07.jpg"
-    ],
-    "summary": "80 kVA LPG generator powering Burger King Nigeria’s first green restaurant, with zero diesel on site.",
-    "application": "Quick-service restaurant: full-site power",
-    "equipment": "Pulita 80 kVA LPG generator set",
-    "results": "Zero diesel on site. Estimated ~54% lower fuel cost than diesel*"
-  },
-  {
-    "title": "Lagos Telecom Site",
-    "capacity": "30kVA",
-    "fuel": "LPG",
-    "location": "Lagos",
-    "sector": "Telecom",
-    "image": "/assets/images/lagos-30kva-lpg-telecom-cover.jpg",
-    "photos": [
-      "/assets/images/lagos-30kva-lpg-telecom-01.jpg",
-      "/assets/images/lagos-30kva-lpg-telecom-02.jpg",
-      "/assets/images/lagos-30kva-lpg-telecom-03.jpg",
-      "/assets/images/lagos-30kva-lpg-telecom-04.jpg",
-      "/assets/images/lagos-30kva-lpg-telecom-05.jpg"
-    ],
-    "summary": "A 30 kVA Pulita LPG generator set powering a telecom site in Lagos.",
-    "application": "Telecom tower power",
-    "equipment": "Pulita 30 kVA LPG generator set",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
