@@ -132,19 +132,15 @@
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
-    "title": "Ikoyi Telecom Site",
+    "title": "Ntel Telecom Site & PAT Tower ",
     "capacity": "25kVA",
     "fuel": "CNG",
     "location": "Ikoyi, Lagos",
     "sector": "Telecom",
-    "image": "/assets/images/lagos-ikoyi-25kva-cng-telecom-cover.jpg",
+    "image": "/assets/images/PULITA_Gas_Site_02.jpg",
     "photos": [
-      "/assets/images/lagos-ikoyi-25kva-cng-telecom-01.jpg",
-      "/assets/images/lagos-ikoyi-25kva-cng-telecom-02.jpg",
-      "/assets/images/lagos-ikoyi-25kva-cng-telecom-03.jpg",
-      "/assets/images/lagos-ikoyi-25kva-cng-telecom-04.jpg",
-      "/assets/images/lagos-ikoyi-25kva-cng-telecom-05.jpg",
-      "/assets/images/lagos-ikoyi-25kva-cng-telecom-06.jpg"
+      "/assets/images/PULITA_Gas_Site_01 (1).jpg",
+      "/assets/images/绿色发电机与工业控制柜.png"
     ],
     "summary": "A 25 kVA CNG generator set with cylinder storage powering a telecom site in Ikoyi, Lagos.",
     "application": "Telecom tower power",
