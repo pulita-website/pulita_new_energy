@@ -5,10 +5,7 @@
     "fuel": "CNG",
     "location": "Kano",
     "sector": "Industrial",
-    "image": "/assets/images/kano-750kva-cng-plastics-factory-cover.jpg",
-    "photos": [
-      "/assets/images/kano-750kva-cng-plastics-factory-01.jpg"
-    ],
+    "image": "/assets/images/白色集装箱发电机组现场.png",
     "summary": "A containerized 750 kVA Pulita CNG generator set powering a plastics factory in Kano, 24 hours a day.",
     "application": "Plastics factory power, 24 hours a day",
     "equipment": "Pulita 750 kVA CNG generator set with gas regulating cabinet",
@@ -27,21 +24,16 @@
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
-    "title": "Kano CNG Mother Station",
-    "capacity": "3 MW",
+    "title": "Kano L-CNG Station",
+    "capacity": "40 TONS",
     "fuel": "CNG",
     "location": "Kano",
     "sector": "Gas station",
-    "image": "/assets/images/kano-3mw-cng-mother-station-cover.jpg",
-    "photos": [
-      "/assets/images/kano-3mw-cng-mother-station-04.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-05.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-08.jpg"
-    ],
-    "summary": "3 MW of Pulita CNG generator sets powering a CNG mother station in Kano.",
-    "application": "CNG mother station power",
-    "equipment": "Pulita CNG generator sets, 3 MW in total",
-    "results": "Estimated ~77% lower fuel cost than diesel*"
+    "image": "/assets/images/液化天然气站全景.png",
+    "summary": "An L-CNG refueling station with a 40-ton storage capacity can provide refueling services for tube-skid trailers as well as for individual vehicles, including heavy-duty trucks.",
+    "application": "L-CNG refueling station ",
+    "equipment": "LNG storage tanks, gasification equipment, refueling units, metering systems, gas generator sets",
+    "scope": "EPC"
   },
   {
     "title": "Port Harcourt LPG Plant",
