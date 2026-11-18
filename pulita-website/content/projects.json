@@ -152,24 +152,16 @@
     "capacity": "100 & 250kVA",
     "fuel": "LPG",
     "location": "Abuja, FCT",
-    "sector": "Gas station",
-    "image": "/assets/images/abuja-18-units-lpg-gas-stations-cover.jpg",
+    "sector": "Commercial & residential",
+    "image": "/assets/images/PULITA_Container_Courtyard.jpg",
     "photos": [
-      "/assets/images/abuja-18-units-lpg-gas-stations-01.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-02.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-03.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-04.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-05.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-06.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-07.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-08.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-09.jpg",
-      "/assets/images/abuja-18-units-lpg-gas-stations-10.jpg"
+      "/assets/images/PULITA_Container_Front.jpg",
+      "/assets/images/PULITA_Container_Wide.jpg"
     ],
-    "summary": "Eighteen 100 kVA and 250 kVA Pulita LPG generator sets powering gas stations in Abuja.",
-    "application": "Gas station power",
-    "equipment": "18 Pulita 100 kVA and 250 kVA LPG generator sets",
-    "results": "Estimated ~54% lower fuel cost than diesel*"
+    "summary": "In Abuja, we have deployed several power solutions for schools, communities, and other locations, each consisting of two 250 kVA LPG generators operating in parallel.",
+    "application": "schools, communities",
+    "equipment": "18 units of Pulita 100 kVA and 250 kVA LPG generator sets",
+    "results": "Refueling with LPG is more convenient, and it is also significantly cheaper than diesel, resulting in substantial cost savings for owners and projects."
   },
   {
     "title": "Lagos Gas Plant (15 units)",
