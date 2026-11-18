@@ -1,14 +1,14 @@
 [
   {
-    "image": "assets/images/hero-pulita-container-genset-install.jpg",
+    "image": "/assets/images/hero-pulita-container-genset-install.jpg",
     "caption": "Pulita containerized gas generator installation"
   },
   {
-    "image": "assets/images/hero-cng-genset-cascade-site.jpg",
+    "image": "/assets/images/hero-cng-genset-cascade-site.jpg",
     "caption": "Pulita CNG generator set with CNG cascade storage"
   },
   {
-    "image": "assets/images/hero-ojota-mru-station.jpg",
+    "image": "/assets/images/hero-ojota-mru-station.jpg",
     "caption": "CNG mobile refill unit (MRU) station, Ojota, Lagos"
   }
 ]

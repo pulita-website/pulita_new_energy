@@ -1,17 +1,17 @@
 {
-  "hero_photo": "assets/images/mru-team-factory.jpg",
+  "hero_photo": "/assets/images/mru-team-factory.jpg",
   "hero_title": "We don’t disappear after delivery.",
   "hero_text": "Local engineers and genuine spare parts from our Lagos and Abuja warehouses. Pulita supports your equipment for its whole working life.",
   "aftersales_photos": [
-    "assets/images/service-green-genset.jpg",
-    "assets/images/service-white-genset-cylinders.jpg",
-    "assets/images/service-control-panel.jpg",
-    "assets/images/service-telecom-site.jpg",
-    "assets/images/service-engine-check.jpg"
+    "/assets/images/service-green-genset.jpg",
+    "/assets/images/service-white-genset-cylinders.jpg",
+    "/assets/images/service-control-panel.jpg",
+    "/assets/images/service-telecom-site.jpg",
+    "/assets/images/service-engine-check.jpg"
   ],
   "aftersales_title": "Engineers on call. Parts on the shelf.",
   "aftersales_text": "Our Lagos service centre and trained engineers support customers anywhere in Nigeria, ready to help with any issue. Our warehouses in Lagos and Abuja keep spare parts and essential components in stock, so replacements and repairs happen without delay.",
   "quote_title": "Get a costed proposal.",
   "quote_text": "Tell us what you need to power. We’ll reply with the right system, an installed price and your projected fuel savings.",
-  "quote_photo": "assets/images/factory-container-genset-team.jpg"
+  "quote_photo": "/assets/images/factory-container-genset-team.jpg"
 }

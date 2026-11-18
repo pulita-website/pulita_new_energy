@@ -1,5 +1,5 @@
 {
-  "hero_photo": "assets/images/factory-weifang-exterior.jpg",
+  "hero_photo": "/assets/images/factory-weifang-exterior.jpg",
   "hero_title": "Chinese engineering. Nigerian operational excellence.",
   "hero_text": "A global original equipment manufacturer of gas-powered energy systems, with a 30,000 m² factory in China and our own teams on the ground in Nigeria.",
   "story_title": "From Weifang to West Africa.",
@@ -7,12 +7,12 @@
   "story_text_2": "Our factory sits in the Sino-foreign Cooperation Industrial Park of the Binhai Economic Development Zone in Weifang. It covers more than 30,000 m², including 10,000 m² of production workshops, with a designed capacity of 4,000 generating sets a year from 10 kVA to 2,500 kVA.",
   "story_text_3": "Raw material purchasing, drawing design, production and manufacturing all follow the ISO 9001 quality system, and our products carry EU CE certification. We back them with more than ten years of production experience and a reliable international supply chain.",
   "story_text_4": "In an era of persistently high fuel prices, Pulita’s core objective is to provide Nigeria with more economical, eco-friendly, and reliable gas-based energy solutions—thereby creating greater value for both our clients and society as a whole.",
-  "story_photo": "assets/images/about-mru-delegation.jpg",
-  "factory_photo_1": "assets/images/factory-floor-white-gensets.jpg",
-  "factory_photo_2": "assets/images/factory-floor-blue-gensets.jpg",
-  "team_photo_1": "assets/images/about-office-meeting.jpg",
-  "team_photo_2": "assets/images/exhibition-nog-booth.jpg",
-  "team_photo_3": "assets/images/exhibition-engineering-assembly.jpg",
+  "story_photo": "/assets/images/about-mru-delegation.jpg",
+  "factory_photo_1": "/assets/images/factory-floor-white-gensets.jpg",
+  "factory_photo_2": "/assets/images/factory-floor-blue-gensets.jpg",
+  "team_photo_1": "/assets/images/about-office-meeting.jpg",
+  "team_photo_2": "/assets/images/exhibition-nog-booth.jpg",
+  "team_photo_3": "/assets/images/exhibition-engineering-assembly.jpg",
   "people_title": "The team behind your power.",
   "people_text": "Engineers, project managers and service staff in China and Nigeria, working as one team on every project."
 }
