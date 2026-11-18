@@ -71,34 +71,14 @@
     "results": "The Ojota area serves as a transport hub; the completion of this refueling sub-station has greatly facilitated the refueling of passenger vehicles in the vicinity."
   },
   {
-    "title": "Ife CNG Daughter Station",
-    "capacity": "10 × 100kVA",
-    "fuel": "CNG",
-    "location": "Ife, Osun",
-    "sector": "Gas station",
-    "image": "/assets/images/ife-10x100kva-cng-daughter-station-cover.jpg",
-    "photos": [
-      "/assets/images/ife-10x100kva-cng-daughter-station-01.jpg",
-      "/assets/images/ife-10x100kva-cng-daughter-station-02.jpg",
-      "/assets/images/ife-10x100kva-cng-daughter-station-03.jpg",
-      "/assets/images/ife-10x100kva-cng-daughter-station-04.jpg"
-    ],
-    "summary": "Ten 100 kVA Pulita CNG generator sets powering a CNG daughter station in Ife, Osun.",
-    "application": "CNG daughter station power",
-    "equipment": "10 Pulita 100 kVA CNG generator sets",
-    "results": "Estimated ~77% lower fuel cost than diesel*"
-  },
-  {
     "title": "Lagos State Hospital",
     "capacity": "450kVA",
     "fuel": "CNG",
     "location": "Lagos",
     "sector": "Healthcare",
-    "image": "/assets/images/lagos-hospital-450kva-cng-cover.jpg",
+    "image": "/assets/images/PULITA_Site_02.jpg",
     "photos": [
-      "/assets/images/lagos-hospital-450kva-cng-01.jpg",
-      "/assets/images/lagos-hospital-450kva-cng-02.jpg",
-      "/assets/images/lagos-hospital-450kva-cng-03.jpg"
+      "/assets/images/PULITA_Site_01-1.jpg"
     ],
     "summary": "A 450 kVA CNG generator set with on-site cylinder storage for round-the-clock hospital power.",
     "application": "Hospital power supply",
