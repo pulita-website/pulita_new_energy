@@ -195,40 +195,16 @@
     "results": "By deploying LPG generator sets within a residential complex, customers can use a single LPG tank for both cooking and power generation, offering significant convenience and cost-efficiency."
   },
   {
-    "title": "Abuja Residential Estate",
-    "capacity": "350kVA",
-    "fuel": "LPG",
-    "location": "Abuja, FCT",
-    "sector": "Commercial & residential",
-    "image": "/assets/images/abuja-350kva-lpg-residential-cover.jpg",
-    "photos": [
-      "/assets/images/abuja-350kva-lpg-residential-01.jpg",
-      "/assets/images/abuja-350kva-lpg-residential-02.jpg",
-      "/assets/images/abuja-350kva-lpg-residential-03.jpg",
-      "/assets/images/abuja-350kva-lpg-residential-04.jpg",
-      "/assets/images/abuja-350kva-lpg-residential-05.jpg"
-    ],
-    "summary": "A 350 kVA Pulita LPG generator set powering a residential development in Abuja.",
-    "application": "Residential power",
-    "equipment": "Pulita 350 kVA LPG generator set",
-    "results": "Estimated ~54% lower fuel cost than diesel*"
-  },
-  {
-    "title": "Abuja Gas Station",
+    "title": "Abuja MOB Gas Station",
     "capacity": "100 & 250kVA",
     "fuel": "LPG",
     "location": "Abuja, FCT",
     "sector": "Gas station",
     "image": "/assets/images/abuja-100-250kva-lpg-gas-station-cover.jpg",
-    "photos": [
-      "/assets/images/abuja-100-250kva-lpg-gas-station-01.jpg",
-      "/assets/images/abuja-100-250kva-lpg-gas-station-02.jpg",
-      "/assets/images/abuja-100-250kva-lpg-gas-station-03.jpg"
-    ],
     "summary": "100 kVA and 250 kVA Pulita LPG generator sets powering a gas station in Abuja.",
     "application": "Gas station power",
     "equipment": "Pulita 100 kVA and 250 kVA LPG generator sets",
-    "results": "Estimated ~54% lower fuel cost than diesel*"
+    "results": "We installed 100 kVA and 250 kVA LPG generator sets at MOB’s gas station in Abuja, significantly reducing their operational costs."
   },
   {
     "title": "Port Harcourt Restaurant",
