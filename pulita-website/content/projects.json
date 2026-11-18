@@ -45,7 +45,10 @@
     "fuel": "CNG",
     "location": "Port Harcourt, Rivers",
     "sector": "Industrial",
-    "image": "/assets/images/port-harcourt-1-75mw-cng-lpg-plant-cover.jpg",
+    "image": "/assets/images/白色发电机集装箱与云天-2.png",
+    "photos": [
+      "/assets/images/黄吊臂下的发电机安装现场-1.png"
+    ],
     "summary": "1.75 MW of Pulita CNG generator sets powering an LPG plant in Port Harcourt.",
     "application": "LPG plant power",
     "equipment": "Pulita CNG generator sets, 1.75 MW in total",
