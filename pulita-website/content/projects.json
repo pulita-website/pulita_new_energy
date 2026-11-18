@@ -121,17 +121,12 @@
     "fuel": "CNG",
     "location": "Ikorodu, Lagos",
     "sector": "Telecom",
-    "image": "/assets/images/ikorodu-30kva-cng-telecom-cover.jpg",
+    "image": "/assets/images/PULITA_Telecom_Equipment.jpg",
     "photos": [
-      "/assets/images/ikorodu-30kva-cng-telecom-01.jpg",
-      "/assets/images/ikorodu-30kva-cng-telecom-02.jpg",
-      "/assets/images/ikorodu-30kva-cng-telecom-03.jpg",
-      "/assets/images/ikorodu-30kva-cng-telecom-04.jpg",
-      "/assets/images/ikorodu-30kva-cng-telecom-05.jpg",
-      "/assets/images/ikorodu-30kva-cng-telecom-06.jpg",
-      "/assets/images/ikorodu-30kva-cng-telecom-07.jpg"
+      "/assets/images/PULITA_Telecom_Inspection.jpg",
+      "/assets/images/PULITA_Telecom_Team.jpg"
     ],
-    "summary": "A 30 kVA CNG generator set with cylinder storage powering a telecom site in Ikorodu, Lagos.",
+    "summary": "A 30 kVA CNG generator set with cylinder storage powering an IHS telecom site in Ikorodu, Lagos.",
     "application": "Telecom tower power",
     "equipment": "Pulita 30 kVA CNG generator set with CNG cascade",
     "results": "Estimated ~77% lower fuel cost than diesel*"
