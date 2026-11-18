@@ -56,7 +56,7 @@
   },
   {
     "title": "Ojota CNG Daughter Station",
-    "capacity": "600 scm",
+    "capacity": "2*600 scm",
     "fuel": "CNG",
     "location": "Ojota, Lagos",
     "sector": "Gas station",
@@ -64,9 +64,11 @@
     "photos": [
       "/assets/images/阴天加气站作业现场.png"
     ],
-    "summary": "A 600 scm CNG daughter station refuelling vehicles at Ojota, Lagos.",
+    "summary": "A 2*600 scm CNG daughter station refuelling vehicles at Ojota, Lagos.",
     "application": "CNG refuelling",
-    "equipment": "600 scm CNG daughter station (MRU)"
+    "equipment": "2*600 scm CNG daughter station (MRU)",
+    "scope": "EPC",
+    "results": "The Ojota area serves as a transport hub; the completion of this refueling sub-station has greatly facilitated the refueling of passenger vehicles in the vicinity."
   },
   {
     "title": "Ife CNG Daughter Station",
