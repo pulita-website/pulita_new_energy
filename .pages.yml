@@ -4,8 +4,8 @@
 media:
   - name: images
     label: 'Images'
-    input: pulita-website/assets/images/uploads
-    output: /assets/images/uploads
+    input: pulita-website/assets/images
+    output: /assets/images
     categories: [image]
   - name: documents
     label: 'Documents (PDF)'
