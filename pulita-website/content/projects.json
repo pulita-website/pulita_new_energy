@@ -164,26 +164,18 @@
     "results": "Refueling with LPG is more convenient, and it is also significantly cheaper than diesel, resulting in substantial cost savings for owners and projects."
   },
   {
-    "title": "Lagos Gas Plant (15 units)",
-    "capacity": "15 units",
+    "title": "Lagos Gas Plant (25 units)",
+    "capacity": "25-300kva",
     "fuel": "LPG",
     "location": "Lagos",
     "sector": "Industrial",
-    "image": "/assets/images/lagos-15-units-lpg-gas-plant-cover.jpg",
+    "image": "/assets/images/移除柴油面板的白色储罐.png",
     "photos": [
-      "/assets/images/lagos-15-units-lpg-gas-plant-01.jpg",
-      "/assets/images/lagos-15-units-lpg-gas-plant-02.jpg",
-      "/assets/images/lagos-15-units-lpg-gas-plant-03.jpg",
-      "/assets/images/lagos-15-units-lpg-gas-plant-04.jpg",
-      "/assets/images/lagos-15-units-lpg-gas-plant-05.jpg",
-      "/assets/images/lagos-15-units-lpg-gas-plant-06.jpg",
-      "/assets/images/lagos-15-units-lpg-gas-plant-07.jpg",
-      "/assets/images/lagos-15-units-lpg-gas-plant-08.jpg",
-      "/assets/images/lagos-15-units-lpg-gas-plant-09.jpg"
+      "/assets/images/棚下白色发电机的PULITA标贴.png"
     ],
-    "summary": "Fifteen Pulita LPG generator sets powering a gas plant in Lagos.",
+    "summary": "We have deployed over 25 LPG generator sets for clients in Lagos, with power capacities ranging from 20 to 300 kVA, resulting in significant operational cost savings for them.",
     "application": "Gas plant power",
-    "equipment": "15 Pulita LPG generator sets",
+    "equipment": "25 Pulita LPG generator sets",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
