@@ -91,15 +91,14 @@
     "fuel": "CNG",
     "location": "Port Harcourt, Rivers",
     "sector": "Industrial",
-    "image": "/assets/images/port-harcourt-200kva-ng-oil-production-cover.jpg",
+    "image": "/assets/images/白色发电机舱上的PULITA标志.png",
     "photos": [
-      "/assets/images/port-harcourt-200kva-ng-oil-production-01.jpg",
-      "/assets/images/port-harcourt-200kva-ng-oil-production-02.jpg"
+      "/assets/images/蓝色发动机舱管路连接修复.png"
     ],
-    "summary": "A 200 kVA natural gas generator set powering an oil production site in Port Harcourt.",
+    "summary": "A 200 kVA Pipe line natural gas generator set powering an oil production site in Port Harcourt.",
     "application": "Oil production power",
-    "equipment": "Pulita 200 kVA natural gas generator set",
-    "results": "Estimated ~77% lower fuel cost than diesel*"
+    "equipment": "Pulita 200 kVA PNG gas generator set",
+    "results": "This unit utilizes piped natural gas, which significantly lowers equipment costs and delivers substantial cost savings for the owner's production operations."
   },
   {
     "title": "Lagos Factory",
