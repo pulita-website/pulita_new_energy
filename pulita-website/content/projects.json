@@ -142,47 +142,9 @@
       "/assets/images/PULITA_Gas_Site_01 (1).jpg",
       "/assets/images/绿色发电机与工业控制柜.png"
     ],
-    "summary": "A 25 kVA CNG generator set with cylinder storage powering a telecom site in Ikoyi, Lagos.",
+    "summary": "A 25 kVA CNG generator set with cylinder storage powering a telecom site in Ikoyi, Lagos, another 25kva powering PAT'S tower at ogun state",
     "application": "Telecom tower power",
     "equipment": "Pulita 25 kVA CNG generator set with CNG cascade",
-    "results": "Estimated ~77% lower fuel cost than diesel*"
-  },
-  {
-    "title": "Ogun Telecom Site",
-    "capacity": "20kVA",
-    "fuel": "CNG",
-    "location": "Ogun",
-    "sector": "Telecom",
-    "image": "/assets/images/ogun-20kva-cng-telecom-cover.jpg",
-    "photos": [
-      "/assets/images/ogun-20kva-cng-telecom-01.jpg",
-      "/assets/images/ogun-20kva-cng-telecom-02.jpg",
-      "/assets/images/ogun-20kva-cng-telecom-03.jpg",
-      "/assets/images/ogun-20kva-cng-telecom-04.jpg",
-      "/assets/images/ogun-20kva-cng-telecom-05.jpg",
-      "/assets/images/ogun-20kva-cng-telecom-06.jpg"
-    ],
-    "summary": "A 20 kVA CNG generator set with cylinder storage powering a telecom site in Ogun State.",
-    "application": "Telecom tower power",
-    "equipment": "Pulita 20 kVA CNG generator set with CNG cascade",
-    "results": "Estimated ~77% lower fuel cost than diesel*"
-  },
-  {
-    "title": "Ikorodu Home",
-    "capacity": "20kVA",
-    "fuel": "CNG",
-    "location": "Ikorodu, Lagos",
-    "sector": "Commercial & residential",
-    "image": "/assets/images/lagos-ikorodu-20kva-cng-home-cover.jpg",
-    "photos": [
-      "/assets/images/lagos-ikorodu-20kva-cng-home-01.jpg",
-      "/assets/images/lagos-ikorodu-20kva-cng-home-02.jpg",
-      "/assets/images/lagos-ikorodu-20kva-cng-home-03.jpg",
-      "/assets/images/lagos-ikorodu-20kva-cng-home-04.jpg"
-    ],
-    "summary": "A 20 kVA CNG generator set powering a home in Ikorodu, Lagos.",
-    "application": "Home power",
-    "equipment": "Pulita 20 kVA CNG generator set with CNG cascade",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
