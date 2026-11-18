@@ -9,11 +9,9 @@
     "photos": [
       "assets/images/kano-750kva-cng-plastics-factory-01.jpg"
     ],
-    "featured": true,
     "summary": "A containerized 750 kVA Pulita CNG generator set powering a plastics factory in Kano, 24 hours a day.",
     "application": "Plastics factory power, 24 hours a day",
     "equipment": "Pulita 750 kVA CNG generator set with gas regulating cabinet",
-    "scope": "",
     "results": "Runs 24 hours a day. Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -23,19 +21,9 @@
     "location": "Uyo, Akwa Ibom",
     "sector": "Commercial & residential",
     "image": "assets/images/uyo-3-6mw-cng-hotel-cover.jpg",
-    "photos": [
-      "assets/images/uyo-3-6mw-cng-hotel-01.jpg",
-      "assets/images/uyo-3-6mw-cng-hotel-02.jpg",
-      "assets/images/uyo-3-6mw-cng-hotel-03.jpg",
-      "assets/images/uyo-3-6mw-cng-hotel-04.jpg",
-      "assets/images/uyo-3-6mw-cng-hotel-05.jpg",
-      "assets/images/uyo-3-6mw-cng-hotel-06.jpg"
-    ],
-    "featured": true,
     "summary": "3.6 MW of Pulita CNG generator sets powering a hotel in Uyo, Akwa Ibom.",
     "application": "Hotel power plant",
     "equipment": "Pulita CNG generator sets, 3.6 MW in total",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -57,11 +45,9 @@
       "assets/images/kano-3mw-cng-mother-station-09.jpg",
       "assets/images/kano-3mw-cng-mother-station-10.jpg"
     ],
-    "featured": true,
     "summary": "3 MW of Pulita CNG generator sets powering a CNG mother station in Kano.",
     "application": "CNG mother station power",
     "equipment": "Pulita CNG generator sets, 3 MW in total",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -85,11 +71,9 @@
       "assets/images/port-harcourt-1-75mw-cng-lpg-plant-11.jpg",
       "assets/images/port-harcourt-1-75mw-cng-lpg-plant-12.jpg"
     ],
-    "featured": true,
     "summary": "1.75 MW of Pulita CNG generator sets powering an LPG plant in Port Harcourt.",
     "application": "LPG plant power",
     "equipment": "Pulita CNG generator sets, 1.75 MW in total",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -111,12 +95,9 @@
       "assets/images/lagos-ojota-600scm-daughter-station-09.jpg",
       "assets/images/lagos-ojota-600scm-daughter-station-10.jpg"
     ],
-    "featured": true,
     "summary": "A 600 scm CNG daughter station refuelling vehicles at Ojota, Lagos.",
     "application": "CNG refuelling",
-    "equipment": "600 scm CNG daughter station (MRU)",
-    "scope": "",
-    "results": ""
+    "equipment": "600 scm CNG daughter station (MRU)"
   },
   {
     "title": "Ife CNG Daughter Station",
@@ -131,11 +112,9 @@
       "assets/images/ife-10x100kva-cng-daughter-station-03.jpg",
       "assets/images/ife-10x100kva-cng-daughter-station-04.jpg"
     ],
-    "featured": false,
     "summary": "Ten 100 kVA Pulita CNG generator sets powering a CNG daughter station in Ife, Osun.",
     "application": "CNG daughter station power",
     "equipment": "10 Pulita 100 kVA CNG generator sets",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -150,11 +129,9 @@
       "assets/images/lagos-hospital-450kva-cng-02.jpg",
       "assets/images/lagos-hospital-450kva-cng-03.jpg"
     ],
-    "featured": true,
     "summary": "A 450 kVA CNG generator set with on-site cylinder storage for round-the-clock hospital power.",
     "application": "Hospital power supply",
     "equipment": "Pulita 450 kVA CNG generator set with CNG cylinder cascade",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -170,11 +147,9 @@
       "assets/images/lagos-300kva-cng-factory-02.jpg",
       "assets/images/lagos-300kva-cng-factory-04.jpg"
     ],
-    "featured": false,
     "summary": "A 300 kVA Pulita CNG generator set powering a factory in Lagos.",
     "application": "Factory power",
     "equipment": "Pulita 300 kVA CNG generator set",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -188,11 +163,9 @@
       "assets/images/port-harcourt-200kva-ng-oil-production-01.jpg",
       "assets/images/port-harcourt-200kva-ng-oil-production-02.jpg"
     ],
-    "featured": false,
     "summary": "A 200 kVA natural gas generator set powering an oil production site in Port Harcourt.",
     "application": "Oil production power",
     "equipment": "Pulita 200 kVA natural gas generator set",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -208,11 +181,9 @@
       "assets/images/lagos-100kva-cng-factory-03.jpg",
       "assets/images/lagos-100kva-cng-factory-04.jpg"
     ],
-    "featured": false,
     "summary": "A 100 kVA Pulita CNG generator set powering a factory in Lagos.",
     "application": "Factory power",
     "equipment": "Pulita 100 kVA CNG generator set with CNG cascade",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -231,11 +202,9 @@
       "assets/images/ikorodu-30kva-cng-telecom-06.jpg",
       "assets/images/ikorodu-30kva-cng-telecom-07.jpg"
     ],
-    "featured": false,
     "summary": "A 30 kVA CNG generator set with cylinder storage powering a telecom site in Ikorodu, Lagos.",
     "application": "Telecom tower power",
     "equipment": "Pulita 30 kVA CNG generator set with CNG cascade",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -253,11 +222,9 @@
       "assets/images/lagos-ikoyi-25kva-cng-telecom-05.jpg",
       "assets/images/lagos-ikoyi-25kva-cng-telecom-06.jpg"
     ],
-    "featured": false,
     "summary": "A 25 kVA CNG generator set with cylinder storage powering a telecom site in Ikoyi, Lagos.",
     "application": "Telecom tower power",
     "equipment": "Pulita 25 kVA CNG generator set with CNG cascade",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -275,11 +242,9 @@
       "assets/images/ogun-20kva-cng-telecom-05.jpg",
       "assets/images/ogun-20kva-cng-telecom-06.jpg"
     ],
-    "featured": false,
     "summary": "A 20 kVA CNG generator set with cylinder storage powering a telecom site in Ogun State.",
     "application": "Telecom tower power",
     "equipment": "Pulita 20 kVA CNG generator set with CNG cascade",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -295,11 +260,9 @@
       "assets/images/lagos-ikorodu-20kva-cng-home-03.jpg",
       "assets/images/lagos-ikorodu-20kva-cng-home-04.jpg"
     ],
-    "featured": false,
     "summary": "A 20 kVA CNG generator set powering a home in Ikorodu, Lagos.",
     "application": "Home power",
     "equipment": "Pulita 20 kVA CNG generator set with CNG cascade",
-    "scope": "",
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
@@ -321,11 +284,9 @@
       "assets/images/abuja-18-units-lpg-gas-stations-09.jpg",
       "assets/images/abuja-18-units-lpg-gas-stations-10.jpg"
     ],
-    "featured": false,
     "summary": "Eighteen 100 kVA and 250 kVA Pulita LPG generator sets powering gas stations in Abuja.",
     "application": "Gas station power",
     "equipment": "18 Pulita 100 kVA and 250 kVA LPG generator sets",
-    "scope": "",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
@@ -346,11 +307,9 @@
       "assets/images/lagos-15-units-lpg-gas-plant-08.jpg",
       "assets/images/lagos-15-units-lpg-gas-plant-09.jpg"
     ],
-    "featured": false,
     "summary": "Fifteen Pulita LPG generator sets powering a gas plant in Lagos.",
     "application": "Gas plant power",
     "equipment": "15 Pulita LPG generator sets",
-    "scope": "",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
@@ -366,11 +325,9 @@
       "assets/images/abuja-13-units-lpg-gas-stations-03.jpg",
       "assets/images/abuja-13-units-lpg-gas-stations-04.jpg"
     ],
-    "featured": false,
     "summary": "Thirteen 30 kVA and 100 kVA Pulita LPG generator sets powering gas stations in Abuja.",
     "application": "Gas station power",
     "equipment": "13 Pulita 30 kVA and 100 kVA LPG generator sets",
-    "scope": "",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
@@ -387,11 +344,9 @@
       "assets/images/abuja-350kva-lpg-residential-04.jpg",
       "assets/images/abuja-350kva-lpg-residential-05.jpg"
     ],
-    "featured": false,
     "summary": "A 350 kVA Pulita LPG generator set powering a residential development in Abuja.",
     "application": "Residential power",
     "equipment": "Pulita 350 kVA LPG generator set",
-    "scope": "",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
@@ -406,11 +361,9 @@
       "assets/images/abuja-100-250kva-lpg-gas-station-02.jpg",
       "assets/images/abuja-100-250kva-lpg-gas-station-03.jpg"
     ],
-    "featured": false,
     "summary": "100 kVA and 250 kVA Pulita LPG generator sets powering a gas station in Abuja.",
     "application": "Gas station power",
     "equipment": "Pulita 100 kVA and 250 kVA LPG generator sets",
-    "scope": "",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
@@ -426,11 +379,9 @@
       "assets/images/port-harcourt-2x100kva-lpg-restaurant-03.jpg",
       "assets/images/port-harcourt-2x100kva-lpg-restaurant-04.jpg"
     ],
-    "featured": false,
     "summary": "Two 100 kVA Pulita LPG generator sets powering a restaurant in Port Harcourt.",
     "application": "Restaurant power",
     "equipment": "2 Pulita 100 kVA LPG generator sets with LPG storage tank",
-    "scope": "",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
@@ -449,11 +400,9 @@
       "assets/images/ogun-burger-king-80kva-lpg-06.jpg",
       "assets/images/ogun-burger-king-80kva-lpg-07.jpg"
     ],
-    "featured": true,
     "summary": "80 kVA LPG generator powering Burger King Nigeria’s first green restaurant, with zero diesel on site.",
     "application": "Quick-service restaurant: full-site power",
     "equipment": "Pulita 80 kVA LPG generator set",
-    "scope": "",
     "results": "Zero diesel on site. Estimated ~54% lower fuel cost than diesel*"
   },
   {
@@ -470,11 +419,9 @@
       "assets/images/lagos-30kva-lpg-telecom-04.jpg",
       "assets/images/lagos-30kva-lpg-telecom-05.jpg"
     ],
-    "featured": false,
     "summary": "A 30 kVA Pulita LPG generator set powering a telecom site in Lagos.",
     "application": "Telecom tower power",
     "equipment": "Pulita 30 kVA LPG generator set",
-    "scope": "",
     "results": "Estimated ~54% lower fuel cost than diesel*"
   },
   {
@@ -492,11 +439,8 @@
       "assets/images/ogun-200kva-biogas-farm-05.jpg",
       "assets/images/ogun-200kva-biogas-farm-06.jpg"
     ],
-    "featured": false,
     "summary": "A 200 kVA Pulita biogas generator set turning farm biogas into electricity in Ogun State.",
     "application": "Farm biogas power",
-    "equipment": "Pulita 200 kVA biogas generator set",
-    "scope": "",
-    "results": ""
+    "equipment": "Pulita 200 kVA biogas generator set"
   }
 ]
