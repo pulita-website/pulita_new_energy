@@ -86,24 +86,6 @@
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
-    "title": "Lagos Factory",
-    "capacity": "300kVA",
-    "fuel": "CNG",
-    "location": "Lagos",
-    "sector": "Industrial",
-    "image": "/assets/images/lagos-300kva-cng-factory-cover.jpg",
-    "photos": [
-      "/assets/images/lagos-300kva-cng-factory-03.jpg",
-      "/assets/images/lagos-300kva-cng-factory-01.jpg",
-      "/assets/images/lagos-300kva-cng-factory-02.jpg",
-      "/assets/images/lagos-300kva-cng-factory-04.jpg"
-    ],
-    "summary": "A 300 kVA Pulita CNG generator set powering a factory in Lagos.",
-    "application": "Factory power",
-    "equipment": "Pulita 300 kVA CNG generator set",
-    "results": "Estimated ~77% lower fuel cost than diesel*"
-  },
-  {
     "title": "Port Harcourt Oil Production Site",
     "capacity": "200kVA",
     "fuel": "CNG",
@@ -125,13 +107,6 @@
     "fuel": "CNG",
     "location": "Lagos",
     "sector": "Industrial",
-    "image": "/assets/images/lagos-100kva-cng-factory-cover.jpg",
-    "photos": [
-      "/assets/images/lagos-100kva-cng-factory-01.jpg",
-      "/assets/images/lagos-100kva-cng-factory-02.jpg",
-      "/assets/images/lagos-100kva-cng-factory-03.jpg",
-      "/assets/images/lagos-100kva-cng-factory-04.jpg"
-    ],
     "summary": "A 100 kVA Pulita CNG generator set powering a factory in Lagos.",
     "application": "Factory power",
     "equipment": "Pulita 100 kVA CNG generator set with CNG cascade",
