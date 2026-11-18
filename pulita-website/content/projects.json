@@ -24,6 +24,21 @@
     "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
+    "title": "Falcon Port Harcourt LPG Plant",
+    "capacity": "1.75 MW",
+    "fuel": "CNG",
+    "location": "Port Harcourt, Rivers",
+    "sector": "Industrial",
+    "image": "/assets/images/白色发电机集装箱与云天-2.png",
+    "photos": [
+      "/assets/images/黄吊臂下的发电机安装现场-1.png"
+    ],
+    "summary": "1.75 MW of Pulita CNG generator sets powering an LPG plant in Port Harcourt.",
+    "application": "LPG plant power",
+    "equipment": "Pulita CNG generator sets, 1.75 MW in total",
+    "results": "Estimated ~77% lower fuel cost than diesel*"
+  },
+  {
     "title": "Kano L-CNG Station",
     "capacity": "40 TONS",
     "fuel": "CNG",
@@ -38,21 +53,6 @@
     "equipment": "LNG storage tanks, gasification equipment, refueling units, metering systems, gas generator sets",
     "scope": "EPC",
     "results": "The completion of the project has addressed the demand for natural gas in the Kano region—specifically for power generation as well as for refueling passenger vehicles and heavy-duty trucks—thereby delivering significant social benefits."
-  },
-  {
-    "title": "Falcon Port Harcourt LPG Plant",
-    "capacity": "1.75 MW",
-    "fuel": "CNG",
-    "location": "Port Harcourt, Rivers",
-    "sector": "Industrial",
-    "image": "/assets/images/白色发电机集装箱与云天-2.png",
-    "photos": [
-      "/assets/images/黄吊臂下的发电机安装现场-1.png"
-    ],
-    "summary": "1.75 MW of Pulita CNG generator sets powering an LPG plant in Port Harcourt.",
-    "application": "LPG plant power",
-    "equipment": "Pulita CNG generator sets, 1.75 MW in total",
-    "results": "Estimated ~77% lower fuel cost than diesel*"
   },
   {
     "title": "Ojota CNG Daughter Station",
