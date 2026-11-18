@@ -34,16 +34,9 @@
     "sector": "Gas station",
     "image": "/assets/images/kano-3mw-cng-mother-station-cover.jpg",
     "photos": [
-      "/assets/images/kano-3mw-cng-mother-station-01.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-02.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-03.jpg",
       "/assets/images/kano-3mw-cng-mother-station-04.jpg",
       "/assets/images/kano-3mw-cng-mother-station-05.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-06.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-07.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-08.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-09.jpg",
-      "/assets/images/kano-3mw-cng-mother-station-10.jpg"
+      "/assets/images/kano-3mw-cng-mother-station-08.jpg"
     ],
     "summary": "3 MW of Pulita CNG generator sets powering a CNG mother station in Kano.",
     "application": "CNG mother station power",
