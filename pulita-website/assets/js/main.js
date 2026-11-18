@@ -867,8 +867,8 @@
       var lines = [];
       var labels = { name: 'Name', company: 'Company', email: 'Email', phone: 'Phone', interest: 'Interest', location: 'Site location', load: 'Load / generator size', message: 'Message' };
       Object.keys(labels).forEach(function (k) { var v = data.get(k); if (v && String(v).trim()) lines.push(labels[k] + ': ' + String(v).trim()); });
-      var subject = (form.dataset.enquiry || 'Website enquiry') + ' — ' + (data.get('company') || data.get('name') || 'pulitaenergy.com');
-      var body = 'Hello Pulita team,\n\n' + lines.join('\n') + '\n\nSent from pulitaenergy.com';
+      var subject = (form.dataset.enquiry || 'Website enquiry') + ' — ' + (data.get('company') || data.get('name') || 'pulitaenergy.ng');
+      var body = 'Hello Pulita team,\n\n' + lines.join('\n') + '\n\nSent from www.pulitaenergy.ng';
       if (via === 'email') {
         window.location.href = 'mailto:' + CONTACT.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
       } else {
