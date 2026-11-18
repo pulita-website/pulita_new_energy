@@ -30,6 +30,9 @@
     "location": "Kano",
     "sector": "Gas station",
     "image": "/assets/images/液化天然气站全景.png",
+    "photos": [
+      "/assets/images/黄昏中的CNG加气站.png"
+    ],
     "summary": "An L-CNG refueling station with a 40-ton storage capacity can provide refueling services for tube-skid trailers as well as for individual vehicles, including heavy-duty trucks.",
     "application": "L-CNG refueling station ",
     "equipment": "LNG storage tanks, gasification equipment, refueling units, metering systems, gas generator sets",
