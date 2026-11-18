@@ -200,7 +200,10 @@
     "fuel": "LPG",
     "location": "Abuja, FCT",
     "sector": "Gas station",
-    "image": "/assets/images/abuja-100-250kva-lpg-gas-station-cover.jpg",
+    "image": "/assets/images/阳光下的蓝黄发电机组.png",
+    "photos": [
+      "/assets/images/天篷后的红色数字校正-2.png"
+    ],
     "summary": "100 kVA and 250 kVA Pulita LPG generator sets powering a gas station in Abuja.",
     "application": "Gas station power",
     "equipment": "Pulita 100 kVA and 250 kVA LPG generator sets",
