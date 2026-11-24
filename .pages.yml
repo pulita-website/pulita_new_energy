@@ -37,10 +37,16 @@ content:
         label: 'Location'
         type: string
       - name: image
-        label: 'Photo'
+        label: 'Cover photo (optional, shown first)'
         type: image
         options:
           media: images
+      - name: photos
+        label: 'Additional photos (automatic slideshow; drag to reorder)'
+        type: image
+        options:
+          media: images
+        list: true
       - name: summary
         label: 'Summary (1-3 sentences)'
         type: text
