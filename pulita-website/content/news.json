@@ -26,6 +26,9 @@
     "date": "2025-11-05",
     "location": "Abeokuta, Ogun",
     "image": "/assets/images/uploads/IMG-20250618-WA0044.jpg",
+    "photos": [
+      "/assets/images/绿色发电机旁的检修现场-2.png"
+    ],
     "summary": "An 80 kVA Pulita LPG generator set powers the Abeokuta outlet with zero diesel on site.",
     "link": "projects.html#case-study"
   },
