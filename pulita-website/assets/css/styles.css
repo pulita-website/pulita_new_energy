@@ -1156,3 +1156,7 @@ a.cert { text-decoration: none; color: inherit; }
 .news-gallery-controls button:focus-visible { outline:2px solid white; outline-offset:-2px; }
 .news-gallery-count,.news-gallery-pause { font-size:.875rem !important; white-space:nowrap; }
 .news-gallery-count { padding:0 .3rem; }
+
+/* Hide News photo counter and pause label; retain previous/next controls. */
+.news-gallery-controls .news-gallery-count,
+.news-gallery-controls .news-gallery-pause { display: none !important; }
