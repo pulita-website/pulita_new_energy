@@ -1160,3 +1160,61 @@ a.cert { text-decoration: none; color: inherit; }
 /* Hide News photo counter and pause label; retain previous/next controls. */
 .news-gallery-controls .news-gallery-count,
 .news-gallery-controls .news-gallery-pause { display: none !important; }
+
+/* News page: preserve the entire photo at every screen size. */
+[data-cms="news-list"] .news-media img,
+[data-cms="news-list"] .news-media .news-slide {
+  object-fit: contain;
+  object-position: center;
+}
+[data-cms="news-list"] .news-card:hover .news-media img {
+  transform: none;
+}
+
+/* Compact news arrows: clear photo area, with generous touch targets. */
+.news-gallery-controls {
+  inset: 0;
+  display: block;
+  width: auto;
+  max-width: none;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  pointer-events: none;
+}
+.news-gallery-controls .news-gallery-prev,
+.news-gallery-controls .news-gallery-next {
+  position: absolute;
+  top: 50%;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0 0 3px;
+  border-radius: 50%;
+  background: transparent;
+  color: #164b78;
+  font-family: Arial, sans-serif;
+  font-size: 1.65rem !important;
+  line-height: 1;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  isolation: isolate;
+}
+.news-gallery-controls .news-gallery-prev { left: 5px; }
+.news-gallery-controls .news-gallery-next { right: 5px; }
+.news-gallery-controls .news-gallery-prev::before,
+.news-gallery-controls .news-gallery-next::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  z-index: -1;
+  border-radius: 50%;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 1px 5px rgba(0,0,0,.18);
+}
+.news-gallery-controls button:hover { background: transparent; color: #c93030; }
+.news-gallery-controls button:hover::before { background: #fff; }
+.news-gallery-controls button:focus-visible { outline: 2px solid #164b78; outline-offset: -4px; }
