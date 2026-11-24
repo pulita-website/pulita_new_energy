@@ -382,7 +382,9 @@
       return '<img class="news-slide' + (j === 0 ? ' is-active' : '') + '" src="' + imgPath(src) + '" alt="' + esc(n.title) + ' — photo ' + (j + 1) + '" loading="lazy"' + (j ? ' hidden' : '') + '>';
     }).join('');
     var imageTag = href ? 'a' : 'div';
-    var controls = multi ? '<div class="news-gallery-controls"><button type="button" class="news-gallery-prev" aria-label="Previous news photo">‹</button><span class="news-gallery-count" aria-live="off">1 / ' + photos.length + '</span><button type="button" class="news-gallery-next" aria-label="Next news photo">›</button><button type="button" class="news-gallery-pause" aria-label="Pause slideshow" aria-pressed="false">Pause</button></div>' : '';
+    var controls = multi ? '<div class="news-gallery-dots" role="group" aria-label="Choose news photo">' + photos.map(function (src, j) {
+      return '<button type="button" class="news-gallery-dot" aria-label="Show news photo ' + (j + 1) + '" aria-current="' + (j === 0 ? 'true' : 'false') + '"></button>';
+    }).join('') + '</div>' : '';
     return '<article class="news-card card card-hover' + (big ? ' news-big' : '') + '" data-reveal="up" data-delay="' + ((i % 3) * 90) + '">' +
       '<div class="news-media"' + (multi ? ' data-news-gallery role="region" aria-roledescription="carousel" aria-label="' + esc(n.title) + ' photos"' : '') + '><' + imageTag + ' class="news-gallery-images"' + (href ? ' href="' + href + '"' : '') + '>' + slides + '</' + imageTag + '><span class="news-type">' + esc(n.type || 'News') + '</span>' + controls + '</div>' +
       '<div class="p-6 flex flex-col flex-1">' +
@@ -396,21 +398,14 @@
     $$('[data-news-gallery]', root).forEach(function (gallery) {
       if (gallery.dataset.ready) return;
       gallery.dataset.ready = 'true';
-      var slides = $$('.news-slide', gallery), idx = 0, hovered = false, focused = false, paused = reduceMotion, touching = false, sx = null, sy = null;
-      var pause = $('.news-gallery-pause', gallery), count = $('.news-gallery-count', gallery);
+      var slides = $$('.news-slide', gallery), dots = $$('.news-gallery-dot', gallery);
+      var idx = 0, touching = false, sx = null, sy = null;
       function show(next) {
         idx = (next + slides.length) % slides.length;
         slides.forEach(function (img, j) { img.hidden = j !== idx; img.classList.toggle('is-active', j === idx); });
-        count.textContent = (idx + 1) + ' / ' + slides.length;
+        dots.forEach(function (dot, j) { dot.setAttribute('aria-current', j === idx ? 'true' : 'false'); });
       }
-      function pauseLabel() { pause.textContent = paused ? 'Play' : 'Pause'; pause.setAttribute('aria-label', paused ? 'Play slideshow' : 'Pause slideshow'); pause.setAttribute('aria-pressed', String(paused)); }
-      $('.news-gallery-prev', gallery).addEventListener('click', function () { show(idx - 1); });
-      $('.news-gallery-next', gallery).addEventListener('click', function () { show(idx + 1); });
-      pause.addEventListener('click', function () { paused = !paused; pauseLabel(); });
-      gallery.addEventListener('mouseenter', function () { hovered = true; });
-      gallery.addEventListener('mouseleave', function () { hovered = false; });
-      gallery.addEventListener('focusin', function () { focused = true; });
-      gallery.addEventListener('focusout', function (e) { focused = gallery.contains(e.relatedTarget); });
+      dots.forEach(function (dot, j) { dot.addEventListener('click', function () { show(j); }); });
       gallery.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); show(idx + (e.key === 'ArrowRight' ? 1 : -1)); }
       });
@@ -425,10 +420,9 @@
       }, { passive: true });
       gallery.addEventListener('touchcancel', function () { touching = false; sx = sy = null; }, { passive: true });
       gallery.addEventListener('click', function (e) { if (swiped) { e.preventDefault(); e.stopPropagation(); swiped = false; } }, true);
-      pauseLabel();
       var timer = setInterval(function () {
         if (!gallery.isConnected) { clearInterval(timer); return; }
-        if (paused || hovered || focused || touching || document.hidden) return;
+        if (touching || document.hidden) return;
         var rect = gallery.getBoundingClientRect();
         if (rect.bottom > 0 && rect.top < window.innerHeight) show(idx + 1);
       }, 4000);
