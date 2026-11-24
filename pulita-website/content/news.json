@@ -14,7 +14,11 @@
     "date": "2026-07-10",
     "location": "Nigeria",
     "image": "/assets/images/uploads/WhatsApp Image 2026-11-16 at 09.31.39.jpeg",
-    "summary": "Our team joined NOG Energy Week, Nigeria’s leading oil and gas event, to meet partners and customers and present our gas-to-power and CNG refuelling solutions."
+    "photos": [
+      "/assets/images/9b3bf25d3a7186fe1b1be741e4983c1d.jpg",
+      "/assets/images/abb3dc6bf8fabfdf7812ad5ed457abf1.jpg"
+    ],
+    "summary": "PULITA NEW ENERGY participated in NOG Energy Week in Nigeria for the third time, reconnecting with customers and industry partners and presenting its gas infrastructure and gas-to-power solutions.At the exhibition, the PULITA team discussed practical solutions for CNG compression and refuelling, gas pressure regulation and gas-fired power generation. Conversations with both existing and prospective customers focused on reducing energy costs, improving reliability and making better use of Nigeria’s natural gas resources."
   },
   {
     "title": "Burger King Nigeria’s first green restaurant runs on Pulita LPG power",
